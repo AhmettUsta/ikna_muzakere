@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Mimari
 
-**Sürüm: v2 — 2026-11-11 14:33**
+**Sürüm: v3 — 2026-11-11 16:30**
 
 **Sürüm notları**
 
+- v3 — Barındırma Render yerine Vercel (Render'a giriş yapılamadı); canlıda doğrulandı.
 - v2 — İçerik doğrulaması tür bazlı bölüm listesine göre güncellendi (Kaçınmacı istisnası); geliştirme veritabanı da Neon.
 - v1 — İlk mimari: bileşenler, klasör yapısı, veri modeli, sayfalar, dağıtım, test stratejisi.
 
@@ -17,7 +18,7 @@
  Tarayıcı (telefon / bilgisayar)
         │  HTML sayfalar + az JavaScript, imzalı oturum çerezi
         ▼
- Render ücretsiz web servisi  ── Docker (python:3.11-slim, non-root)
+ Vercel Hobby (ücretsiz) ── Python sunucusuz fonksiyon api/index.py (Frankfurt, fra1)
  ┌──────────────────────────────────────────────────────────┐
  │ FastAPI uygulaması (src/main.py)                         │
  │   web katmanı: aday ve yönetici route'ları, Jinja2       │
@@ -163,16 +164,16 @@ Sürümler kurulum anında tam sürümle (`==`) yazılır.
 
 ## 8. Dağıtım
 
-- **Dockerfile:**
-  - `python:3.11-slim` tabanlı, non-root kullanıcıyla çalışır.
-  - `PYTHONPATH=src` ayarlanır.
-  - Başlatma komutu: `alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port $PORT`. Render'ın ücretsiz planında "pre-deploy" komutu olmadığı için migration açılışta çalışır.
-- **Render:** Ücretsiz web servisi, GitHub'daki gizli depodan Docker ile kurulur.
-  - Ortam değişkeni olarak yalnızca `ikna_muzakere_secrets` girilir; değeri tek satırlık JSON'dur.
-  - Sağlık kontrolü `/saglik` adresine yapılır.
-- **Neon:** Ücretsiz proje, `postgres` veritabanı, `ikna_muzakere` şeması. Şemayı ilk migration oluşturur.
-- **Uyku:** Ücretsiz Render 15 dakika boşta kalınca uyur. İlk ziyaretçi yaklaşık 1 dakika bekler; bu kabul edildi.
-- **Yerelde çalıştırma:** `PYTHONPATH=src uvicorn main:app --reload` ve `.env`. Geliştirme de aynı Neon veritabanını kullanır; yerelde ayrı bir veritabanı ve şirket RDS'i kullanılmaz.
+- **Vercel Hobby (ücretsiz):** GitHub'daki gizli `AhmettUsta/ikna_muzakere` reposuna bağlı; `main`'e her push otomatik yayınlanır. Adres: `https://ikna-muzakere.vercel.app`.
+  - `api/index.py`: `src/`'yi yola ekler, çalışma klasörünü geçici klasöre alır (proje klasörü salt okunur; logger `logs/` oluşturur) ve `build_default_app()` ile uygulamayı kurar.
+  - `vercel.json`: `routes` ile tüm istekler fonksiyona gider; dosya sisteminden önce işlendiği için repo dosyaları (içerik JSON'ları vb.) statik sunulmaz. Fonksiyon bölgesi `fra1` (Neon ile aynı bölge).
+  - `.vercelignore`: `docs/`, `plans/`, `tests/`, `migrations/` vb. yayına girmez.
+  - Ortam değişkeni yalnızca `ikna_muzakere_secrets` (tek satırlık JSON, "Secret" türünde). Değişince **Redeploy** gerekir.
+- **Migration:** Vercel'de çalışmaz; şema değiştiğinde yerelden `python3 -m alembic upgrade head` çalıştırılır (havuzsuz adresi otomatik kullanır).
+- **Neon:** Ücretsiz proje, `neondb` veritabanı, `ikna_muzakere` şeması.
+- **Soğuk başlangıç:** Bir süre istek gelmezse fonksiyon ve Neon uyur; ilk istek birkaç saniye sürebilir.
+- **Docker:** `Dockerfile` yerel ya da başka bir barındırma için durur; Vercel kullanmaz.
+- **Yerelde çalıştırma:** `PYTHONPATH=src python3 -m uvicorn main:app --reload` ve `.env`. Geliştirme de aynı Neon veritabanını kullanır.
 
 ## 9. Test stratejisi
 
