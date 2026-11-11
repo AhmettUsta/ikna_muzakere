@@ -1,12 +1,25 @@
 # Müzakere Tarzı Testi
 
-**Sürüm: v1 — 2026-11-11 15:04**
+**Sürüm: v2 — 2026-11-11 16:34**
 
 **Sürüm notları**
 
+- v2 — Canlı site ve yönetim panelleri bağlantıları eklendi.
 - v1 — İlk sürüm.
 
-30 soruluk A/B çatışma tarzı testini çözdüren, beş müzakere tarzını (Rekabetçi, İşbirlikçi, Uzlaşmacı, Kaçınmacı, İltifatkar) puanlayan ve profile göre yorum gösteren küçük bir web sitesi. Katılımcılar takma ad ve 4 haneli PIN ile anonim kayıt olur; yönetici `/yonetici` adresinden sonuçları görür.
+## Bağlantılar
+
+| | |
+|---|---|
+| **Canlı site** | https://ikna-muzakere.vercel.app |
+| Yönetici girişi | Ana sayfada "Sonucuma bak" → takma ad: yönetici adı, PIN: yönetici şifresi |
+| Kod (GitHub) | https://github.com/AhmettUsta/ikna_muzakere |
+| Yayın paneli (Vercel) | https://vercel.com/dashboard → `ikna-muzakere` |
+| Veritabanı (Neon) | https://console.neon.tech → `ikna_muzakere` |
+
+`main` dalına her push, Vercel'de otomatik yeni yayın başlatır.
+
+30 soruluk A/B çatışma tarzı testini çözdüren, beş müzakere tarzını (Rekabetçi, İşbirlikçi, Uzlaşmacı, Kaçınmacı, İltifatkar) puanlayan ve profile göre yorum gösteren küçük bir web sitesi. Katılımcılar takma ad ve 4 karakterli PIN (harf/rakam) ile anonim kayıt olur; yönetici ana sayfadaki giriş formundan ya da `/yonetici` adresinden sonuçları görür.
 
 ## Hızlı başlangıç
 

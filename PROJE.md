@@ -13,6 +13,8 @@
 
 Ümit Anıl'ın (Tribün) müzakere eğitimindeki 30 soruluk çatışma tarzı testini web'e taşıyan, kullanıcının portföy ve öğrenme projesi. Link yalnızca ekip arkadaşları ve birkaç tanıdıkla paylaşılır; site arama motorlarına kapalıdır.
 
+**Canlı site:** https://ikna-muzakere.vercel.app · Kod: https://github.com/AhmettUsta/ikna_muzakere
+
 ## Komutlar
 
 | İş | Komut |
