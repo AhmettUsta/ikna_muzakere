@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Sonuçlar · Müzakere Tarzı Testi{% endblock %}
+{% block content %}
+<h1>{{ view.nickname }}</h1>
+{% if view.attempts %}
+  <p><a class="dugme" href="/sonuc/{{ view.attempts[0].public_id }}">En son sonucu gör</a></p>
+  <h2>Tüm denemeler</h2>
+  <ul class="liste">
+  {% for a in view.attempts %}
+    <li><a href="/sonuc/{{ a.public_id }}">{{ a.created_at|tarih }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>Henüz tamamlanmış bir test yok.</p>
+{% endif %}
+{% if not yonetici_gorunumu %}
+  <p><a class="dugme ikincil" href="/test">Testi tekrar çöz</a></p>
+{% else %}
+  <p><a href="/yonetici/adaylar">← Aday listesine dön</a></p>
+{% endif %}
+{% endblock %}

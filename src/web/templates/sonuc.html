@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Sonuç · Müzakere Tarzı Testi{% endblock %}
+{% set seviye_ad = {'yuksek': 'yüksek', 'orta': 'orta', 'dusuk': 'düşük'} %}
+{% block content %}
+<h1>Sonuç</h1>
+<p class="meta">{{ view.nickname }} · {{ view.created_at|tarih }}</p>
+<p class="not">Bu test bir kişilik testi değildir; çatışma anında hangi davranışları tercih ettiğinizi gösterir.
+   Her tarz bazı durumlarda işe yarar; amaç tarzlar arasında bilinçli geçiş yapabilmektir.</p>
+
+<section class="ozet">
+  <table class="puanlar">
+    <thead><tr><th>Tarz</th><th>Puan</th><th>Seviye</th></tr></thead>
+    <tbody>
+    {% for r in view.score.results %}
+      <tr class="seviye-{{ r.level }}">
+        <td>{{ styles[r.style].name }}</td>
+        <td>{{ r.score }}</td>
+        <td><span class="rozet">{{ seviye_ad[r.level] }}</span></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <div class="grafik-kutu">{{ grafik|safe }}</div>
+</section>
+<p class="ipucu">Seviyeler eğitimdeki eşiklere göre hesaplanır (ör. Rekabetçi: 8 ve üstü yüksek, 3 ve altı düşük). Puanların toplamı her zaman 30'dur.</p>
+
+<div class="sekmeler">
+  <input type="radio" name="sekme" id="sekme-sunum" {% if aktif_sekme != 'kaynak' %}checked{% endif %}>
+  <label for="sekme-sunum">Sunum yorumları</label>
+  <input type="radio" name="sekme" id="sekme-kaynak" {% if aktif_sekme == 'kaynak' %}checked{% endif %}>
+  <label for="sekme-kaynak">Kaynaklarla genişletilmiş yorum</label>
+
+  <div class="sekme-icerik" id="icerik-sunum">
+    {% for s in view.sunum %}
+    <details class="tarz seviye-{{ s.level }}" {% if s.acik %}open{% endif %}>
+      <summary>{{ styles[s.style].name }} <span class="rozet">{{ seviye_ad[s.level] }}</span></summary>
+      {% if s.not_metni %}<p class="not">{{ s.not_metni }}</p>{% endif %}
+      {% for b in s.bolumler %}
+        <h3>{{ b.baslik }}</h3>
+        <ul>{% for m in b.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
+      {% endfor %}
+    </details>
+    {% endfor %}
+  </div>
+
+  <div class="sekme-icerik" id="icerik-kaynak">
+    <p class="uyari">Bu yorumlar akademik kaynaklardan yararlanılarak yapay zekâ yardımıyla hazırlanmıştır;
+       profilinize göre seçilir, size özel yazılmamıştır. Psikolojik değerlendirme yerine geçmez.</p>
+    <article class="profil">
+      <h2>{{ view.profile.baslik }}</h2>
+      {{ view.profile.metin|md }}
+    </article>
+    {% for style, block in view.blocks %}
+    <details class="tarz">
+      <summary>{{ styles[style].name }}</summary>
+      {{ block.metin|md }}
+    </details>
+    {% endfor %}
+    <details class="kaynakca">
+      <summary>Kaynakça</summary>
+      <ul>{% for s in sources.values() %}<li>{{ s.kaynakca }}</li>{% endfor %}</ul>
+    </details>
+
+    {% if view.ai_comment %}
+    <section class="canli" id="canli">
+      <h2>Kişiselleştirilmiş yorum</h2>
+      <p class="uyari">Bu yorum Google Gemini tarafından yazıldı ve hata içerebilir. Psikolojik değerlendirme yerine geçmez.</p>
+      {{ view.ai_comment|md }}
+    </section>
+    {% elif not is_admin %}
+    <section class="kisisellestir-kutu" id="canli">
+      {% if canli_hata %}<p class="hata">{{ canli_hata }}</p>{% endif %}
+      {% if view.can_request_live %}
+      <details>
+        <summary>Kişiselleştir</summary>
+        <ul class="uyari">
+          <li>Profilinize özel yorumu Google Gemini yazacak ve hata içerebilir.</li>
+          <li>Google'a yalnızca beş puanınız ve seviyeleri gönderilir; takma adınız gönderilmez.</li>
+          <li>Ücretsiz kullanımda Google gönderilen veriyi ürünlerini geliştirmek için kullanabilir ve insanlar okuyabilir.</li>
+        </ul>
+        <form method="post" action="/sonuc/{{ view.public_id }}/canli-yorum">
+          <button type="submit" class="ikincil" id="kisisellestir">Anladım, kişiselleştir</button>
+        </form>
+      </details>
+      {% else %}
+      <button type="button" class="ikincil" id="kisisellestir" disabled>Kişiselleştir</button>
+      <p class="ipucu">Profilinize özel yapay zekâ yorumu yakında açılacak.</p>
+      {% endif %}
+    </section>
+    {% endif %}
+  </div>
+</div>
+
+<details class="cevaplar">
+  <summary>Cevaplarım</summary>
+  <ol>
+  {% for q, harf, tarz in view.answers %}
+    <li><b>{{ harf }}</b> {{ q.a if harf == 'A' else q.b }} <span class="kucuk">({{ styles[tarz].name }})</span></li>
+  {% endfor %}
+  </ol>
+</details>
+
+{% if participant_id and not is_admin %}
+<p class="altlink"><a href="/gecmis">Tüm sonuçlarım</a> · <a href="/test">Testi tekrar çöz</a></p>
+{% endif %}
+{% endblock %}

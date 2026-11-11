@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Test · Müzakere Tarzı Testi{% endblock %}
+{% block content %}
+<h1>Test</h1>
+<p class="aciklama">Her soruda size <strong>daha yakın</strong> olan ifadeyi seçin. İkisi de tam uymuyorsa, daha yakın olanı seçmeniz yeterli.</p>
+{% if hata %}<p class="hata">{{ hata }}</p>{% endif %}
+
+<div class="ilerleme" hidden>
+  <div class="ilerleme-cubuk"><span></span></div>
+  <span class="ilerleme-yazi">1 / {{ questions|length }}</span>
+</div>
+
+<form method="post" action="/test" id="test-formu">
+  {% for q in questions %}
+  <fieldset class="soru" data-no="{{ q.no }}">
+    <legend>Soru {{ q.no }}</legend>
+    {% set secili = (onceki or {}).get('q' ~ q.no) %}
+    <label class="secenek">
+      <input type="radio" name="q{{ q.no }}" value="A" {% if secili == 'A' %}checked{% endif %}>
+      <span><b>A</b> {{ q.a }}</span>
+    </label>
+    <label class="secenek">
+      <input type="radio" name="q{{ q.no }}" value="B" {% if secili == 'B' %}checked{% endif %}>
+      <span><b>B</b> {{ q.b }}</span>
+    </label>
+  </fieldset>
+  {% endfor %}
+  <div class="test-dugmeler">
+    <button type="button" class="ikincil" id="geri" hidden>Geri</button>
+    <button type="button" class="ikincil" id="ileri" hidden>İleri</button>
+    <button type="submit" id="bitir">Bitir</button>
+  </div>
+</form>
+{% endblock %}
+{% block scripts %}<script src="/static/test.js"></script>{% endblock %}

@@ -1,0 +1,131 @@
+{
+  "rekabet": {
+    "yuksek": {
+      "metin": "Rekabetçi tarz, iki boyutlu modelde iddialılığı yüksek, işbirliği düşük konumdadır: kişi kendi hedeflerini karşı tarafın kaygılarının önüne koyar (Thomas & Kilmann, 1974). Pruitt ve Rubin'in (1986) ikili ilgi modelinde bu, karşı tarafı kendi çözümünü kabul etmeye zorlayan 'üstünlük kurma' stratejisine karşılık gelir. Bu tarzı sık kullanan biri hızlı karar verebilir, sınır koyabilir ve haklı olduğu kritik konularda geri adım atmaz. Thomas (1977), acil ve kesin karar gereken ya da popüler olmayan ama zorunlu bir kararın uygulanması gereken durumları bu tarzın uygun olduğu yerler arasında sayar.\n\nRisk, tarzın her duruma taşınmasıdır: uzun süreli ilişkilerde karşı taraf kendini dinlenmemiş hissedebilir ve çatışma kişiselleşebilir. Rahim (2002), ilişkiye zarar veren duygusal çatışmanın etkili çatışma yönetimini zayıflattığını vurgular.\n\n**Gelişim için:** Pozisyon yerine karşı tarafın çıkarlarını sormak (Fisher & Ury, 1981), önemsiz konularda bilinçli olarak esnek davranmak ve her müzakereden önce 'bu konu gerçekten kazanmayı gerektiriyor mu?' diye sormak faydalı olabilir.",
+      "kaynaklar": [
+        "thomas-kilmann-1974",
+        "pruitt-rubin-1986",
+        "thomas-1977",
+        "rahim-2002",
+        "fisher-ury-1981"
+      ]
+    },
+    "orta": {
+      "metin": "Rekabetçi tarzı orta düzeyde kullanmak, gerektiğinde iddialı olabildiğinizi ama bunu varsayılan tavrınız haline getirmediğinizi gösterir. Thomas'ın (1977) durumsallık yaklaşımına göre rekabet; hızlı karar gereken, kuralların korunması gereken ya da sizden yararlanmaya çalışan biriyle karşılaşılan durumlarda işe yarar. Bu tarzı ölçülü kullanan biri, önemli konularda geri adım atmadan durabilirken ilişkiyi de gözetebilir.\n\nDikkat edilecek nokta, iddialılığın ne zaman devreye girdiğinin bilinçli seçilmesidir: baskı altında farkında olmadan rekabete geçmek, karşı tarafta da rekabetçi bir tepki doğurabilir ve çatışmayı tırmandırabilir (Pruitt & Rubin, 1986).\n\n**Gelişim için:** Hangi konuların sizin için pazarlık dışı olduğunu müzakereden önce belirlemek ve bu konulardaki kararlılığınızı nesnel ölçütlere dayandırmak faydalı olur; böylece duruşunuz keyfî değil, ilkeli görünür (Fisher & Ury, 1981).",
+      "kaynaklar": [
+        "thomas-1977",
+        "pruitt-rubin-1986",
+        "fisher-ury-1981"
+      ]
+    },
+    "dusuk": {
+      "metin": "Rekabetçi tarzı az kullanmak, kendi hedeflerinizi açıkça savunmak yerine ilişkiyi korumayı ya da gerilimden uzak durmayı öncelediğinizi düşündürür. Bu, birçok durumda uyum ve güven yaratır. Ancak Thomas (1977), bazı durumlarda rekabetin gerekli olduğunu belirtir: hızlı ve kesin karar alınması gereken acil durumlar, popüler olmayan ama zorunlu kararlar ve sizden yararlanmaya çalışan kişilere karşı kendinizi korumanız gereken anlar.\n\nBu tarzı hiç kullanmayan biri, haklı olduğu konularda bile geri çekilebilir ve müzakerede değer kaybedebilir. Pruitt ve Rubin'e (1986) göre kendi sonuçlarına düşük ilgi gösteren taraf, karşı tarafın taleplerine boyun eğmeye yatkın hale gelir.\n\n**Gelişim için:** Müzakere öncesinde alt sınırınızı ve anlaşma olmazsa başvuracağınız en iyi alternatifi (BATNA) netleştirmek iddialı olmayı kolaylaştırır (Fisher & Ury, 1981). Kısa ve gerekçeli 'hayır' cümleleri üzerinde çalışmak da işe yarar.",
+      "kaynaklar": [
+        "thomas-1977",
+        "pruitt-rubin-1986",
+        "fisher-ury-1981"
+      ]
+    }
+  },
+  "isbirligi": {
+    "yuksek": {
+      "metin": "İşbirlikçi tarz, iki boyutlu modelde hem iddialılığın hem işbirliğinin yüksek olduğu konumdadır: amaç, iki tarafın kaygılarını da tam karşılayan bir çözüm bulmaktır (Thomas & Kilmann, 1974). Rahim (1983) bu tarzı 'bütünleştirme', De Dreu ve arkadaşları (2001) 'problem çözme' olarak adlandırır. Bu tarzı sık kullanan biri soru sorar, farklı bakış açılarını birleştirir ve kalıcı, bağlılık yaratan çözümler üretir. Rahim (2002), karmaşık ve stratejik konularda bu tarzın genellikle daha uygun olduğunu tartışır.\n\nRisk zaman ve enerjidir: her konuyu derinlemesine çözmeye çalışmak önemsiz konularda verimsizdir ve karşı taraf işbirliğine istekli değilse sizi savunmasız bırakabilir.\n\n**Gelişim için:** Konunun önemi ile ayrılacak zamanı eşleştirmek, karşı tarafın gerçekten işbirliğine açık olup olmadığını erken sınamak ve gerektiğinde uzlaşmaya ya da daha iddialı bir tavra geçebilmek faydalıdır. Fisher ve Ury'nin (1981) 'pozisyonlara değil çıkarlara odaklanma' ilkesi bu tarzın en güçlü aracıdır.",
+      "kaynaklar": [
+        "thomas-kilmann-1974",
+        "rahim-1983",
+        "de-dreu-2001",
+        "rahim-2002",
+        "fisher-ury-1981"
+      ]
+    },
+    "orta": {
+      "metin": "İşbirlikçi tarzı orta düzeyde kullanmak, ortak çözüm arayışına açık olduğunuzu ama bunu her durumda ilk seçenek yapmadığınızı gösterir. Thomas'a (1977) göre işbirliği; iki tarafın kaygılarının da feda edilemeyecek kadar önemli olduğu, farklı bakış açılarının birleştirilmesi ve kalıcı bağlılık yaratılması gereken durumlarda en uygun tarzdır. Orta düzeyde kullanım, zaman kısıtı olan ya da konunun önemsiz olduğu durumlarda daha hızlı tarzlara geçebildiğinizi düşündürür.\n\nDikkat edilecek nokta, önemli ve uzun vadeli konularda erkenden ortada buluşmadan önce birlikte çözüm arama fırsatını kaçırmamaktır.\n\n**Gelişim için:** Pozisyonların arkasındaki çıkarları sormak, birden fazla seçenek üretmeden karar vermemek ve seçenekleri nesnel ölçütlerle değerlendirmek (Fisher & Ury, 1981), işbirliğini gerektiği yerde daha etkili kullanmanızı sağlar.",
+      "kaynaklar": [
+        "thomas-1977",
+        "fisher-ury-1981"
+      ]
+    },
+    "dusuk": {
+      "metin": "İşbirlikçi tarzı az kullanmak, çatışmalarda iki tarafın kaygılarını birlikte ele alan çözümler yerine daha hızlı yollara, örneğin kazanmaya, ortada buluşmaya ya da konuyu ertelemeye yöneldiğinizi düşündürür. Bu hız kazandırabilir; ancak Rahim (2002), karmaşık ve stratejik konularda bütünleştirici yaklaşımın genellikle daha uygun olduğunu belirtir. Thomas (1977) da işbirliğinin özellikle farklı bakış açılarının birleştirilmesi gerektiğinde ve kararın uygulanması için tarafların bağlılığı önemli olduğunda uygun olduğunu söyler.\n\nBu tarzı az kullanan biri, iki tarafın da daha fazla kazanabileceği seçenekleri masada bırakabilir.\n\n**Gelişim için:** Pozisyon yerine 'bunu neden istiyorsunuz?' sorusuyla çıkarları keşfetmek ve karar vermeden önce en az iki üç seçenek üretmek (Fisher & Ury, 1981) iyi bir başlangıçtır.",
+      "kaynaklar": [
+        "rahim-2002",
+        "thomas-1977",
+        "fisher-ury-1981"
+      ]
+    }
+  },
+  "uzlasma": {
+    "yuksek": {
+      "metin": "Uzlaşmacı tarz, iki boyutlu modelde iddialılık ve işbirliğinin orta düzeyde olduğu konumdadır: hedef, iki tarafı da kısmen tatmin eden, hızlı ve kabul edilebilir bir orta noktadır (Thomas & Kilmann, 1974). Bu tarzı sık kullanan biri pratiktir, zaman baskısı altında anlaşma sağlayabilir ve tarafların eşit güçte olduğu durumlarda adil görünen çözümler bulur. Thomas (1977), karmaşık konularda geçici çözüm gerektiğinde ve işbirliği ya da rekabet sonuç vermediğinde uzlaşmanın işe yaradığını belirtir.\n\nRisk, ortada buluşmanın alışkanlık haline gelmesidir: Pruitt ve Rubin (1986) uzlaşmayı çoğu zaman yarım kalmış bir problem çözme olarak görür; iki tarafa daha fazla değer katan yaratıcı seçenekler hiç aranmadan masa kapanabilir.\n\n**Gelişim için:** Önemli konularda 'ortası' önerilmeden önce çıkarları konuşmak, tavizleri karşılıklı ve koşullu vermek ve orta noktanın gerçekten adil olup olmadığını nesnel ölçütlerle sınamak faydalı olur (Fisher & Ury, 1981).",
+      "kaynaklar": [
+        "thomas-kilmann-1974",
+        "thomas-1977",
+        "pruitt-rubin-1986",
+        "fisher-ury-1981"
+      ]
+    },
+    "orta": {
+      "metin": "Uzlaşmacı tarzı orta düzeyde kullanmak, gerektiğinde karşılıklı taviz verip anlaşmaya varabildiğinizi ama her farklılığı otomatik olarak ortadan bölmediğinizi gösterir. Thomas (1977), uzlaşmanın özellikle eşit güçteki tarafların birbirini dışlayan hedefleri olduğunda, karmaşık konularda geçici çözüm gerektiğinde ve zaman baskısı altında işe yaradığını belirtir. Bu dengeli kullanım, hem pratik olabildiğinizi hem de önemli konularda daha derin çözümler arayabildiğinizi düşündürür.\n\nDikkat edilecek nokta, uzlaşmanın hangi durumda bilinçli bir seçim, hangi durumda yorgunluktan ya da çatışmayı bitirme isteğinden doğan bir kestirme olduğunu ayırt etmektir.\n\n**Gelişim için:** Tavizleri değerine göre sıralamak, karşılıksız taviz vermemek ve anlaşma için kabul edilebilir alt sınırınızı ve en iyi alternatifinizi (BATNA) önceden bilmek yararlı olur (Fisher & Ury, 1981).",
+      "kaynaklar": [
+        "thomas-1977",
+        "fisher-ury-1981"
+      ]
+    },
+    "dusuk": {
+      "metin": "Uzlaşmacı tarzı az kullanmak, çatışmalarda ortada buluşmak yerine ya kendi çözümünüzü sonuna kadar savunduğunuzu, ya tam bir ortak çözüm aradığınızı ya da konudan uzak durduğunuzu düşündürür. Bu, önemli konularda ilkeli bir duruş anlamına gelebilir. Ancak Thomas (1977), uzlaşmanın bazı durumlarda en uygun yol olduğunu belirtir: eşit güçteki tarafların hedefleri birbirini dışladığında, karmaşık bir sorun için geçici bir çözüm gerektiğinde ve zaman baskısı daha kapsamlı bir çözüme izin vermediğinde.\n\nBu tarzı hiç kullanmayan biri, makul bir anlaşmanın mümkün olduğu yerde müzakereyi uzatabilir ya da kilitlenmeye yol açabilir (Pruitt & Rubin, 1986).\n\n**Gelişim için:** Hangi konuların sizin için gerçekten pazarlık dışı olduğunu belirleyip geri kalanlarda karşılıklı taviz alışverişine açık olmak ve tavizleri 'şunu verirsem şunu isterim' biçiminde koşullu sunmak faydalıdır.",
+      "kaynaklar": [
+        "thomas-1977",
+        "pruitt-rubin-1986"
+      ]
+    }
+  },
+  "kacinma": {
+    "yuksek": {
+      "metin": "Kaçınmacı tarz, iki boyutlu modelde hem iddialılığın hem işbirliğinin düşük olduğu konumdadır: kişi çatışmayı ele almayı erteler, konuyu geri plana iter ya da tartışmadan çekilir (Thomas & Kilmann, 1974). Pruitt ve Rubin (1986) bu tutumu hareketsizlik olarak tanımlar. Bu tarzın kendine özgü yararları vardır: Thomas'a (1977) göre konu önemsiz olduğunda, ortamın soğuması gerektiğinde, daha fazla bilgi toplamak gerektiğinde ya da çatışmanın zararı kazancından büyük olduğunda kaçınma akıllıca bir seçimdir.\n\nRisk, önemli konuların çözümsüz kalması ve zamanla büyümesidir; karşı taraf da sessizliği onay ya da ilgisizlik olarak yorumlayabilir. Rahim (2002), etkili çatışma yönetiminin işe yarayan görev çatışmasını bastırmak değil, makul düzeyde tutmak olduğunu vurgular.\n\n**Gelişim için:** Hangi konuları bilinçli olarak ertelediğinizi, hangilerinden yalnızca rahatsızlık nedeniyle uzak durduğunuzu ayırt etmek, ertelenen konular için bir dönüş zamanı belirlemek ve görüşünüzü kısa ve gerekçeli biçimde ifade etmeyi denemek faydalıdır.",
+      "kaynaklar": [
+        "thomas-kilmann-1974",
+        "pruitt-rubin-1986",
+        "thomas-1977",
+        "rahim-2002"
+      ]
+    },
+    "orta": {
+      "metin": "Kaçınmacı tarzı orta düzeyde kullanmak, her çatışmaya hemen girmediğinizi ama önemli konulardan da sürekli uzak durmadığınızı gösterir. Thomas (1977), kaçınmanın konu önemsiz olduğunda, tarafların sakinleşmesi gerektiğinde, bilgi toplamak için zamana ihtiyaç duyulduğunda ya da sorunu başkaları daha etkili çözebilecekken uygun olduğunu belirtir. Bu dengeli kullanım, zamanlamayı stratejik bir araç olarak kullanabildiğinizi düşündürür.\n\nDikkat edilecek nokta, ertelemenin bilinçli bir karar mı yoksa rahatsız edici bir konuşmadan kaçma isteği mi olduğunu fark etmektir.\n\n**Gelişim için:** Bir konuyu ertelerken bunu açıkça söylemek ('bunu yarın konuşalım, önce verileri görmek istiyorum') ve ertelenen konuya gerçekten geri dönmek, ertelemenin güven kaybına yol açmasını önler.",
+      "kaynaklar": [
+        "thomas-1977"
+      ]
+    },
+    "dusuk": {
+      "metin": "Kaçınmacı tarzı az kullanmak, çatışmaları ertelemek yerine doğrudan ele almayı tercih ettiğinizi gösterir. Bu çoğu zaman bir güçtür: sorunlar birikmeden konuşulur ve belirsizlik azalır. Ancak Thomas (1977), kaçınmanın da yerinde bir seçim olabileceği durumları sayar: konu önemsiz olduğunda ya da daha önemli konular beklerken, ortamın soğuması gerektiğinde, daha fazla bilgi toplamak gerektiğinde ve çatışmanın vereceği zarar çözümün getireceği yarardan büyük olduğunda.\n\nBu tarzı hiç kullanmayan biri, her konuyu hemen masaya getirerek gereksiz gerilim yaratabilir ya da yeterince hazırlanmadan tartışmaya girebilir. Rahim (2002), ilişkiye zarar veren duygusal çatışmanın etkili çatışma yönetimini zayıflattığını vurgular; bu yüzden zamanlama önemlidir.\n\n**Gelişim için:** Tepki vermeden önce 'bu konu şimdi mi konuşulmalı, sonra mı?' diye sormak ve bazı küçük konuları bilinçli olarak bırakmak faydalıdır.",
+      "kaynaklar": [
+        "thomas-1977",
+        "rahim-2002"
+      ]
+    }
+  },
+  "iltifat": {
+    "yuksek": {
+      "metin": "İltifatkar (uyumlu) tarz, iki boyutlu modelde iddialılığın düşük, işbirliğinin yüksek olduğu konumdadır: kişi karşı tarafın kaygılarını karşılamak için kendi kaygılarından vazgeçer (Thomas & Kilmann, 1974). Rahim (1983) bu tarzı 'uyma', Pruitt ve Rubin (1986) 'boyun eğme' olarak adlandırır. Bu tarzı sık kullanan biri cömert, anlayışlı ve ilişki odaklıdır; gerginliği yatıştırır ve güven biriktirir. Thomas (1977), haksız olduğunuzu fark ettiğinizde, konu karşı taraf için sizden çok daha önemli olduğunda ve ileride işe yarayacak bir iyi niyet birikimi oluşturmak istediğinizde bu tarzın uygun olduğunu belirtir.\n\nRisk, kendi ihtiyaçlarınızın sürekli geri planda kalması ve özellikle rekabetçi karşı taraflarca istismar edilmenizdir.\n\n**Gelişim için:** Tavizleri karşılıksız değil koşullu vermek, müzakere öncesinde vazgeçemeyeceğiniz konuları yazmak ve anlaşma olmazsa ne yapacağınızı (BATNA) bilmek kendinizi korumanıza yardım eder (Fisher & Ury, 1981).",
+      "kaynaklar": [
+        "thomas-kilmann-1974",
+        "rahim-1983",
+        "pruitt-rubin-1986",
+        "thomas-1977",
+        "fisher-ury-1981"
+      ]
+    },
+    "orta": {
+      "metin": "İltifatkar tarzı orta düzeyde kullanmak, ilişkiyi korumak için gerektiğinde geri adım atabildiğinizi ama bunu her durumda yapmadığınızı gösterir. Thomas (1977) uyma davranışının; haksız olduğunuzu fark ettiğinizde, konu karşı taraf için çok daha önemliyken, ileride işe yarayacak bir iyi niyet birikimi oluşturmak istediğinizde ve uyumun bozulmaması öncelikli olduğunda yerinde olduğunu belirtir. Bu dengeli kullanım, hem anlayışlı hem de gerektiğinde kendi ihtiyacını savunabilen bir yaklaşımı düşündürür.\n\nDikkat edilecek nokta, taviz vermenin bilinçli bir yatırım mı yoksa çatışmadan uzak durmanın bir yolu mu olduğunu ayırt etmektir.\n\n**Gelişim için:** Verdiğiniz tavizleri görünür kılmak ve karşılığını istemek, iyi niyetinizin karşı tarafça yeni bir başlangıç noktası olarak görülmesini engeller.",
+      "kaynaklar": [
+        "thomas-1977"
+      ]
+    },
+    "dusuk": {
+      "metin": "İltifatkar tarzı az kullanmak, karşı tarafın isteği için kendi hedeflerinizden kolay kolay vazgeçmediğinizi gösterir. Bu, istismar edilmeye karşı koruyucudur. Ancak Thomas (1977), uyma davranışının da yerinde olduğu durumları sayar: haksız olduğunuzu fark ettiğinizde, konu karşı taraf için sizden çok daha önemli olduğunda, uyum ve ilişkinin sürmesi tek bir konudaki kazançtan daha değerli olduğunda ve ileride işe yarayacak bir iyi niyet birikimi oluşturmak istediğinizde.\n\nBu tarzı hiç kullanmayan biri küçük konularda bile direnerek ilişkiyi yıpratabilir. Rahim (2002), ilişkiye zarar veren duygusal çatışmanın etkili çatışma yönetimini zayıflattığını vurgular.\n\n**Gelişim için:** Sizin için düşük maliyetli ama karşı taraf için değerli olan konuları belirleyip bunlarda bilinçli olarak esnek davranmak ve hatalı olduğunuz durumlarda bunu açıkça kabul etmek ilişkide güven yaratır.",
+      "kaynaklar": [
+        "thomas-1977",
+        "rahim-2002"
+      ]
+    }
+  }
+}

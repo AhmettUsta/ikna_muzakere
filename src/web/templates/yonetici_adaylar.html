@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Adaylar · Müzakere Tarzı Testi{% endblock %}
+{% block content %}
+<h1>Adaylar</h1>
+{% if adaylar %}
+<table class="adaylar">
+  <thead><tr><th>Takma ad</th><th>Deneme</th><th>Son deneme</th></tr></thead>
+  <tbody>
+  {% for a in adaylar %}
+    <tr>
+      <td><a href="/yonetici/aday/{{ a.id }}">{{ a.nickname }}</a></td>
+      <td>{{ a.attempt_count }}</td>
+      <td>{{ a.last_attempt_at|tarih if a.last_attempt_at else '—' }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Henüz kayıtlı aday yok.</p>
+{% endif %}
+{% endblock %}

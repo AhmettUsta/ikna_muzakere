@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>{% block title %}Müzakere Tarzı Testi{% endblock %}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="ust">
+    <a class="marka" href="/">Müzakere Tarzı Testi</a>
+    <nav>
+      {% if is_admin %}
+        <a href="/yonetici/adaylar">Adaylar</a>
+      {% endif %}
+      {% if participant_id %}
+        <a href="/gecmis">Sonuçlarım</a>
+      {% endif %}
+      {% if participant_id or is_admin %}
+        <form method="post" action="/cikis" class="satir-ici"><button type="submit" class="baglanti">Çıkış</button></form>
+      {% endif %}
+    </nav>
+  </header>
+  <main class="icerik">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="alt">
+    Eğitim amaçlıdır. Çatışma anındaki davranış tercihini gösterir; psikolojik değerlendirme yerine geçmez.
+  </footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

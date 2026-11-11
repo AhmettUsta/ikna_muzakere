@@ -1,0 +1,166 @@
+{
+  "styles": [
+    {
+      "key": "rekabet",
+      "name": "Rekabetçi",
+      "high": 8,
+      "low": 3,
+      "x": 20,
+      "y": 80
+    },
+    {
+      "key": "isbirligi",
+      "name": "İşbirlikçi",
+      "high": 10,
+      "low": 5,
+      "x": 80,
+      "y": 80
+    },
+    {
+      "key": "uzlasma",
+      "name": "Uzlaşmacı",
+      "high": 9,
+      "low": 4,
+      "x": 50,
+      "y": 50
+    },
+    {
+      "key": "kacinma",
+      "name": "Kaçınmacı",
+      "high": 8,
+      "low": 4,
+      "x": 20,
+      "y": 20
+    },
+    {
+      "key": "iltifat",
+      "name": "İltifatkar",
+      "high": 7,
+      "low": 3,
+      "x": 80,
+      "y": 20
+    }
+  ],
+  "key": {
+    "1": {
+      "A": "kacinma",
+      "B": "iltifat"
+    },
+    "2": {
+      "A": "uzlasma",
+      "B": "isbirligi"
+    },
+    "3": {
+      "A": "rekabet",
+      "B": "iltifat"
+    },
+    "4": {
+      "A": "uzlasma",
+      "B": "iltifat"
+    },
+    "5": {
+      "A": "isbirligi",
+      "B": "kacinma"
+    },
+    "6": {
+      "A": "kacinma",
+      "B": "rekabet"
+    },
+    "7": {
+      "A": "kacinma",
+      "B": "uzlasma"
+    },
+    "8": {
+      "A": "rekabet",
+      "B": "isbirligi"
+    },
+    "9": {
+      "A": "kacinma",
+      "B": "rekabet"
+    },
+    "10": {
+      "A": "rekabet",
+      "B": "uzlasma"
+    },
+    "11": {
+      "A": "isbirligi",
+      "B": "iltifat"
+    },
+    "12": {
+      "A": "kacinma",
+      "B": "uzlasma"
+    },
+    "13": {
+      "A": "uzlasma",
+      "B": "rekabet"
+    },
+    "14": {
+      "A": "isbirligi",
+      "B": "rekabet"
+    },
+    "15": {
+      "A": "iltifat",
+      "B": "kacinma"
+    },
+    "16": {
+      "A": "iltifat",
+      "B": "rekabet"
+    },
+    "17": {
+      "A": "rekabet",
+      "B": "kacinma"
+    },
+    "18": {
+      "A": "iltifat",
+      "B": "uzlasma"
+    },
+    "19": {
+      "A": "isbirligi",
+      "B": "kacinma"
+    },
+    "20": {
+      "A": "isbirligi",
+      "B": "uzlasma"
+    },
+    "21": {
+      "A": "iltifat",
+      "B": "isbirligi"
+    },
+    "22": {
+      "A": "uzlasma",
+      "B": "rekabet"
+    },
+    "23": {
+      "A": "isbirligi",
+      "B": "kacinma"
+    },
+    "24": {
+      "A": "iltifat",
+      "B": "uzlasma"
+    },
+    "25": {
+      "A": "rekabet",
+      "B": "iltifat"
+    },
+    "26": {
+      "A": "uzlasma",
+      "B": "isbirligi"
+    },
+    "27": {
+      "A": "kacinma",
+      "B": "iltifat"
+    },
+    "28": {
+      "A": "rekabet",
+      "B": "isbirligi"
+    },
+    "29": {
+      "A": "uzlasma",
+      "B": "kacinma"
+    },
+    "30": {
+      "A": "iltifat",
+      "B": "isbirligi"
+    }
+  }
+}

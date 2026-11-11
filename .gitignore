@@ -1,0 +1,39 @@
+# Ortam ve gizli bilgiler
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Sanal ortam
+.venv/
+venv/
+env/
+
+# Test ve araç cache'leri
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Loglar ve veri (klasörler kalır, içerik takip edilmez)
+logs/*
+!logs/.gitkeep
+data/*
+!data/.gitkeep
+
+# Editör ve işletim sistemi
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

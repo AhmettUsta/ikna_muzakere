@@ -1,0 +1,63 @@
+{
+  "style": "iltifat",
+  "bolumler": [
+    {
+      "tur": "davranis",
+      "baslik": "DÜZELTMECİ İLTİFATKAR-TAVİZKÂR",
+      "maddeler": [
+        "Bolca özür diler,",
+        "Diğer tarafın isteklerini sorar,",
+        "Kendi ihtiyaçlarını bir kenara bırakır,",
+        "“Sizin fikriniz bana uyar” tarzı cümleler kurar,",
+        "Diğer taraf istememiş bile olsa erken taviz verir,",
+        "Aşırı nezaket, hürmet gösterir,",
+        "Cömert ve yardımseverdir."
+      ]
+    },
+    {
+      "tur": "uygun",
+      "baslik": "Tavizkâr Yaklaşımın Uygun Olduğu Koşullar",
+      "maddeler": [
+        "Müşteri için sorun yarattıysanız,",
+        "Yüksek iş potansiyeliyle kıyaslandığında, feda etmek zorunda olduğunuz küçük bir şey olduğu zaman,",
+        "Konu önemsiz olduğunda ya da daha önemli bir konu varsa,",
+        "İşi halletmek konusunda hiçbir şans yoksa,",
+        "İnsanların sakinleşmesi için,",
+        "Diğerleri çatışmayı daha etkin çözebiliyor ise,",
+        "Konular yüzeysel göründüğünde ya da diğer konuların belirtisi ise.",
+        "Uzun süreli ilişkiyi olumlu etkilemek adına"
+      ]
+    },
+    {
+      "tur": "uygun_degil",
+      "baslik": "Şu durumlarda uygun olmayacaktır;",
+      "maddeler": [
+        "Önemli bir konu üzerinde ödün vermeniz istendiği zaman,",
+        "Karşı taraf yaptığınız hoşluğu anlayamayacak ya da kötüye kullanacak düzeyde ise,",
+        "İmtiyaz verdiğinizde bile hiçbir getiri sağlayamadığınızda,",
+        "(ahlaki, manevi, güvenlik…vb) gibi görüşülemeyecek konular olduğunda,",
+        "Uzun süreli ilişki mühim değil ise."
+      ]
+    },
+    {
+      "tur": "karsi_taraf",
+      "baslik": "Karşı taraf iltifatkar ise Yararlanma yolları;",
+      "maddeler": [
+        "Eğer size imtiyazlar gösteriyorlarsa, istemeye devam edin,",
+        "Eğer karşılığında herhangi bir talepte bulunmuyorlarsa, istemeye devam edin,",
+        "Uzun süreli ilişkiyi zedelemeyecekse devam edin yoksa dikkat edin."
+      ]
+    },
+    {
+      "tur": "siz_iseniz",
+      "baslik": "Eğer siz iltifatkar iseniz,",
+      "maddeler": [
+        "Yapacağınız imtiyazları her zaman bir koşula bağlayın,",
+        "Karşı tarafın taleplerine karşı ne zaman ve nasıl imtiyaz göstereceğinizi belirleyin,",
+        "Çok iyi hazırlanın ve plana sadık kalın",
+        "Bu tarzı asla rekabetçiler ile kullanmayın, ezilmeyi önlemek için siz geçiş yapın,",
+        "Biraz bencilleşin."
+      ]
+    }
+  ]
+}

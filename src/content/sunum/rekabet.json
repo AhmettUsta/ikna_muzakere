@@ -1,0 +1,67 @@
+{
+  "style": "rekabet",
+  "bolumler": [
+    {
+      "tur": "davranis",
+      "baslik": "REKABETÇİ MÜCADELECİ DAVRANIŞ",
+      "maddeler": [
+        "Diğer tarafın ne hissettiğiyle ilgilenmezler",
+        "Kendi yaklaşımının en doğrusu olduğuna inanır,",
+        "Karşı tarafın sözünü keser,",
+        "Kişiye odaklıdır, konuya değil,",
+        "Hareket ya da ifadeler için hiçbir gerekçe göstermez, açıklama getirmez,",
+        "Yönetimi ele alır,",
+        "Kararın alınmasında hızlı hareket eder,",
+        "Ünvanını kullanmayı sever,",
+        "Hemen çözüm ister,",
+        "Kazanmak ister."
+      ]
+    },
+    {
+      "tur": "uygun",
+      "baslik": "Rekabetçi Yaklaşımın Uygun Olduğu Koşullar",
+      "maddeler": [
+        "Bir kez yapacağınız bir iştir ve karşı tarafı bir daha asla görmeyecekseniz,",
+        "Piyasaya egemen bir pozisyonunuz var ve diğer tarafın, sizinle çalışmaktan daha iyi bir seçeneği yoksa,",
+        "Çabuk ve kati hareket etmek gerektiğinde,",
+        "Belirleyici olmanız ve sınır koymanız gerektiğinde.",
+        "İşletmenin huzuru için yaşamsal öneme sahip olan konularda kendinizin haklı olduğunu bildiğinizde,"
+      ]
+    },
+    {
+      "tur": "uygun_degil",
+      "baslik": "Şu koşullarda uygun değildir;",
+      "maddeler": [
+        "Emsallerinizle, emrinizde ya da üst pozisyondaki herhangi biriyle samimi bir müzakere sırasında,",
+        "Piyasa pozisyonunuz el vermiyorsa,",
+        "Uzun vadeli ve önem taşıyan müşteri ya da bayilerle yapılan dış görüşmelerde,",
+        "Karşı tarafın kişiselleştirme ve uzun vadeli ilişkiye zarar verme olasılığı olan durumlarda,",
+        "Aranızda fikir ayrılığı bulunan yakınlarınız ya da önemli diğer insanlarla görüşürken."
+      ]
+    },
+    {
+      "tur": "karsi_taraf",
+      "baslik": "Rekabetçilerle ile başa çıkabilmek için;",
+      "maddeler": [
+        "Onlarla eşit koşulları yakalayabilmek için hızlı hareket edin,",
+        "Etkilenmeyin ve kişiselleştirmeyin,",
+        "Emin görünün ve onlara karşı kabalaşmayacağınızı ya da blöf yapmayacağınızı gösterin,",
+        "Onları şirketleri ya da kendileri için bir şeyler kazandıklarını düşünmeye ikna edin,",
+        "Onlara özel olduklarını hissettirin,",
+        "Uzun vadeli ilişkiyi hissetmelerini sağlayın",
+        "Siz satmıyorsunuz onlar satın alıyoru hissettirin."
+      ]
+    },
+    {
+      "tur": "siz_iseniz",
+      "baslik": "SİZ REKABETÇİ İSENİZ;",
+      "maddeler": [
+        "İnsanların hislerini önemsememek gibi bir zaafınızın olduğunun farkında olun,",
+        "Empati yeteneğinizi arttırmaya gayret edin,",
+        "Ego yarışına girmeyin ringe değilsiniz,",
+        "Müzakereler sonrası haklıyken haksız duruma düştüğünüz durumları düşünün,",
+        "Uygun olması halinde, kazanan veya kaybeden tarafların çıkması yerine, iki tarafın da bir şekilde kazanmasını sağlayacak çözümler bulmayı deneyin."
+      ]
+    }
+  ]
+}

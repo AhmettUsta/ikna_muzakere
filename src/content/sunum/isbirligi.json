@@ -1,0 +1,61 @@
+{
+  "style": "isbirligi",
+  "bolumler": [
+    {
+      "tur": "davranis",
+      "baslik": "İŞBİRLİKÇİ",
+      "maddeler": [
+        "Çok soru sorar,",
+        "Dinleyici ve açıklayıcı konumdadır,",
+        "Özetleyicidir,",
+        "Problemi çözmeye gayret gösterir,",
+        "Diğer tarafın çözüm, fikir ve önerilerini sorar,",
+        "Kişiye değil probleme odaklanır ve iki tarafın çözebileceğini vurgular,",
+        "Olaylara nesnel yaklaşır."
+      ]
+    },
+    {
+      "tur": "uygun",
+      "baslik": "İşbirlikçi Yaklaşımın Uygun Olduğu Koşullar",
+      "maddeler": [
+        "Konu her iki taraf için elbirliği ile ele alınması gerektirecek kadar önemli olduğunda ve bütünleşik bir çözüm bulmak şart olduğunda,",
+        "Amacınız öğrenmek olduğu zaman,",
+        "Farklı bakış açısına sahip insanların fikirlerini birleştirebilmek için.",
+        "Tarafları bir işbirliği içinde birleştirerek bağlılık sağlamak için,",
+        "Bir ilişki ile çatışan duygularda birlikte çalışabilmek için,",
+        "Uzun süreli ilişki çok önemli olduğunda."
+      ]
+    },
+    {
+      "tur": "uygun_degil",
+      "baslik": "Şu durumlarda uygun olmayacaktır:",
+      "maddeler": [
+        "Sizin tarafınızdan işbirliği sağlanması açısından bir çok girişimde bulunulduğu halde, karşı tarafın sizinle çalışmak istememesi,",
+        "Ahlaka, etiğe uygun olmayan yada yasal olmayan bir teklif yapıldığında,",
+        "Durum gerektirmemesine rağmen olumlu algılanmak adına,",
+        "Sizin tarafta aşırı zaman baskısı olduğunda"
+      ]
+    },
+    {
+      "tur": "karsi_taraf",
+      "baslik": "Onlarla uyum sağlayabilmek için;",
+      "maddeler": [
+        "Onların sizin de kazanmak ve kazandırmak istediğinizin farkına varmalarını sağlayın,",
+        "Hem insan ilişkilerine, hem de işiniz üzerine odaklanın,",
+        "Nesnel olun, örnek verin..",
+        "Sık temas kurun,",
+        "Çabalarını takdir edin."
+      ]
+    },
+    {
+      "tur": "siz_iseniz",
+      "baslik": "Siz işbirlikçi iseniz;",
+      "maddeler": [
+        "Herkesin sizin gibi, bir müzakere yolu izlemediğinin farkında olun,",
+        "Rekabetçilerin kendilerini işbirlikçi olarak gösterdiklerinin farkına varın,",
+        "Unutmayın ki bazen daha etkili olabilmeniz için farklı ya da daha sert yaklaşımlar göstermeniz gerekebilecektir,",
+        "Yaklaşımınızı mükemmeliyetçilik noktasına getirmeyin."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Yönetici · Müzakere Tarzı Testi{% endblock %}
+{% block content %}
+<section class="kart">
+  <h1>Yönetici girişi</h1>
+  {% if hata %}<p class="hata">{{ hata }}</p>{% endif %}
+  <form method="post" action="/yonetici">
+    <label>Şifre
+      <input name="password" type="password" required autocomplete="current-password">
+    </label>
+    <button type="submit">Giriş</button>
+  </form>
+</section>
+{% endblock %}
