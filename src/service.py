@@ -5,8 +5,8 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import datetime
 
-from content_types import Block, Content, ProfileText, Question, StyleKey
-from presentation import SunumView, sunum_view
+from content_types import Content, ProfileText, Question, StyleKey
+from presentation import StyleCard, style_card
 from scoring import Scorer, ScoreResult
 from security import LockoutPolicy, PinHasher, normalize_nickname, validate_pin
 from step_database import AttemptRow, DatabaseStep, NicknameTaken, ParticipantSummary
@@ -43,8 +43,8 @@ class ResultView:
     created_at: datetime
     public_id: uuid.UUID
     score: ScoreResult
-    sunum: list[SunumView]
-    blocks: list[tuple[StyleKey, Block]]
+    kartlar_sunum: list[StyleCard]
+    kartlar_kaynakli: list[StyleCard]
     profile: ProfileText
     answers: list[tuple[Question, str, StyleKey]]
     ai_comment: str | None
@@ -152,8 +152,17 @@ class TestService:
             created_at=attempt.created_at,
             public_id=attempt.public_id,
             score=score,
-            sunum=[sunum_view(result, self.content.sunum[result.style]) for result in score.results],
-            blocks=[(result.style, self.content.blocks[(result.style, result.level)]) for result in score.results],
+            kartlar_sunum=[
+                style_card(result, self.content.sunum[result.style], block=None) for result in score.results
+            ],
+            kartlar_kaynakli=[
+                style_card(
+                    result,
+                    self.content.sunum[result.style],
+                    block=self.content.blocks[(result.style, result.level)],
+                )
+                for result in score.results
+            ],
             profile=self.content.profiles[(score.dominant, score.least)],
             answers=self._answer_rows(attempt.answers),
             ai_comment=self._db.get_ai_comment(attempt.id),

@@ -238,3 +238,12 @@ def test_login_error_opens_result_choice(make_web_service, fake_db) -> None:
     page = client_for(make_web_service()).post("/giris", data={"nickname": "yok", "pin": "1234"}).text
 
     assert _checked_choice(page) == ["secim-sonuc"]
+
+
+def test_result_cards_show_sections_in_order(make_web_service) -> None:
+    page = registered_client(make_web_service()).get(f"/sonuc/{PUBLIC_ID}").text
+    first_card = page[page.index('class="tarz-kart'):page.index('class="tarz-kart', page.index('class="tarz-kart') + 1)]
+
+    headings = ["Nasıl davranır", "Uygun olduğu koşullar", "Uygun olmadığı koşullar", "Size tavsiyeler", "Karşınızda bu tarzda biri varsa"]
+    positions = [first_card.index(h) for h in headings]
+    assert positions == sorted(positions)

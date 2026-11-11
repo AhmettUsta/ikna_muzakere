@@ -1,0 +1,55 @@
+{% macro kart(c, styles, puan, seviye_ad) %}
+<details class="tarz-kart seviye-{{ c.level }}" {% if c.acik %}open{% endif %}>
+  <summary class="tarz-baslik">
+    <span class="tarz-ad">{{ styles[c.style].name }}</span>
+    <span class="tarz-puan">{{ puan }} puan</span>
+    <span class="rozet">{{ seviye_ad[c.level] }}</span>
+  </summary>
+
+  <div class="tarz-govde">
+    <section class="bolum bolum-davranis">
+      <h3><span class="bolum-no">1</span> Nasıl davranır</h3>
+      <ul>{% for m in c.davranis.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
+      {% if c.kaynak_aciklama %}
+      <div class="kaynak-aciklama">
+        <p class="etiket">Kaynaklara göre</p>
+        {{ c.kaynak_aciklama|md }}
+      </div>
+      {% endif %}
+    </section>
+
+    <section class="bolum bolum-uygun">
+      <h3><span class="bolum-no">2</span> Uygun olduğu koşullar</h3>
+      {% for u in c.uygun %}
+        {% if c.uygun|length > 1 %}<p class="alt-baslik">{{ u.baslik }}</p>{% endif %}
+        <ul>{% for m in u.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
+      {% endfor %}
+    </section>
+
+    <section class="bolum bolum-uygun-degil">
+      <h3><span class="bolum-no">3</span> Uygun olmadığı koşullar</h3>
+      {% if c.uygun_degil %}
+        <ul>{% for m in c.uygun_degil.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
+      {% else %}
+        <p class="soluk">Eğitim sunumunda bu tarz için ayrı bir "uygun olmadığı koşullar" bölümü yok.</p>
+      {% endif %}
+    </section>
+
+    <section class="bolum bolum-tavsiye">
+      <h3><span class="bolum-no">4</span> Size tavsiyeler
+        {% if c.tavsiye.kaynakli %}<span class="mini-etiket">kaynaklı öneri</span>{% endif %}</h3>
+      {% if c.tavsiye.not_metni %}<p class="tavsiye-not">{{ c.tavsiye.not_metni }}</p>{% endif %}
+      {% if c.tavsiye.metin %}{{ c.tavsiye.metin|md }}{% endif %}
+      {% if c.tavsiye.maddeler %}
+        {% if c.tavsiye.liste_basligi %}<p class="alt-baslik">{{ c.tavsiye.liste_basligi }}</p>{% endif %}
+        <ul>{% for m in c.tavsiye.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
+      {% endif %}
+    </section>
+
+    <section class="bolum bolum-karsi">
+      <h3><span class="bolum-no">5</span> Karşınızda bu tarzda biri varsa</h3>
+      <ul>{% for m in c.karsi_taraf.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
+    </section>
+  </div>
+</details>
+{% endmacro %}

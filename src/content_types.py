@@ -59,10 +59,24 @@ class Source:
     ozet: str
 
 
+DEVELOPMENT_MARKER: Final[str] = "\n\n**Gelişim için:**"
+
+
 @dataclass(frozen=True)
 class Block:
     metin: str
     kaynaklar: list[str]
+
+    @property
+    def aciklama(self) -> str:
+        """Bloğun 'Gelişim için' paragrafından önceki akademik açıklama kısmı."""
+        return self.metin.split(DEVELOPMENT_MARKER, 1)[0].strip()
+
+    @property
+    def gelisim(self) -> str:
+        """Bloğun 'Gelişim için' paragrafı, başlık olmadan."""
+        parts = self.metin.split(DEVELOPMENT_MARKER, 1)
+        return parts[1].strip() if len(parts) == 2 else ""
 
 
 @dataclass(frozen=True)

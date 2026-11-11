@@ -206,3 +206,50 @@ table.adaylar th, table.adaylar td { padding: 8px; border-bottom: 1px solid var(
 #secim-sonuc:checked ~ .secim-dugmeler #etiket-sonuc { border-color: var(--vurgu); background: var(--vurgu-acik); }
 #secim-basla:focus-visible ~ .secim-dugmeler #etiket-basla,
 #secim-sonuc:focus-visible ~ .secim-dugmeler #etiket-sonuc { outline: 2px solid var(--vurgu); }
+
+/* Sonuç sayfası: tarz kartları */
+.sekme-aciklama { color: var(--soluk); font-size: 0.9rem; margin: 4px 0 12px; }
+.tarz-kart {
+  border: 1px solid var(--cizgi);
+  border-left: 5px solid var(--orta);
+  border-radius: 10px;
+  background: var(--kart);
+  margin: 0 0 14px;
+  padding: 0;
+}
+.tarz-kart.seviye-yuksek { border-left-color: var(--yuksek); }
+.tarz-kart.seviye-dusuk { border-left-color: var(--dusuk); }
+.tarz-baslik {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  list-style: none;
+}
+.tarz-baslik::-webkit-details-marker { display: none; }
+.tarz-baslik::after { content: "▾"; margin-left: auto; color: var(--soluk); transition: transform 0.2s; }
+.tarz-kart:not([open]) .tarz-baslik::after { transform: rotate(-90deg); }
+.tarz-ad { font-size: 1.1rem; font-weight: 700; }
+.tarz-puan { color: var(--soluk); font-size: 0.9rem; font-weight: 400; }
+.tarz-govde { padding: 0 16px 8px; border-top: 1px solid var(--cizgi); }
+.bolum { padding: 12px 0; border-bottom: 1px dashed var(--cizgi); }
+.bolum:last-child { border-bottom: none; }
+.bolum h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; font-size: 1rem; }
+.bolum ul { margin: 6px 0; padding-left: 22px; }
+.bolum li { margin: 3px 0; }
+.bolum-no {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--vurgu-acik); color: var(--vurgu); font-size: 0.8rem; font-weight: 700;
+}
+.bolum-tavsiye { background: #f4f8fc; margin: 0 -16px; padding: 12px 16px; }
+.alt-baslik { font-weight: 600; margin: 10px 0 2px; font-size: 0.95rem; }
+.tavsiye-not { margin: 4px 0 8px; font-style: italic; }
+.mini-etiket {
+  font-size: 0.72rem; font-weight: 600; color: var(--vurgu);
+  border: 1px solid var(--vurgu); border-radius: 999px; padding: 0 8px;
+}
+.kaynak-aciklama { background: var(--zemin); border-radius: 8px; padding: 8px 12px; margin-top: 8px; }
+.kaynak-aciklama .etiket { margin: 0 0 4px; font-size: 0.8rem; font-weight: 700; color: var(--soluk); text-transform: uppercase; letter-spacing: 0.03em; }
+.soluk { color: var(--soluk); font-size: 0.9rem; }
+.profil { background: var(--vurgu-acik); border-radius: 10px; padding: 4px 16px; margin: 12px 0 16px; }

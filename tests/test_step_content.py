@@ -159,3 +159,11 @@ def test_sources_have_citation() -> None:
     for source in content.sources:
         assert re.search(r"\b(19|20)\d{2}\b", source.kaynakca)
         assert source.ozet.strip()
+
+
+def test_blocks_split_into_explanation_and_development() -> None:
+    content = ContentStep(CONTENT_ROOT).load()
+
+    for block in content.blocks.values():
+        assert block.aciklama and "Gelişim için" not in block.aciklama
+        assert block.gelisim and not block.gelisim.startswith("**")

@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Tasarım
 
-**Sürüm: v3 — 2026-11-11 15:24**
+**Sürüm: v4 — 2026-11-11 16:45**
 
 **Sürüm notları**
 
+- v4 — Sonuç kartları: sabit bölüm sırası (davranış → uygun → uygun değil → tavsiye → karşı taraf); tavsiye kaynağı sekmeye göre.
 - v3 — Kullanıcı kararları: PIN 4 karakter, yalnızca İngilizce harf ve rakam; yönetici ana giriş formundan `ustaoglu` adıyla girer; canlı yorum, kaynaklı yorum sekmesinde "Kişiselleştir" kutusu olarak durur ve şimdilik kapalıdır.
 - v2 — Gözden geçirme sonrası: Kaçınmacı slaytlarının sunumdaki haliyle gösterilmesi (7.1), kaynak doğrulama ölçütü ve kullanıcı onay adımı (7.2), Neon'un ilk adım olması (10).
 - v1 — İlk tasarım: kapsam, kararlar, yaklaşımlar, içerik ve kullanıcı akışları.
@@ -127,11 +128,17 @@ Sunumdan her tarz için şu bölümler alınır; metin değiştirilmez:
 
 Buna göre içerik, sabit beş bölüm yerine **sunumdaki başlıklarıyla sıralı bir bölüm listesi** olarak tutulur. Her bölümün bir türü vardır: `davranis`, `uygun`, `uygun_degil`, `siz_iseniz`, `karsi_taraf`. Kaçınmacı tarzında `uygun` türünde iki bölüm bulunur, `uygun_degil` türünde bölüm bulunmaz. Diğer dört tarzda her türden tam olarak bir bölüm vardır.
 
-Gösterim kuralı (benim kararım):
+Gösterim kuralı (kullanıcı kararı, v4): Her tarz bir kart olarak gösterilir; bölümler sunumdaki sıradan bağımsız olarak şu **sabit sırayla** gelir:
 
-- **Yüksek** çıkan tarzlarda bütün bölümler açık gelir ve "Siz bu tarzdaysanız" bölümü öne çıkar.
-- **Düşük** çıkan tarzlarda "Bu tarzı az kullanıyorsunuz" notu ve `uygun` türündeki bölümler gösterilir. Kaçınmacı'da bu, iki slaytın ikisi demektir. Amaç, bu tarzın hangi durumlarda işe yarayacağını hatırlatmaktır.
-- **Orta** tarzlar kapalı başlıklar olarak listelenir; kişi tıklayınca açılır.
+1. **Nasıl davranır** (`davranis`)
+2. **Uygun olduğu koşullar** (`uygun`; Kaçınmacı'da iki slayt kendi başlıklarıyla)
+3. **Uygun olmadığı koşullar** (`uygun_degil`; Kaçınmacı'da "sunumda ayrı bölüm yok" notu)
+4. **Size tavsiyeler** — kaynağı sekmeye göre değişir:
+   - *Sunum yorumları* sekmesi: yüksek seviyede "Siz … iseniz" maddeleri; orta ve düşükte kısa bir not ("Bu tarzı az / orta düzeyde kullanıyorsunuz…") ve "Bu tarzı kullandığınızda dikkat edin" başlığıyla aynı maddeler.
+   - *Kaynaklarla genişletilmiş yorum* sekmesi: o tarz ve seviyeye ait kaynaklı bloğun "Gelişim için" paragrafı ("kaynaklı öneri" etiketiyle).
+5. **Karşınızda bu tarzda biri varsa** (`karsi_taraf`)
+
+Yüksek seviyedeki kartlar açık, diğerleri kapalı başlar. Kaynaklı sekmede ayrıca en üstte profil yorumu, "Nasıl davranır" altında "Kaynaklara göre" açıklaması ve en altta kaynakça bulunur.
 
 ### 7.2 Kaynaklarla genişletilmiş yorum (2. seçenek)
 

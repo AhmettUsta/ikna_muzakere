@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "_kart.html" import kart %}
 {% block title %}Sonuç · Müzakere Tarzı Testi{% endblock %}
 {% set seviye_ad = {'yuksek': 'yüksek', 'orta': 'orta', 'dusuk': 'düşük'} %}
 {% block content %}
@@ -31,16 +32,8 @@
   <label for="sekme-kaynak">Kaynaklarla genişletilmiş yorum</label>
 
   <div class="sekme-icerik" id="icerik-sunum">
-    {% for s in view.sunum %}
-    <details class="tarz seviye-{{ s.level }}" {% if s.acik %}open{% endif %}>
-      <summary>{{ styles[s.style].name }} <span class="rozet">{{ seviye_ad[s.level] }}</span></summary>
-      {% if s.not_metni %}<p class="not">{{ s.not_metni }}</p>{% endif %}
-      {% for b in s.bolumler %}
-        <h3>{{ b.baslik }}</h3>
-        <ul>{% for m in b.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
-      {% endfor %}
-    </details>
-    {% endfor %}
+    <p class="sekme-aciklama">Eğitim sunumundaki metinler. Yüksek çıkan tarzlar açık gelir; diğerlerini başlığına dokunarak açabilirsiniz.</p>
+    {% for c in view.kartlar_sunum %}{{ kart(c, styles, view.score.by_style(c.style).score, seviye_ad) }}{% endfor %}
   </div>
 
   <div class="sekme-icerik" id="icerik-kaynak">
@@ -50,12 +43,7 @@
       <h2>{{ view.profile.baslik }}</h2>
       {{ view.profile.metin|md }}
     </article>
-    {% for style, block in view.blocks %}
-    <details class="tarz">
-      <summary>{{ styles[style].name }}</summary>
-      {{ block.metin|md }}
-    </details>
-    {% endfor %}
+    {% for c in view.kartlar_kaynakli %}{{ kart(c, styles, view.score.by_style(c.style).score, seviye_ad) }}{% endfor %}
     <details class="kaynakca">
       <summary>Kaynakça</summary>
       <ul>{% for s in sources.values() %}<li>{{ s.kaynakca }}</li>{% endfor %}</ul>

@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any, Final
 
 from content_types import (
+    DEVELOPMENT_MARKER,
     LEVELS,
     SECTION_TYPES,
     STYLE_ORDER,
@@ -169,6 +170,8 @@ class ContentStep:
                 except (KeyError, TypeError) as exc:
                     raise ContentError(f"{relative}: {style}/{level} eksik ya da hatalı") from exc
                 self._check_text(relative, f"{style}/{level}", block.metin, block.kaynaklar, source_ids)
+                if block.metin.count(DEVELOPMENT_MARKER) != 1:
+                    raise ContentError(f"{relative}: {style}/{level} tam bir 'Gelişim için' paragrafı içermeli")
                 blocks[(style, level)] = block
         return blocks
 
