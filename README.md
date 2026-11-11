@@ -28,6 +28,6 @@ RUN_DB_TESTS=1 python3 -m pytest           # Neon'a karşı veritabanı testleri
 
 ## Teknoloji
 
-FastAPI · Jinja2 · SQLAlchemy 2.0 · Alembic · PostgreSQL (Neon) · Google Gemini (isteğe bağlı) · Docker · Render
+FastAPI · Jinja2 · SQLAlchemy 2.0 · Alembic · PostgreSQL (Neon) · Google Gemini (isteğe bağlı) · Vercel
 
 Ayrıntılar: [plans/](plans/) altındaki tasarım, mimari ve uygulama planı.

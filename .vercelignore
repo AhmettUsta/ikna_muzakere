@@ -1,0 +1,12 @@
+.env
+.env.*
+docs/
+plans/
+presentations/
+tests/
+data/
+logs/
+migrations/
+alembic.ini
+Dockerfile
+.dockerignore
