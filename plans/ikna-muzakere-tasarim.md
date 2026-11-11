@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Tasarım
 
-**Sürüm: v6 — 2026-11-11 23:20**
+**Sürüm: v7 — 2026-11-11 23:18**
 
 **Sürüm notları**
 
+- v7 — Sunum maddeleri bölüm başına en fazla 4, her bölümde tek gramer kalıbı; Kaçınmacı uygun / uygun değil olarak bölündü (uygun değil, sunumdaki uygun koşulların tersinden); sonuç sayfasında 4 sekme (2 yorum + 2 cevap).
 - v6 — Puan tablosuna "Normal aralık" sütunu (orta seviye aralığı); tablonun altındaki eşik notu kaldırıldı.
 - v5 — "Cevaplarım" bölümü iki sekme: sorulara verilen cevaplar ve eğitimdeki kâğıt gibi 5 sütunlu cevap anahtarı.
 - v4 — Sonuç kartları: sabit bölüm sırası (davranış → uygun → uygun değil → tavsiye → karşı taraf); tavsiye kaynağı sekmeye göre.
@@ -118,7 +119,7 @@ Bu proje, testi bir web sitesine taşır. Kişi soruları çözer, puanlarını 
 
 ### 7.1 Sunum metinleri (1. seçenek)
 
-Sunumdan her tarz için şu bölümler alınır; metin değiştirilmez:
+Sunumdan her tarz için şu bölümler alınır:
 
 - **Davranış özellikleri:** Örneğin "Rekabetçi — mücadeleci davranış".
 - **Uygun olduğu koşullar.**
@@ -126,15 +127,24 @@ Sunumdan her tarz için şu bölümler alınır; metin değiştirilmez:
 - **"Siz bu tarzdaysanız"** tavsiyeleri.
 - **"Karşı taraf bu tarzdaysa"** tavsiyeleri: başa çıkma ya da yararlanma yolları.
 
-**Kaçınmacı istisnası (kullanıcının kararı):** Sunumda bu tarzın "Uygun olmadığı koşullar" slaytı yok. Onun yerine iki ayrı slayt var: "Kaçınmacı yaklaşımın gerekli olduğu durumlar" ve "Kaçınmacı Yaklaşımın Uygun Olduğu Koşullar". İkincisinin içeriği İltifatkar tarzına ait gibi görünse de iki slayt da **kendi başlıklarıyla, olduğu gibi** gösterilir. "Uygun olmadığı koşullar" bölümü bu tarzda yer almaz.
+**Madde düzeni (kullanıcı kararı, v7):** Sunum maddeleri kısaltılarak yeniden yazılır:
 
-Buna göre içerik, sabit beş bölüm yerine **sunumdaki başlıklarıyla sıralı bir bölüm listesi** olarak tutulur. Her bölümün bir türü vardır: `davranis`, `uygun`, `uygun_degil`, `siz_iseniz`, `karsi_taraf`. Kaçınmacı tarzında `uygun` türünde iki bölüm bulunur, `uygun_degil` türünde bölüm bulunmaz. Diğer dört tarzda her türden tam olarak bir bölüm vardır.
+- Her bölümde en fazla 4 madde olur; maddeler önem sırasına göre seçilir, basit maddeler tek maddede birleşir.
+- Bir bölümdeki bütün maddeler aynı gramer kalıbındadır:
+  - Davranış: 3. tekil geniş zamanla biten tam cümle ("Kazanmak ister ve hemen çözüm bekler.").
+  - Uygun / uygun olmadığı koşullar: "-dığında / -dığınızda" yan cümlesi, noktasız ("Zaman sıkıntısı olduğunda").
+  - "Siz … iseniz" ve karşı taraf tavsiyeleri: emir kipiyle biten tam cümle ("Sık temas kurun ve çabalarını takdir edin.").
+- İçerik yüklenirken madde sayısı denetlenir; gramer kalıbı testlerle denetlenir.
+
+**Kaçınmacı (kullanıcı kararı, v7):** Sunumda bu tarzın "Uygun olmadığı koşullar" slaytı yok; iki ayrı "uygun" slaytı var. Bu tarz da diğerleri gibi tek "uygun" ve tek "uygun olmadığı" bölümüyle gösterilir. "Uygun olduğu koşullar" sunumdaki ilk slayttan ("gerekli olduğu durumlar") alınır. "Uygun olmadığı koşullar" bu listenin tersi olarak yazılır. İkinci slayt (içeriği İltifatkar tarzına ait gibi görünen liste) kullanılmaz.
+
+Her bölümün bir türü vardır: `davranis`, `uygun`, `uygun_degil`, `siz_iseniz`, `karsi_taraf`. Her tarzda her türden tam olarak bir bölüm vardır.
 
 Gösterim kuralı (kullanıcı kararı, v4): Her tarz bir kart olarak gösterilir; bölümler sunumdaki sıradan bağımsız olarak şu **sabit sırayla** gelir:
 
 1. **Nasıl davranır** (`davranis`)
-2. **Uygun olduğu koşullar** (`uygun`; Kaçınmacı'da iki slayt kendi başlıklarıyla)
-3. **Uygun olmadığı koşullar** (`uygun_degil`; Kaçınmacı'da "sunumda ayrı bölüm yok" notu)
+2. **Uygun olduğu koşullar** (`uygun`)
+3. **Uygun olmadığı koşullar** (`uygun_degil`)
 4. **Size tavsiyeler** — kaynağı sekmeye göre değişir:
    - *Sunum yorumları* sekmesi: yüksek seviyede "Siz … iseniz" maddeleri; orta ve düşükte kısa bir not ("Bu tarzı az / orta düzeyde kullanıyorsunuz…") ve "Bu tarzı kullandığınızda dikkat edin" başlığıyla aynı maddeler.
    - *Kaynaklarla genişletilmiş yorum* sekmesi: o tarz ve seviyeye ait kaynaklı bloğun "Gelişim için" paragrafı ("kaynaklı öneri" etiketiyle).
@@ -188,9 +198,8 @@ Yüksek seviyedeki kartlar açık, diğerleri kapalı başlar. Kaynaklı sekmede
 4. **Sonuç sayfası:**
    - Puan tablosu: tarz, puan, normal aralık (düşük eşik + 1 ile yüksek eşik − 1 arası, ör. Rekabetçi 4–7) ve seviye.
    - İki eksenli grafik.
-   - Yorum sekmeleri: "Sunum yorumları" ve "Kaynaklarla genişletilmiş yorum".
-   - En altta canlı yapay zekâ düğmesi.
-   - Katlanabilir "Cevaplarım" bölümü, iki sekme:
+   - 2×2 düğme olarak dört sekme; üst satır yorumlar, alt satır cevaplar:
+     - "Sunum yorumları" ve "Kaynaklarla genişletilmiş yorum" (kaynaklı sekmenin altında canlı yapay zekâ düğmesi).
      - "Sorulara cevaplarım": her soruda A ve B şıkkı, seçilen işaretli.
      - "Cevap anahtarım": eğitimdeki kâğıt gibi 30 satır × 5 tarz sütunu; A ve B kendi tarzının sütununda, seçilen hücre taralı, altta sütun toplamları (puanlar).
 5. **Sonucuma bak:** Kişi takma adını ve PIN'ini girer. En son sonucu açılır; önceki denemeleri tarih listesi olarak görür ve "Testi tekrar çöz" diyebilir.

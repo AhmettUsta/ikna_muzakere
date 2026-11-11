@@ -5,57 +5,49 @@
       "tur": "davranis",
       "baslik": "UZLAŞMACI",
       "maddeler": [
-        "Hem iddia hem de işbirliğinde ortalarda bir yerdedir.",
-        "Amaç her iki tarafı tatmin ederek karşılıklı kabul edilebilir uygun bir çözüm bulmaktır.",
-        "Rekabetçiden daha fazla fedakarlık yapar,iltifatkardan daha az.",
-        "Farklılığı yok etme ve ortalarda buluşmadan yanadır,",
-        "Çabucak çözümlere razı olurlar,",
-        "Gerçekten müzakere yapmayı sevmezler, sadece ortalama bir noktada anlaşırlar."
+        "Farklılıkları ortada buluşarak gidermeyi ve iki tarafı da tatmin eden bir çözüm bulmayı amaçlar.",
+        "Hem iddia hem işbirliğinde ortada durur ve rekabetçiden çok, iltifatkardan az ödün verir.",
+        "Gerçek bir müzakereye girmez ve ortalama bir noktada çabucak anlaşır."
       ]
     },
     {
       "tur": "uygun",
       "baslik": "Uzlaşmacı Yaklaşımın Uygun Olduğu Koşullar",
       "maddeler": [
-        "Ayrımlar nispeten daha az ve iki taraf için de kabul edilebilir olduğunda,",
-        "Zaman sıkıntısı olduğunda,",
-        "Diğer tüm açık alternatiflerden sonuç alamadığınızda,",
-        "Her iki iş için uzlaşma gerektirecek kadar önemli olduğunda ve bütünleşik bir çözüm bulmak şart olduğunda,",
-        "Amacınız öğrenmek olduğu zaman,",
-        "Farklı bakış açısına sahip insanların fikirlerini birleştirebilmek için.",
-        "Tarafları bir uzlaşma içinde birleştirerek bağlılık sağlamak için,"
+        "Aradaki farklar küçük ve iki taraf için de kabul edilebilir olduğunda",
+        "Zaman sıkıntısı olduğunda",
+        "Diğer tüm seçeneklerden sonuç alamadığınızda",
+        "Konu iki tarafın da ödün vermesini gerektirecek kadar önemli olduğunda"
       ]
     },
     {
       "tur": "uygun_degil",
       "baslik": "Şu durumlarda etkili olamayacaktır;",
       "maddeler": [
-        "Ayrımlar önemli konularda ise,",
-        "Eğer ayrımların sonucu iki taraf için de kabul edilemez boyutta ise,",
-        "Şirketiniz politikasına göre görüşülmesi uygun olmayan konular var ise,",
-        "Kazanmak ve kazandırmak için yeterli zamanınız varsa,",
-        "Alabilebileceğiniz ilave tavizler varsa."
+        "Farklar önemli konularda olduğunda ya da sonuç iki taraf için de kabul edilemez olduğunda",
+        "Şirket politikanıza göre görüşülemeyecek konular olduğunda",
+        "İki tarafı da kazandıracak bir çözüm için yeterli zamanınız olduğunda",
+        "Alabileceğiniz ek tavizler olduğunda"
       ]
     },
     {
       "tur": "karsi_taraf",
       "baslik": "Uzlaşmacı ile başa çıkabilmek için;",
       "maddeler": [
-        "Başta kazanmak ve kazandırmak yönüne öncelik verin,",
-        "Aradaki farkın önemsiz ve sonuçların kabul edilebilir olduğundan emin olun,",
-        "Ödün vererek anlaşmaya gitmeyeceğiniz konuları kesin hatlarla belirleyin,",
-        "Acele karar vermeyin.",
-        "Onu oldu bittiye getirin."
+        "Önceliği iki tarafın da kazanacağı çözümlere verin.",
+        "Aradaki farkın önemsiz ve sonucun kabul edilebilir olduğundan emin olun.",
+        "Ödün vermeyeceğiniz konuları kesin çizgilerle belirleyin.",
+        "Kendiniz acele karar vermeyin, gerektiğinde onu oldu bittiye getirin."
       ]
     },
     {
       "tur": "siz_iseniz",
       "baslik": "Eğer siz uzlaşmacı iseniz;",
       "maddeler": [
-        "Üzerinde durduğunuz önemli konular için zaman ayırın ve yaratıcı çözümler bulmaya çalışın,",
-        "Eğer bir uzlaşmaya gidilecek ise, bunu bir anlaşmanın sonuca ulaştırılmasında koşul olarak kullanın,",
-        "Her bir konu üzerinde sadece bir kere ödün verin,",
-        "Orta noktanın her zaman iyi bir çözüm olmadığını iyi bilin."
+        "Önemli konulara zaman ayırın ve yaratıcı çözümler arayın.",
+        "Uzlaşmaya gidecekseniz bunu anlaşmayı sonuca ulaştırmanın koşulu olarak kullanın.",
+        "Her konuda yalnızca bir kez ödün verin.",
+        "Orta noktanın her zaman iyi bir çözüm olmadığını unutmayın."
       ]
     }
   ]

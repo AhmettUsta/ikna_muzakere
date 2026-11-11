@@ -5,62 +5,49 @@
       "tur": "davranis",
       "baslik": "KAÇINMACI",
       "maddeler": [
-        "Konuyu diplomatça bir kenara bırakır,",
-        "Karşı tarafın görüşlerini geçerli olarak kabul eder,",
-        "Pasif kalma durumundadır, tatsızlık çıksın istemez",
-        "Diğer tarafın isteklerine uyum göstereceğini ifade eder,",
-        "Konunun kendisi için önemli olduğunun ifadesinde yetersizlik gösterir,",
-        "Sadece diğer taraf çok sıkışınca cevap verir,",
-        "Karışmak istemezmiş gibi davranışlar sergiler."
-      ]
-    },
-    {
-      "tur": "uygun",
-      "baslik": "Kaçınmacı yaklaşımın gerekli olduğu durumlar",
-      "maddeler": [
-        "Yeni bilgiler ışığında müzakereye devam etmek gerekiyorsa,",
-        "Karşı tarafın söylemini doğrulatmanız gerekiyorsa,",
-        "Karşı taraf zaman baskısı altındaysa,",
-        "Durumun gidişatı sizin için önemli değil ise,",
-        "Bilgi sızması endişeniz olduğunda,"
+        "Konuyu diplomatça bir kenara bırakır ve karışmak istemiyormuş gibi davranır.",
+        "Pasif kalır ve tatsızlık çıkmasını istemez.",
+        "Karşı tarafın görüşlerini geçerli kabul eder ve isteklerine uyacağını belirtir.",
+        "Konunun kendisi için önemini yeterince ifade etmez ve ancak çok sıkışınca cevap verir."
       ]
     },
     {
       "tur": "uygun",
       "baslik": "Kaçınmacı Yaklaşımın Uygun Olduğu Koşullar",
       "maddeler": [
-        "Yanlış yaptığınızı gördüğünüzde ve daha iyi bir fikrin duyulmasına olanak sağlamak, öğrenmek ve mantıklılığınızı göstermek için,",
-        "Konular başkaları için sizin için olduğundan daha önemli ise ve diğerlerini memnun etmek ve işbirliğini devam ettirmek için,",
-        "Yavaş mücadele ve oyalamak için.",
-        "Daha sonrası için sosyal açıdan kredi sağlamak için,",
-        "Yenildiğinizde kayıplarınızı en aza indirmek için,",
-        "Uyum ve denge çok önemli olduğunda,",
-        "Yüksek iş potansiyeliyle kıyaslandığında, feda etmek zorunda kaldığınız küçük bir şey olduğu zaman,",
-        "Astların hatalarından ders alarak kendilerini geliştirmelerini sağlamak için."
+        "Yeni bilgi toplamanız ya da karşı tarafın söylemini doğrulatmanız gerektiğinde",
+        "Karşı taraf zaman baskısı altında olduğunda",
+        "Durumun gidişatı sizin için önemli olmadığında",
+        "Bilgi sızmasından endişe ettiğinizde"
       ]
     },
     {
-      "tur": "siz_iseniz",
-      "baslik": "Siz Kaçınmacı İseniz",
+      "tur": "uygun_degil",
+      "baslik": "Şu durumlarda uygun değildir;",
       "maddeler": [
-        "Yutkunmayın,",
-        "Kendinizi ifade etmekten çekinmeyin,",
-        "Çok iyi hazırlanın,",
-        "İfadenizin ya da talebinizin gerekçesini mutlaka masaya yansıtın,",
-        "Anlamadığınız ya da hemfikir olmadığınız durumlarda karşı tarafın tekrarlamasını ve gerekçelendirmesini talep edin,",
-        "Cesaretlenin."
+        "Elinizdeki bilgiler karar vermeye yettiğinde ve karşı tarafın söylemi doğrulandığında",
+        "Zaman baskısı karşı tarafta değil sizin tarafınızda olduğunda",
+        "Durumun gidişatı sizin için önemli olduğunda"
       ]
     },
     {
       "tur": "karsi_taraf",
       "baslik": "Karşı taraf kaçınmacı ise",
       "maddeler": [
-        "Karar vermesi için hamle yapın,",
-        "Onun olumlamasını sağlayın,",
-        "Üstüne gidin,",
-        "Kendisini ifade etmek istediğinde oldu bittiye getirin.",
-        "Yanınıza almaya çalışın,",
-        "Söz verin ve cesaretlendirin."
+        "Karar vermesi için hamle yapın ve üstüne gidin.",
+        "Onay vermesini sağlayın ve onu yanınıza almaya çalışın.",
+        "Söz verin ve onu cesaretlendirin.",
+        "Kendini ifade etmek istediğinde onu oldu bittiye getirin."
+      ]
+    },
+    {
+      "tur": "siz_iseniz",
+      "baslik": "Siz Kaçınmacı İseniz",
+      "maddeler": [
+        "Yutkunmayın, kendinizi ifade etmekten çekinmeyin ve cesaretlenin.",
+        "Çok iyi hazırlanın.",
+        "İfadenizin ya da talebinizin gerekçesini mutlaka masaya koyun.",
+        "Anlamadığınız ya da katılmadığınız noktalarda karşı taraftan tekrar ve gerekçe isteyin."
       ]
     }
   ]

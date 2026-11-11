@@ -24,15 +24,11 @@ from content_types import (
 logger = logging.getLogger(__name__)
 
 QUESTION_COUNT: Final[int] = 30
-DEFAULT_SECTION_COUNTS: Final[Counter[str]] = Counter(
+EXPECTED_SECTION_COUNTS: Final[Counter[str]] = Counter(
     {"davranis": 1, "uygun": 1, "uygun_degil": 1, "siz_iseniz": 1, "karsi_taraf": 1}
 )
-# Sunumda Kaçınmacı tarzı için "uygun olmadığı" slaytı yok, iki ayrı "uygun" slaytı var;
-# kullanıcı kararıyla ikisi de olduğu gibi gösterilir.
-EXPECTED_SECTION_COUNTS: Final[dict[str, Counter[str]]] = {
-    "kacinma": Counter({"davranis": 1, "uygun": 2, "siz_iseniz": 1, "karsi_taraf": 1}),
-}
-
+# Kartlar kısa ve taranabilir kalsın diye her bölümde en fazla bu kadar madde olur.
+MAX_SECTION_ITEMS: Final[int] = 4
 
 class ContentStep:
     """src/content altındaki içerik dosyalarını yükler ve doğrular."""
@@ -139,11 +135,14 @@ class ContentStep:
                 raise ContentError(f"{relative}: bilinmeyen bölüm türü '{section.tur}'")
             if not section.maddeler:
                 raise ContentError(f"{relative}: '{section.baslik}' bölümünde madde yok")
+            if len(section.maddeler) > MAX_SECTION_ITEMS:
+                raise ContentError(f"{relative}: '{section.baslik}' bölümünde en fazla {MAX_SECTION_ITEMS} madde olmalı")
 
         counts = Counter(section.tur for section in sections)
-        expected = EXPECTED_SECTION_COUNTS.get(style, DEFAULT_SECTION_COUNTS)
-        if counts != expected:
-            raise ContentError(f"{relative}: bölüm türleri {dict(expected)} olmalı, {dict(counts)} bulundu")
+        if counts != EXPECTED_SECTION_COUNTS:
+            raise ContentError(
+                f"{relative}: bölüm türleri {dict(EXPECTED_SECTION_COUNTS)} olmalı, {dict(counts)} bulundu"
+            )
         return sections
 
     def _load_sources(self) -> list[Source]:

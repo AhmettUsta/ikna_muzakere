@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Mimari
 
-**Sürüm: v3 — 2026-11-11 16:30**
+**Sürüm: v4 — 2026-11-11 23:18**
 
 **Sürüm notları**
 
+- v4 — Kaçınmacı istisnası kalktı: her tarzda her bölüm türünden tam bir tane; bölüm başına en fazla 4 madde denetimi.
 - v3 — Barındırma Render yerine Vercel (Render'a giriş yapılamadı); canlıda doğrulandı.
 - v2 — İçerik doğrulaması tür bazlı bölüm listesine göre güncellendi (Kaçınmacı istisnası); geliştirme veritabanı da Neon.
 - v1 — İlk mimari: bileşenler, klasör yapısı, veri modeli, sayfalar, dağıtım, test stratejisi.
@@ -74,7 +75,7 @@ Dockerfile, .dockerignore, alembic.ini
 
 | Bileşen | Sorumluluk | Bağımlılık |
 |---|---|---|
-| `ContentStep` | İçerik dosyalarını açılışta bir kez yükler; doğrular: 30 soru var, her soruda A ve B var, anahtar her şıkkı bir tarza bağlıyor, her tarz 12 şıkta geçiyor. Sunum bölümleri tür bazlı kontrol edilir: Kaçınmacı'da iki `uygun` bölümü bulunur ve `uygun_degil` bölümü bulunmaz; diğer tarzlarda her türden tam olarak bir bölüm bulunur. 15 blok ve 20 profil yorumu eksiksiz olmalıdır. Doğrulama hatasında uygulama açılmaz. | dosya sistemi |
+| `ContentStep` | İçerik dosyalarını açılışta bir kez yükler; doğrular: 30 soru var, her soruda A ve B var, anahtar her şıkkı bir tarza bağlıyor, her tarz 12 şıkta geçiyor. Sunum bölümleri tür bazlı kontrol edilir: her tarzda her türden tam olarak bir bölüm bulunur ve her bölümde 1–4 madde olur. 15 blok ve 20 profil yorumu eksiksiz olmalıdır. Doğrulama hatasında uygulama açılmaz. | dosya sistemi |
 | `Scorer` | 30 cevaptan beş puanı, seviyeleri, göreli puanları, baskın ve en az kullanılan tarzı hesaplar. Geçersiz girdide (eksik ya da fazla cevap, A/B dışı değer) `ValueError` verir. | `scoring.json` içeriği (parametre olarak alır) |
 | `PinSecurity` | PIN'i `hashlib.scrypt` ile tuz ekleyerek özetler ve doğrular (sabit süreli karşılaştırma). Kilitleme kuralı: 5 yanlış denemede 15 dakika kilit. | standart kütüphane |
 | `DatabaseStep` | Katılımcı oluşturma ve bulma, yanlış deneme sayacı, deneme kaydı, deneme listeleri, AI yorumu kaydı ve okuma, yönetici listesi. Her yazma işlemi tek transaction içinde yapılır. | SQLAlchemy, psycopg |

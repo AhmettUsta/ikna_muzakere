@@ -89,25 +89,53 @@ def test_sunum_section_types_per_style() -> None:
 
     for style in STYLE_ORDER:
         types = Counter(section.tur for section in content.sunum[style])
-        if style == "kacinma":
-            assert types == {"davranis": 1, "uygun": 2, "siz_iseniz": 1, "karsi_taraf": 1}
-        else:
-            assert types == {
-                "davranis": 1,
-                "uygun": 1,
-                "uygun_degil": 1,
-                "siz_iseniz": 1,
-                "karsi_taraf": 1,
-            }
+        assert types == {"davranis": 1, "uygun": 1, "uygun_degil": 1, "siz_iseniz": 1, "karsi_taraf": 1}
+
+
+def test_sunum_sections_have_at_most_four_items() -> None:
+    content = ContentStep(CONTENT_ROOT).load()
+
+    for style in STYLE_ORDER:
+        for section in content.sunum[style]:
+            assert 1 <= len(section.maddeler) <= 4, f"{style}/{section.tur}"
+
+
+def test_sunum_items_share_grammar_per_section() -> None:
+    content = ContentStep(CONTENT_ROOT).load()
+
+    for style in STYLE_ORDER:
+        for section in content.sunum[style]:
+            for item in section.maddeler:
+                where = f"{style}/{section.tur}: {item}"
+                if section.tur in ("uygun", "uygun_degil"):
+                    # Koşul maddeleri "-dığında / -dığınızda" yan cümlesiyle, noktasız biter.
+                    assert re.search(r"[dt][ıiuü]ğ[ıiuü]n([ıiuü]z)?[dt][ae]$", item), where
+                elif section.tur == "davranis":
+                    # Davranış maddeleri 3. tekil geniş zamanla (olumlu -r, olumsuz -z) biten tam cümledir.
+                    assert item.endswith(("r.", "z.")), where
+                else:
+                    # Tavsiyeler emir kipiyle ("-in") biten tam cümledir.
+                    assert item.endswith("n."), where
 
 
 def test_sunum_spot_text() -> None:
     content = ContentStep(CONTENT_ROOT).load()
 
-    rekabet_davranis = next(s for s in content.sunum["rekabet"] if s.tur == "davranis")
-    kacinma_siz = next(s for s in content.sunum["kacinma"] if s.tur == "siz_iseniz")
-    assert rekabet_davranis.maddeler[0] == "Diğer tarafın ne hissettiğiyle ilgilenmezler"
-    assert kacinma_siz.maddeler[0] == "Yutkunmayın,"
+    kacinma_uygun = next(s for s in content.sunum["kacinma"] if s.tur == "uygun")
+    kacinma_uygun_degil = next(s for s in content.sunum["kacinma"] if s.tur == "uygun_degil")
+    assert kacinma_uygun.maddeler[0] == "Yeni bilgi toplamanız ya da karşı tarafın söylemini doğrulatmanız gerektiğinde"
+    assert kacinma_uygun_degil.maddeler[0] == "Elinizdeki bilgiler karar vermeye yettiğinde ve karşı tarafın söylemi doğrulandığında"
+
+
+def test_sunum_too_many_items_raises(content_copy: Path) -> None:
+    def mutate(data: dict) -> dict:
+        data["bolumler"][0]["maddeler"] = ["Bir şey yapar."] * 5
+        return data
+
+    _rewrite_json(content_copy / "sunum" / "rekabet.json", mutate)
+
+    with pytest.raises(ContentError, match="en fazla 4"):
+        ContentStep(content_copy).load()
 
 
 def test_sunum_missing_type_raises(content_copy: Path) -> None:

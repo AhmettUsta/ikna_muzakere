@@ -20,19 +20,12 @@
 
     <section class="bolum bolum-uygun">
       <h3><span class="bolum-no">2</span> Uygun olduğu koşullar</h3>
-      {% for u in c.uygun %}
-        {% if c.uygun|length > 1 %}<p class="alt-baslik">{{ u.baslik }}</p>{% endif %}
-        <ul>{% for m in u.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
-      {% endfor %}
+      <ul>{% for m in c.uygun.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
     </section>
 
     <section class="bolum bolum-uygun-degil">
       <h3><span class="bolum-no">3</span> Uygun olmadığı koşullar</h3>
-      {% if c.uygun_degil %}
-        <ul>{% for m in c.uygun_degil.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
-      {% else %}
-        <p class="soluk">Eğitim sunumunda bu tarz için ayrı bir "uygun olmadığı koşullar" bölümü yok.</p>
-      {% endif %}
+      <ul>{% for m in c.uygun_degil.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
     </section>
 
     <section class="bolum bolum-tavsiye">

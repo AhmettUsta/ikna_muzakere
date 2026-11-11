@@ -5,62 +5,50 @@
       "tur": "davranis",
       "baslik": "REKABETÇİ MÜCADELECİ DAVRANIŞ",
       "maddeler": [
-        "Diğer tarafın ne hissettiğiyle ilgilenmezler",
-        "Kendi yaklaşımının en doğrusu olduğuna inanır,",
-        "Karşı tarafın sözünü keser,",
-        "Kişiye odaklıdır, konuya değil,",
-        "Hareket ya da ifadeler için hiçbir gerekçe göstermez, açıklama getirmez,",
-        "Yönetimi ele alır,",
-        "Kararın alınmasında hızlı hareket eder,",
-        "Ünvanını kullanmayı sever,",
-        "Hemen çözüm ister,",
-        "Kazanmak ister."
+        "Kazanmak ister ve hemen çözüm bekler.",
+        "Kendi yaklaşımının en doğrusu olduğuna inanır ve karşı tarafın ne hissettiğiyle ilgilenmez.",
+        "Konuya değil kişiye odaklanır, karşı tarafın sözünü keser ve gerekçe göstermez.",
+        "Yönetimi ele alır ve unvanını kullanarak hızlı karar verir."
       ]
     },
     {
       "tur": "uygun",
       "baslik": "Rekabetçi Yaklaşımın Uygun Olduğu Koşullar",
       "maddeler": [
-        "Bir kez yapacağınız bir iştir ve karşı tarafı bir daha asla görmeyecekseniz,",
-        "Piyasaya egemen bir pozisyonunuz var ve diğer tarafın, sizinle çalışmaktan daha iyi bir seçeneği yoksa,",
-        "Çabuk ve kati hareket etmek gerektiğinde,",
-        "Belirleyici olmanız ve sınır koymanız gerektiğinde.",
-        "İşletmenin huzuru için yaşamsal öneme sahip olan konularda kendinizin haklı olduğunu bildiğinizde,"
+        "Çabuk, kesin ve belirleyici hareket etmeniz ya da sınır koymanız gerektiğinde",
+        "İşletme için yaşamsal önemdeki bir konuda haklı olduğunuzu bildiğinizde",
+        "Piyasada egemen konumda olduğunuzda ve karşı tarafın sizden daha iyi bir seçeneği bulunmadığında",
+        "Tek seferlik bir iş yaptığınızda ve karşı tarafı bir daha görmeyeceğinizi bildiğinizde"
       ]
     },
     {
       "tur": "uygun_degil",
       "baslik": "Şu koşullarda uygun değildir;",
       "maddeler": [
-        "Emsallerinizle, emrinizde ya da üst pozisyondaki herhangi biriyle samimi bir müzakere sırasında,",
-        "Piyasa pozisyonunuz el vermiyorsa,",
-        "Uzun vadeli ve önem taşıyan müşteri ya da bayilerle yapılan dış görüşmelerde,",
-        "Karşı tarafın kişiselleştirme ve uzun vadeli ilişkiye zarar verme olasılığı olan durumlarda,",
-        "Aranızda fikir ayrılığı bulunan yakınlarınız ya da önemli diğer insanlarla görüşürken."
+        "Uzun vadeli ve önemli müşteri ya da bayilerle görüştüğünüzde",
+        "Karşı tarafın konuyu kişiselleştirip uzun vadeli ilişkiye zarar verme olasılığı olduğunda",
+        "Meslektaşlarınız, astlarınız, üstleriniz ya da yakınlarınızla samimi bir müzakere yürüttüğünüzde",
+        "Piyasa pozisyonunuz buna el vermediğinde"
       ]
     },
     {
       "tur": "karsi_taraf",
       "baslik": "Rekabetçilerle ile başa çıkabilmek için;",
       "maddeler": [
-        "Onlarla eşit koşulları yakalayabilmek için hızlı hareket edin,",
-        "Etkilenmeyin ve kişiselleştirmeyin,",
-        "Emin görünün ve onlara karşı kabalaşmayacağınızı ya da blöf yapmayacağınızı gösterin,",
-        "Onları şirketleri ya da kendileri için bir şeyler kazandıklarını düşünmeye ikna edin,",
-        "Onlara özel olduklarını hissettirin,",
-        "Uzun vadeli ilişkiyi hissetmelerini sağlayın",
-        "Siz satmıyorsunuz onlar satın alıyoru hissettirin."
+        "Hızlı hareket ederek onlarla eşit koşulları yakalayın.",
+        "Etkilenmeyin, kişiselleştirmeyin ve kabalaşmadan, blöf yapmadan kendinizden emin durun.",
+        "Kendileri ya da şirketleri için kazandıklarını ve satın alan tarafın kendileri olduğunu hissettirin.",
+        "Onlara özel olduklarını ve uzun vadeli bir ilişki kurduğunuzu hissettirin."
       ]
     },
     {
       "tur": "siz_iseniz",
       "baslik": "SİZ REKABETÇİ İSENİZ;",
       "maddeler": [
-        "İnsanların hislerini önemsememek gibi bir zaafınızın olduğunun farkında olun,",
-        "Empati yeteneğinizi arttırmaya gayret edin,",
-        "Ego yarışına girmeyin ringe değilsiniz,",
-        "Müzakereler sonrası haklıyken haksız duruma düştüğünüz durumları düşünün,",
-        "Uygun olması halinde, kazanan veya kaybeden tarafların çıkması yerine, iki tarafın da bir şekilde kazanmasını sağlayacak çözümler bulmayı deneyin."
+        "İnsanların hislerini önemsememe eğiliminizin farkında olun ve empati yeteneğinizi geliştirin.",
+        "Ringde olmadığınızı unutmayın ve ego yarışına girmeyin.",
+        "Müzakere sonrasında haklıyken haksız duruma düştüğünüz durumları gözden geçirin.",
+        "Uygun olduğunda kazanan ve kaybeden yerine iki tarafın da kazandığı çözümler arayın."
       ]
     }
   ]

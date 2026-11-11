@@ -34,6 +34,10 @@
   <label for="sekme-sunum">Sunum yorumları</label>
   <input type="radio" name="sekme" id="sekme-kaynak" {% if aktif_sekme == 'kaynak' %}checked{% endif %}>
   <label for="sekme-kaynak">Kaynaklarla genişletilmiş yorum</label>
+  <input type="radio" name="sekme" id="sekme-sorular">
+  <label for="sekme-sorular">Sorulara cevaplarım</label>
+  <input type="radio" name="sekme" id="sekme-anahtar">
+  <label for="sekme-anahtar">Cevap anahtarım</label>
 
   <div class="sekme-icerik" id="icerik-sunum">
     <p class="sekme-aciklama">Eğitim sunumundaki metinler. Yüksek çıkan tarzlar açık gelir; diğerlerini başlığına dokunarak açabilirsiniz.</p>
@@ -81,52 +85,42 @@
     </section>
     {% endif %}
   </div>
-</div>
 
-<details class="cevaplar">
-  <summary>Cevaplarım</summary>
-  <div class="sekmeler cevap-sekmeler">
-    <input type="radio" name="cevap-sekme" id="sekme-sorular" checked>
-    <label for="sekme-sorular">Sorulara cevaplarım</label>
-    <input type="radio" name="cevap-sekme" id="sekme-anahtar">
-    <label for="sekme-anahtar">Cevap anahtarım</label>
-
-    <div class="sekme-icerik" id="icerik-sorular">
-      <ol class="soru-listesi">
-      {% for row in view.answers %}
-        <li>
-          {% for harf, metin in [('A', row.question.a), ('B', row.question.b)] %}
-          <p class="cevap-sik{% if harf == row.secilen %} sik-secili{% endif %}">
-            <b>{{ harf }})</b> {{ metin }}{% if harf == row.secilen %} <span class="isaret" aria-label="seçiminiz">✓</span>{% endif %}
-          </p>
-          {% endfor %}
-        </li>
-      {% endfor %}
-      </ol>
-    </div>
-
-    <div class="sekme-icerik" id="icerik-anahtar">
-      <p class="sekme-aciklama">Her sorunun A ve B şıkkı ait olduğu tarzın sütununda; seçtiğiniz şık işaretli. Sütun toplamları puanlarınızdır.</p>
-      <div class="tablo-kaydir">
-      <table class="cevap-anahtari">
-        <thead><tr><th></th>{% for r in view.score.results %}<th title="{{ styles[r.style].name }}">{{ kisa_ad[r.style] }}</th>{% endfor %}</tr></thead>
-        <tbody>
-        {% for row in view.answers %}
-          <tr>
-            <th class="soru-no">{{ row.question.no }}.</th>
-            {% for r in view.score.results %}
-              {% set harf = row.harfler.get(r.style) %}
-              <td{% if harf and harf == row.secilen %} class="secili"{% endif %}>{{ harf or '' }}</td>
-            {% endfor %}
-          </tr>
+  <div class="sekme-icerik" id="icerik-sorular">
+    <ol class="soru-listesi">
+    {% for row in view.answers %}
+      <li>
+        {% for harf, metin in [('A', row.question.a), ('B', row.question.b)] %}
+        <p class="cevap-sik{% if harf == row.secilen %} sik-secili{% endif %}">
+          <b>{{ harf }})</b> {{ metin }}{% if harf == row.secilen %} <span class="isaret" aria-label="seçiminiz">✓</span>{% endif %}
+        </p>
         {% endfor %}
-        </tbody>
-        <tfoot><tr><th>Puan</th>{% for r in view.score.results %}<td>{{ r.score }}</td>{% endfor %}</tr></tfoot>
-      </table>
-      </div>
+      </li>
+    {% endfor %}
+    </ol>
+  </div>
+
+  <div class="sekme-icerik" id="icerik-anahtar">
+    <p class="sekme-aciklama">Her sorunun A ve B şıkkı ait olduğu tarzın sütununda; seçtiğiniz şık işaretli. Sütun toplamları puanlarınızdır.</p>
+    <div class="tablo-kaydir">
+    <table class="cevap-anahtari">
+      <thead><tr><th></th>{% for r in view.score.results %}<th title="{{ styles[r.style].name }}">{{ kisa_ad[r.style] }}</th>{% endfor %}</tr></thead>
+      <tbody>
+      {% for row in view.answers %}
+        <tr>
+          <th class="soru-no">{{ row.question.no }}.</th>
+          {% for r in view.score.results %}
+            {% set harf = row.harfler.get(r.style) %}
+            <td{% if harf and harf == row.secilen %} class="secili"{% endif %}>{{ harf or '' }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+      </tbody>
+      <tfoot><tr><th>Puan</th>{% for r in view.score.results %}<td>{{ r.score }}</td>{% endfor %}</tr></tfoot>
+    </table>
     </div>
   </div>
-</details>
+</div>
 
 {% if participant_id and not is_admin %}
 <p class="altlink"><a href="/gecmis">Tüm sonuçlarım</a> · <a href="/test">Testi tekrar çöz</a></p>

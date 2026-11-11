@@ -25,8 +25,8 @@ class StyleCard:
     acik: bool
     davranis: Section
     kaynak_aciklama: str | None
-    uygun: list[Section]
-    uygun_degil: Section | None
+    uygun: Section
+    uygun_degil: Section
     tavsiye: Advice
     karsi_taraf: Section
 
@@ -57,7 +57,7 @@ def style_card(result: StyleResult, sections: list[Section], block: Block | None
         acik=result.level == "yuksek",
         davranis=_first(sections, "davranis"),
         kaynak_aciklama=block.aciklama if block is not None else None,
-        uygun=[section for section in sections if section.tur == "uygun"],
+        uygun=_first(sections, "uygun"),
         uygun_degil=_first(sections, "uygun_degil"),
         tavsiye=advice,
         karsi_taraf=_first(sections, "karsi_taraf"),

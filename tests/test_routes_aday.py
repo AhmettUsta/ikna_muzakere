@@ -252,7 +252,12 @@ def test_result_cards_show_sections_in_order(make_web_service) -> None:
 def test_result_shows_answers_and_answer_key_tabs(make_web_service) -> None:
     page = registered_client(make_web_service()).get(f"/sonuc/{PUBLIC_ID}").text
 
-    assert "Sorulara cevaplarım" in page and "Cevap anahtarım" in page
+    # Dört sekme tek sekme çubuğunda: iki yorum, iki cevap görünümü; ayrı "Cevaplarım" bölümü yok.
+    tab_bar = page[page.index('class="sekmeler"'):page.index('class="sekme-icerik"')]
+    labels = ["Sunum yorumları", "Kaynaklarla genişletilmiş yorum", "Sorulara cevaplarım", "Cevap anahtarım"]
+    positions = [tab_bar.index(label) for label in labels]
+    assert positions == sorted(positions)
+    assert 'class="cevaplar"' not in page
     key = page[page.index('class="cevap-anahtari'):page.index("</table>", page.index('class="cevap-anahtari'))]
     # 30 soru satırı, her satırda tam bir seçili hücre; altta tasarım örneğinin toplamları.
     assert key.count('class="soru-no"') == 30

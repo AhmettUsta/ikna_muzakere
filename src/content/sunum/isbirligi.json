@@ -5,56 +5,50 @@
       "tur": "davranis",
       "baslik": "İŞBİRLİKÇİ",
       "maddeler": [
-        "Çok soru sorar,",
-        "Dinleyici ve açıklayıcı konumdadır,",
-        "Özetleyicidir,",
-        "Problemi çözmeye gayret gösterir,",
-        "Diğer tarafın çözüm, fikir ve önerilerini sorar,",
-        "Kişiye değil probleme odaklanır ve iki tarafın çözebileceğini vurgular,",
-        "Olaylara nesnel yaklaşır."
+        "Kişiye değil probleme odaklanır ve olaylara nesnel yaklaşır.",
+        "Çok soru sorar ve karşı tarafın çözüm, fikir ve önerilerini öğrenmek ister.",
+        "Dinler, açıklar ve konuşulanları özetler.",
+        "Problemi iki tarafın birlikte çözebileceğini vurgular."
       ]
     },
     {
       "tur": "uygun",
       "baslik": "İşbirlikçi Yaklaşımın Uygun Olduğu Koşullar",
       "maddeler": [
-        "Konu her iki taraf için elbirliği ile ele alınması gerektirecek kadar önemli olduğunda ve bütünleşik bir çözüm bulmak şart olduğunda,",
-        "Amacınız öğrenmek olduğu zaman,",
-        "Farklı bakış açısına sahip insanların fikirlerini birleştirebilmek için.",
-        "Tarafları bir işbirliği içinde birleştirerek bağlılık sağlamak için,",
-        "Bir ilişki ile çatışan duygularda birlikte çalışabilmek için,",
-        "Uzun süreli ilişki çok önemli olduğunda."
+        "Konu iki taraf için de birlikte ele alınacak kadar önemli olduğunda ve bütünleşik bir çözüm gerektiğinde",
+        "Uzun süreli ilişki çok önemli olduğunda",
+        "Farklı bakış açılarını birleştirmek ve tarafların bağlılığını sağlamak istediğinizde",
+        "Amacınız öğrenmek olduğunda"
       ]
     },
     {
       "tur": "uygun_degil",
       "baslik": "Şu durumlarda uygun olmayacaktır:",
       "maddeler": [
-        "Sizin tarafınızdan işbirliği sağlanması açısından bir çok girişimde bulunulduğu halde, karşı tarafın sizinle çalışmak istememesi,",
-        "Ahlaka, etiğe uygun olmayan yada yasal olmayan bir teklif yapıldığında,",
-        "Durum gerektirmemesine rağmen olumlu algılanmak adına,",
-        "Sizin tarafta aşırı zaman baskısı olduğunda"
+        "Bütün girişimlerinize rağmen karşı taraf sizinle çalışmak istemediğinde",
+        "Etik ya da yasal olmayan bir teklif yapıldığında",
+        "Sizin tarafınızda aşırı zaman baskısı olduğunda",
+        "Durum gerektirmediği hâlde yalnızca olumlu algılanmak istediğinizde"
       ]
     },
     {
       "tur": "karsi_taraf",
       "baslik": "Onlarla uyum sağlayabilmek için;",
       "maddeler": [
-        "Onların sizin de kazanmak ve kazandırmak istediğinizin farkına varmalarını sağlayın,",
-        "Hem insan ilişkilerine, hem de işiniz üzerine odaklanın,",
-        "Nesnel olun, örnek verin..",
-        "Sık temas kurun,",
-        "Çabalarını takdir edin."
+        "Sizin de kazanmak ve kazandırmak istediğinizi onlara gösterin.",
+        "Hem insan ilişkilerine hem de işin kendisine odaklanın.",
+        "Nesnel olun ve örneklerle konuşun.",
+        "Sık temas kurun ve çabalarını takdir edin."
       ]
     },
     {
       "tur": "siz_iseniz",
       "baslik": "Siz işbirlikçi iseniz;",
       "maddeler": [
-        "Herkesin sizin gibi, bir müzakere yolu izlemediğinin farkında olun,",
-        "Rekabetçilerin kendilerini işbirlikçi olarak gösterdiklerinin farkına varın,",
-        "Unutmayın ki bazen daha etkili olabilmeniz için farklı ya da daha sert yaklaşımlar göstermeniz gerekebilecektir,",
-        "Yaklaşımınızı mükemmeliyetçilik noktasına getirmeyin."
+        "Herkesin sizin gibi bir müzakere yolu izlemediğinin farkında olun.",
+        "Rekabetçilerin kendilerini işbirlikçi gibi gösterebileceğini aklınızda tutun.",
+        "Daha etkili olmak için gerektiğinde farklı ya da daha sert yaklaşımlara geçin.",
+        "Yaklaşımınızı mükemmeliyetçilik noktasına vardırmayın."
       ]
     }
   ]

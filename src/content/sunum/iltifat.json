@@ -5,58 +5,48 @@
       "tur": "davranis",
       "baslik": "DÜZELTMECİ İLTİFATKAR-TAVİZKÂR",
       "maddeler": [
-        "Bolca özür diler,",
-        "Diğer tarafın isteklerini sorar,",
-        "Kendi ihtiyaçlarını bir kenara bırakır,",
-        "“Sizin fikriniz bana uyar” tarzı cümleler kurar,",
-        "Diğer taraf istememiş bile olsa erken taviz verir,",
-        "Aşırı nezaket, hürmet gösterir,",
-        "Cömert ve yardımseverdir."
+        "Kendi ihtiyaçlarını bir kenara bırakır ve karşı tarafın isteklerini sorar.",
+        "Karşı taraf istememiş olsa bile erken taviz verir.",
+        "Bolca özür diler ve “Sizin fikriniz bana uyar” gibi cümleler kurar.",
+        "Aşırı nezaket ve hürmet gösterir, cömertçe yardım eder."
       ]
     },
     {
       "tur": "uygun",
       "baslik": "Tavizkâr Yaklaşımın Uygun Olduğu Koşullar",
       "maddeler": [
-        "Müşteri için sorun yarattıysanız,",
-        "Yüksek iş potansiyeliyle kıyaslandığında, feda etmek zorunda olduğunuz küçük bir şey olduğu zaman,",
-        "Konu önemsiz olduğunda ya da daha önemli bir konu varsa,",
-        "İşi halletmek konusunda hiçbir şans yoksa,",
-        "İnsanların sakinleşmesi için,",
-        "Diğerleri çatışmayı daha etkin çözebiliyor ise,",
-        "Konular yüzeysel göründüğünde ya da diğer konuların belirtisi ise.",
-        "Uzun süreli ilişkiyi olumlu etkilemek adına"
+        "Müşteri için sorun yarattığınızda",
+        "Feda ettiğiniz şey yüksek iş potansiyeline göre küçük kaldığında",
+        "Konu önemsiz olduğunda ya da daha önemli bir konu beklediğinde",
+        "İnsanları sakinleştirmek ve uzun süreli ilişkiyi olumlu etkilemek istediğinizde"
       ]
     },
     {
       "tur": "uygun_degil",
       "baslik": "Şu durumlarda uygun olmayacaktır;",
       "maddeler": [
-        "Önemli bir konu üzerinde ödün vermeniz istendiği zaman,",
-        "Karşı taraf yaptığınız hoşluğu anlayamayacak ya da kötüye kullanacak düzeyde ise,",
-        "İmtiyaz verdiğinizde bile hiçbir getiri sağlayamadığınızda,",
-        "(ahlaki, manevi, güvenlik…vb) gibi görüşülemeyecek konular olduğunda,",
-        "Uzun süreli ilişki mühim değil ise."
+        "Önemli bir konuda ödün vermeniz istendiğinde",
+        "Ahlaki, manevi ya da güvenlikle ilgili görüşülemeyecek konular olduğunda",
+        "Karşı taraf iyi niyetinizi anlamadığında ya da kötüye kullandığında",
+        "Uzun süreli ilişki önemli olmadığında ya da verdiğiniz tavizler hiçbir getiri sağlamadığında"
       ]
     },
     {
       "tur": "karsi_taraf",
       "baslik": "Karşı taraf iltifatkar ise Yararlanma yolları;",
       "maddeler": [
-        "Eğer size imtiyazlar gösteriyorlarsa, istemeye devam edin,",
-        "Eğer karşılığında herhangi bir talepte bulunmuyorlarsa, istemeye devam edin,",
-        "Uzun süreli ilişkiyi zedelemeyecekse devam edin yoksa dikkat edin."
+        "Size imtiyaz gösterip karşılığında bir şey istemedikleri sürece istemeye devam edin.",
+        "Uzun süreli ilişkiyi zedeleyecek noktaya geldiğinizde dikkatli olun."
       ]
     },
     {
       "tur": "siz_iseniz",
       "baslik": "Eğer siz iltifatkar iseniz,",
       "maddeler": [
-        "Yapacağınız imtiyazları her zaman bir koşula bağlayın,",
-        "Karşı tarafın taleplerine karşı ne zaman ve nasıl imtiyaz göstereceğinizi belirleyin,",
-        "Çok iyi hazırlanın ve plana sadık kalın",
-        "Bu tarzı asla rekabetçiler ile kullanmayın, ezilmeyi önlemek için siz geçiş yapın,",
-        "Biraz bencilleşin."
+        "Biraz bencilleşin ve verdiğiniz her imtiyazı bir koşula bağlayın.",
+        "Ne zaman ve nasıl imtiyaz vereceğinizi önceden belirleyin.",
+        "Çok iyi hazırlanın ve planınıza sadık kalın.",
+        "Ezilmemek için bu tarzı rekabetçilerle asla kullanmayın."
       ]
     }
   ]
