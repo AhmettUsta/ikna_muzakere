@@ -1,7 +1,10 @@
 {
   "rekabet__isbirligi": {
     "baslik": "Baskın: Rekabetçi · En az: İşbirlikçi",
-    "metin": "Bu profil, çatışmalarda çoğunlukla kendi çözümünü kabul ettirmeye yönelir; iki tarafın kaygılarını birlikte ele alan ortak çözüm arayışına ise daha az zaman ayırır. Güçlü yanı hız ve kararlılıktır: belirsizlik uzamaz, sorumluluk alınır. Zorluk, özellikle uzun süreli iş ilişkilerinde ortaya çıkar; karşı taraf dinlenmediğini hissedebilir ve iki tarafa da daha fazla değer katacak seçenekler masada kalabilir (Thomas, 1977; Rahim, 2002).\n\n**Öneri:** Rekabeti acil ya da gerçekten pazarlık dışı konular için saklayın. Önemli ve uzun vadeli konularda pozisyonunuzu söylemeden önce karşı tarafın neden bunu istediğini sorun ve birlikte birkaç seçenek üretin (Fisher & Ury, 1981).",
+    "giris": "Bu profil, çatışmalarda çoğunlukla kendi çözümünü kabul ettirmeye yönelir; iki tarafın kaygılarını birlikte ele alan ortak çözüm arayışına ise daha az zaman ayırır.",
+    "guclu": "Hızlı ve kararlıdır: belirsizlik uzamaz, sorumluluk alınır.",
+    "zayif": "Özellikle uzun süreli iş ilişkilerinde karşı taraf dinlenmediğini hissedebilir ve iki tarafa da daha fazla değer katacak seçenekler masada kalabilir (Thomas, 1977; Rahim, 2002).",
+    "oneri": "Rekabeti acil ya da gerçekten pazarlık dışı konular için saklayın. Önemli ve uzun vadeli konularda pozisyonunuzu söylemeden önce karşı tarafın neden bunu istediğini sorun ve birlikte birkaç seçenek üretin (Fisher & Ury, 1981).",
     "kaynaklar": [
       "thomas-1977",
       "rahim-2002",
@@ -10,7 +13,10 @@
   },
   "rekabet__uzlasma": {
     "baslik": "Baskın: Rekabetçi · En az: Uzlaşmacı",
-    "metin": "Bu profil, kendi çözümünü sonuna kadar savunmaya yatkındır ve farkları ortadan bölmeye pek istekli değildir. Bu, önemli konularda ilkeli ve kararlı bir duruş sağlar. Zorluk, makul bir anlaşmanın mümkün olduğu yerlerde müzakerenin uzaması ya da kilitlenmesidir; iki taraf da geri adım atmadığında çatışma tırmanabilir (Pruitt & Rubin, 1986). Thomas (1977), eşit güçteki taraflar arasında ve zaman baskısı altında uzlaşmanın çoğu zaman en uygun yol olduğunu belirtir.\n\n**Öneri:** Konuları 'pazarlık dışı' ve 'esneyebilirim' diye ikiye ayırın. İkinci gruptaki konularda koşullu tavizler önerin ('şunu verirsem şunu isterim'); böylece kararlılığınızı korurken anlaşmaya da kapı açarsınız.",
+    "giris": "Bu profil, kendi çözümünü sonuna kadar savunmaya yatkındır ve farkları ortadan bölmeye pek istekli değildir.",
+    "guclu": "Önemli konularda ilkeli ve kararlı bir duruş sergiler.",
+    "zayif": "Makul bir anlaşmanın mümkün olduğu yerlerde müzakere uzayabilir ya da kilitlenebilir; iki taraf da geri adım atmadığında çatışma tırmanabilir (Pruitt & Rubin, 1986). Thomas (1977), eşit güçteki taraflar arasında ve zaman baskısı altında uzlaşmanın çoğu zaman en uygun yol olduğunu belirtir.",
+    "oneri": "Konuları 'pazarlık dışı' ve 'esneyebilirim' diye ikiye ayırın. İkinci gruptaki konularda koşullu tavizler önerin ('şunu verirsem şunu isterim'); böylece kararlılığınızı korurken anlaşmaya da kapı açarsınız.",
     "kaynaklar": [
       "pruitt-rubin-1986",
       "thomas-1977"
@@ -18,7 +24,10 @@
   },
   "rekabet__kacinma": {
     "baslik": "Baskın: Rekabetçi · En az: Kaçınmacı",
-    "metin": "Bu profil çatışmadan çekinmez: konuları hemen masaya getirir ve kendi görüşünü açıkça savunur. Güçlü yanı netlik ve hızdır; sorunlar birikmeden konuşulur, kimse ne düşündüğünüzü merak etmez. Zorluk zamanlamadadır: her konu hemen ele alınmaya ya da kazanılmaya değmeyebilir. Thomas (1977), ortamın soğuması, bilgi toplanması ya da konunun önemsiz olduğu durumlarda geri durmanın akıllıca olduğunu belirtir. Sürekli ön planda olmak, karşı tarafta savunmacı bir tepki ve ilişkiye zarar veren duygusal çatışma doğurabilir (Rahim, 2002).\n\n**Öneri:** Tepki vermeden önce iki soru sorun: 'Bu konu şimdi mi konuşulmalı?' ve 'Bu, mücadele etmeye değer mi?' Küçük konuları bilinçli olarak bırakmak, önemli konulardaki kararlılığınızı daha etkili kılar.",
+    "giris": "Bu profil çatışmadan çekinmez: konuları hemen masaya getirir ve kendi görüşünü açıkça savunur.",
+    "guclu": "Net ve hızlıdır; sorunlar birikmeden konuşulur, kimse ne düşündüğünüzü merak etmez.",
+    "zayif": "Zamanlamada zorlanır: her konu hemen ele alınmaya ya da kazanılmaya değmeyebilir. Thomas (1977), ortamın soğuması, bilgi toplanması ya da konunun önemsiz olduğu durumlarda geri durmanın akıllıca olduğunu belirtir. Sürekli ön planda olmak, karşı tarafta savunmacı bir tepki ve ilişkiye zarar veren duygusal çatışma doğurabilir (Rahim, 2002).",
+    "oneri": "Tepki vermeden önce iki soru sorun: 'Bu konu şimdi mi konuşulmalı?' ve 'Bu, mücadele etmeye değer mi?' Küçük konuları bilinçli olarak bırakmak, önemli konulardaki kararlılığınızı daha etkili kılar.",
     "kaynaklar": [
       "thomas-1977",
       "rahim-2002"
@@ -26,7 +35,10 @@
   },
   "rekabet__iltifat": {
     "baslik": "Baskın: Rekabetçi · En az: İltifatkar",
-    "metin": "Bu profil, karşı tarafın isteği için kendi hedeflerinden vazgeçmeye en az istekli olan profildir. Güçlü yanı, istismara karşı dirençli olması ve çıkarlarını net biçimde korumasıdır. Zorluk, haksız olduğu ya da konunun karşı taraf için çok daha önemli olduğu durumlarda bile geri adım atmamaktır. Thomas (1977), bu tür durumlarda uyma davranışının ilişkiye ve ileride işe yarayacak iyi niyet birikimine katkı sağladığını belirtir. Sürekli kazanmaya odaklanmak karşılıklılığı zayıflatabilir ve ilişkiyi yıpratabilir (Rahim, 2002).\n\n**Öneri:** Sizin için düşük maliyetli ama karşı taraf için değerli olan birkaç konuyu önceden belirleyin ve bunlarda bilinçli olarak esnek davranın. Hatalı olduğunuz durumlarda bunu açıkça kabul etmek güvenilirliğinizi artırır.",
+    "giris": "Bu profil, karşı tarafın isteği için kendi hedeflerinden vazgeçmeye en az istekli olan profildir.",
+    "guclu": "İstismara karşı dirençlidir ve çıkarlarını net biçimde korur.",
+    "zayif": "Haksız olduğu ya da konunun karşı taraf için çok daha önemli olduğu durumlarda bile geri adım atmaz. Thomas (1977), bu tür durumlarda uyma davranışının ilişkiye ve ileride işe yarayacak iyi niyet birikimine katkı sağladığını belirtir. Sürekli kazanmaya odaklanmak karşılıklılığı zayıflatabilir ve ilişkiyi yıpratabilir (Rahim, 2002).",
+    "oneri": "Sizin için düşük maliyetli ama karşı taraf için değerli olan birkaç konuyu önceden belirleyin ve bunlarda bilinçli olarak esnek davranın. Hatalı olduğunuz durumlarda bunu açıkça kabul etmek güvenilirliğinizi artırır.",
     "kaynaklar": [
       "thomas-1977",
       "rahim-2002"
@@ -34,7 +46,10 @@
   },
   "isbirligi__rekabet": {
     "baslik": "Baskın: İşbirlikçi · En az: Rekabetçi",
-    "metin": "Bu profil, çatışmalarda iki tarafın kaygılarını birlikte karşılayan çözümler arar; kendi çıkarını sert biçimde dayatmaktan ise kaçınır. Güçlü yanı kalıcı, bağlılık yaratan çözümler üretmesidir (Rahim, 2002). Zorluk, karşı taraf işbirliğine istekli olmadığında ya da hızlı ve kesin karar gerektiğinde ortaya çıkar: iyi niyetli açıklık, rekabetçi bir karşı tarafça kendi lehine kullanılabilir (Pruitt & Rubin, 1986). Thomas (1977), acil durumlarda ve istismara karşı korunmak gerektiğinde iddialı olmanın gerekli olduğunu belirtir.\n\n**Öneri:** Müzakereden önce alt sınırınızı ve anlaşma olmazsa başvuracağınız en iyi alternatifi (BATNA) belirleyin (Fisher & Ury, 1981). Karşı tarafın işbirliğine açık olup olmadığını erken sınayın; değilse daha net sınırlar koymaktan çekinmeyin.",
+    "giris": "Bu profil, çatışmalarda iki tarafın kaygılarını birlikte karşılayan çözümler arar; kendi çıkarını sert biçimde dayatmaktan ise kaçınır.",
+    "guclu": "Kalıcı, bağlılık yaratan çözümler üretir (Rahim, 2002).",
+    "zayif": "Karşı taraf işbirliğine istekli olmadığında ya da hızlı ve kesin karar gerektiğinde zorlanır: iyi niyetli açıklık, rekabetçi bir karşı tarafça kendi lehine kullanılabilir (Pruitt & Rubin, 1986). Thomas (1977), acil durumlarda ve istismara karşı korunmak gerektiğinde iddialı olmanın gerekli olduğunu belirtir.",
+    "oneri": "Müzakereden önce alt sınırınızı ve anlaşma olmazsa başvuracağınız en iyi alternatifi (BATNA) belirleyin (Fisher & Ury, 1981). Karşı tarafın işbirliğine açık olup olmadığını erken sınayın; değilse daha net sınırlar koymaktan çekinmeyin.",
     "kaynaklar": [
       "rahim-2002",
       "pruitt-rubin-1986",
@@ -44,14 +59,20 @@
   },
   "isbirligi__uzlasma": {
     "baslik": "Baskın: İşbirlikçi · En az: Uzlaşmacı",
-    "metin": "Bu profil, derinlemesine ve iki tarafı da tam tatmin eden çözümler arar; farkları ortadan bölmek ise ona yarım bir çözüm gibi gelir. Güçlü yanı, yaratıcı ve kalıcı anlaşmalar bulmasıdır. Zorluk, zaman kısıtı olduğunda ya da konunun bu kadar emeğe değmediği durumlarda müzakerenin gereksiz yere uzamasıdır. Thomas (1977), zaman baskısı altında ve geçici bir çözüm yeterli olduğunda uzlaşmanın daha uygun olduğunu belirtir.\n\n**Öneri:** Her konuya ayıracağınız zamanı konunun önemine göre belirleyin. Önemsiz ya da acil konularda 'şimdilik ortada buluşalım, sonra gözden geçirelim' diyebilmek, enerjinizi gerçekten önemli konulardaki işbirliğine saklamanızı sağlar.",
+    "giris": "Bu profil, derinlemesine ve iki tarafı da tam tatmin eden çözümler arar; farkları ortadan bölmek ise ona yarım bir çözüm gibi gelir.",
+    "guclu": "Yaratıcı ve kalıcı anlaşmalar bulur.",
+    "zayif": "Zaman kısıtı olduğunda ya da konunun bu kadar emeğe değmediği durumlarda müzakere gereksiz yere uzayabilir. Thomas (1977), zaman baskısı altında ve geçici bir çözüm yeterli olduğunda uzlaşmanın daha uygun olduğunu belirtir.",
+    "oneri": "Her konuya ayıracağınız zamanı konunun önemine göre belirleyin. Önemsiz ya da acil konularda 'şimdilik ortada buluşalım, sonra gözden geçirelim' diyebilmek, enerjinizi gerçekten önemli konulardaki işbirliğine saklamanızı sağlar.",
     "kaynaklar": [
       "thomas-1977"
     ]
   },
   "isbirligi__kacinma": {
     "baslik": "Baskın: İşbirlikçi · En az: Kaçınmacı",
-    "metin": "Bu profil sorunlardan kaçmaz; onları açıkça konuşmayı ve birlikte çözmeyi tercih eder. Güçlü yanı şeffaflık ve problem çözme isteğidir; De Dreu ve arkadaşlarının (2001) problem çözme olarak adlandırdığı strateji bu profilin merkezindedir. Zorluk, her konuyu hemen ve derinlemesine ele almanın yorucu olabilmesi ve ortamın soğuması gereken anların atlanmasıdır. Thomas (1977), konu önemsiz olduğunda ya da bilgi toplamak için zamana ihtiyaç duyulduğunda bir süre geri durmanın akıllıca olduğunu belirtir.\n\n**Öneri:** Gerilimli bir konuşmada 'bunu yarın, verileri gördükten sonra konuşalım' demeyi deneyin. Küçük konuları bırakmak, büyük konulardaki ortak çözüm arayışınızı daha verimli kılar.",
+    "giris": "Bu profil sorunlardan kaçmaz; onları açıkça konuşmayı ve birlikte çözmeyi tercih eder.",
+    "guclu": "Şeffaftır ve sorunları çözmeye isteklidir; De Dreu ve arkadaşlarının (2001) problem çözme olarak adlandırdığı strateji bu profilin merkezindedir.",
+    "zayif": "Her konuyu hemen ve derinlemesine ele almak yorucu olabilir ve ortamın soğuması gereken anlar atlanabilir. Thomas (1977), konu önemsiz olduğunda ya da bilgi toplamak için zamana ihtiyaç duyulduğunda bir süre geri durmanın akıllıca olduğunu belirtir.",
+    "oneri": "Gerilimli bir konuşmada 'bunu yarın, verileri gördükten sonra konuşalım' demeyi deneyin. Küçük konuları bırakmak, büyük konulardaki ortak çözüm arayışınızı daha verimli kılar.",
     "kaynaklar": [
       "de-dreu-2001",
       "thomas-1977"
@@ -59,14 +80,20 @@
   },
   "isbirligi__iltifat": {
     "baslik": "Baskın: İşbirlikçi · En az: İltifatkar",
-    "metin": "Bu profil ortak çözüm arar ama tek taraflı geri adım atmaya pek yanaşmaz; her konuda kendi kaygılarının da çözüme yansımasını ister. Güçlü yanı dengeli ve iki tarafı da ciddiye alan bir tutumdur. Zorluk, haksız olduğu ya da konunun karşı taraf için çok daha önemli olduğu durumlarda bile tartışmayı sürdürmektir. Thomas (1977), bu tür durumlarda karşı tarafa uymanın ilişkiye ve ileride işe yarayacak iyi niyet birikimine katkı sağladığını belirtir.\n\n**Öneri:** Her konunun ortak çözüm gerektirmediğini hatırlayın. Karşı taraf için çok önemli, sizin için önemsiz konularda bilinçli olarak geri adım atmak, işbirliği gerektiren büyük konularda güveni artırır.",
+    "giris": "Bu profil ortak çözüm arar ama tek taraflı geri adım atmaya pek yanaşmaz; her konuda kendi kaygılarının da çözüme yansımasını ister.",
+    "guclu": "Dengelidir ve iki tarafı da ciddiye alır.",
+    "zayif": "Haksız olduğu ya da konunun karşı taraf için çok daha önemli olduğu durumlarda bile tartışmayı sürdürebilir. Thomas (1977), bu tür durumlarda karşı tarafa uymanın ilişkiye ve ileride işe yarayacak iyi niyet birikimine katkı sağladığını belirtir.",
+    "oneri": "Her konunun ortak çözüm gerektirmediğini hatırlayın. Karşı taraf için çok önemli, sizin için önemsiz konularda bilinçli olarak geri adım atmak, işbirliği gerektiren büyük konularda güveni artırır.",
     "kaynaklar": [
       "thomas-1977"
     ]
   },
   "uzlasma__rekabet": {
     "baslik": "Baskın: Uzlaşmacı · En az: Rekabetçi",
-    "metin": "Bu profil farkları ortada buluşarak kapatmayı tercih eder; kendi pozisyonunu sert biçimde savunmaktan ise kaçınır. Güçlü yanı pratiklik ve adil görünen çözümlerle anlaşmayı hızla sağlamasıdır. Zorluk, iddialı bir karşı tarafla karşılaşıldığında ortaya çıkar: 'orta nokta' karşı tarafın yüksek ilk talebine göre kayabilir ve önemli konularda erken taviz verilebilir. Thomas (1977), sizden yararlanılmaya çalışıldığı durumlarda daha iddialı olmanın gerekli olduğunu belirtir.\n\n**Öneri:** Müzakereden önce alt sınırınızı ve en iyi alternatifinizi (BATNA) belirleyin (Fisher & Ury, 1981). Orta noktayı karşı tarafın ilk talebine göre değil, nesnel ölçütlere göre hesaplayın; pazarlık dışı konularınızı açıkça söyleyin.",
+    "giris": "Bu profil farkları ortada buluşarak kapatmayı tercih eder; kendi pozisyonunu sert biçimde savunmaktan ise kaçınır.",
+    "guclu": "Pratiktir ve adil görünen çözümlerle anlaşmayı hızla sağlar.",
+    "zayif": "İddialı bir karşı tarafla karşılaşınca zorlanır: 'orta nokta' karşı tarafın yüksek ilk talebine göre kayabilir ve önemli konularda erken taviz verilebilir. Thomas (1977), sizden yararlanılmaya çalışıldığı durumlarda daha iddialı olmanın gerekli olduğunu belirtir.",
+    "oneri": "Müzakereden önce alt sınırınızı ve en iyi alternatifinizi (BATNA) belirleyin (Fisher & Ury, 1981). Orta noktayı karşı tarafın ilk talebine göre değil, nesnel ölçütlere göre hesaplayın; pazarlık dışı konularınızı açıkça söyleyin.",
     "kaynaklar": [
       "thomas-1977",
       "fisher-ury-1981"
@@ -74,7 +101,10 @@
   },
   "uzlasma__isbirligi": {
     "baslik": "Baskın: Uzlaşmacı · En az: İşbirlikçi",
-    "metin": "Bu profil anlaşmazlıkları hızlıca orta noktada kapatır; iki tarafın kaygılarını tam karşılayacak derin çözümler aramaya ise daha az zaman ayırır. Güçlü yanı hız ve pratikliktir. Zorluk, iki tarafa da daha fazla değer katabilecek seçeneklerin hiç masaya gelmemesidir; Pruitt ve Rubin (1986) uzlaşmayı çoğu zaman yarım kalmış bir problem çözme olarak görür. Rahim (2002), karmaşık ve stratejik konularda bütünleştirici yaklaşımın genellikle daha uygun olduğunu belirtir.\n\n**Öneri:** Önemli konularda ortayı önermeden önce tarafların çıkarlarını konuşun ve en az iki üç farklı seçenek üretin (Fisher & Ury, 1981). Uzlaşmayı ilk seçenek değil, bu arayış sonuç vermezse başvurulan bir yol olarak kullanın.",
+    "giris": "Bu profil anlaşmazlıkları hızlıca orta noktada kapatır; iki tarafın kaygılarını tam karşılayacak derin çözümler aramaya ise daha az zaman ayırır.",
+    "guclu": "Hızlı ve pratiktir.",
+    "zayif": "İki tarafa da daha fazla değer katabilecek seçenekler hiç masaya gelmeyebilir; Pruitt ve Rubin (1986) uzlaşmayı çoğu zaman yarım kalmış bir problem çözme olarak görür. Rahim (2002), karmaşık ve stratejik konularda bütünleştirici yaklaşımın genellikle daha uygun olduğunu belirtir.",
+    "oneri": "Önemli konularda ortayı önermeden önce tarafların çıkarlarını konuşun ve en az iki üç farklı seçenek üretin (Fisher & Ury, 1981). Uzlaşmayı ilk seçenek değil, bu arayış sonuç vermezse başvurulan bir yol olarak kullanın.",
     "kaynaklar": [
       "pruitt-rubin-1986",
       "rahim-2002",
@@ -83,21 +113,30 @@
   },
   "uzlasma__kacinma": {
     "baslik": "Baskın: Uzlaşmacı · En az: Kaçınmacı",
-    "metin": "Bu profil konuları ertelemez; masaya getirir ve karşılıklı tavizlerle bir sonuca bağlamak ister. Güçlü yanı belirsizliği hızla azaltmasıdır. Zorluk, yeterli bilgi toplanmadan ya da ortam henüz sakinleşmeden anlaşmaya varılmasıdır; acele anlaşmalar sonradan yeniden açılabilir. Thomas (1977), daha fazla bilgi gerektiğinde ve tarafların sakinleşmesi gerektiğinde bir süre beklemenin yerinde olduğunu belirtir.\n\n**Öneri:** 'Bunu düşünmek için bir gün istiyorum' demeyi bir taktik olarak benimseyin. Önemli konularda anlaşmaya varmadan önce eksik bilgileri tamamlayın; acele karar vermemek, verdiğiniz tavizlerin değerini de korur.",
+    "giris": "Bu profil konuları ertelemez; masaya getirir ve karşılıklı tavizlerle bir sonuca bağlamak ister.",
+    "guclu": "Belirsizliği hızla azaltır.",
+    "zayif": "Yeterli bilgi toplanmadan ya da ortam henüz sakinleşmeden anlaşmaya varabilir; acele anlaşmalar sonradan yeniden açılabilir. Thomas (1977), daha fazla bilgi gerektiğinde ve tarafların sakinleşmesi gerektiğinde bir süre beklemenin yerinde olduğunu belirtir.",
+    "oneri": "'Bunu düşünmek için bir gün istiyorum' demeyi bir taktik olarak benimseyin. Önemli konularda anlaşmaya varmadan önce eksik bilgileri tamamlayın; acele karar vermemek, verdiğiniz tavizlerin değerini de korur.",
     "kaynaklar": [
       "thomas-1977"
     ]
   },
   "uzlasma__iltifat": {
     "baslik": "Baskın: Uzlaşmacı · En az: İltifatkar",
-    "metin": "Bu profil karşılıklı taviz alışverişine açıktır ama tek taraflı geri adım atmaya pek yanaşmaz; her tavizin bir karşılığı olmasını bekler. Güçlü yanı dengeli ve adil bir alışveriş anlayışıdır. Zorluk, karşı taraf için çok önemli, sizin için önemsiz konularda bile karşılık beklemenin ilişkiyi gereksiz yere zorlaştırmasıdır. Thomas (1977), bu tür durumlarda karşılıksız uymanın ileride işe yarayacak iyi niyet birikimi sağladığını belirtir.\n\n**Öneri:** Sizin için düşük maliyetli konularda zaman zaman karşılık beklemeden esnek davranın ve bunu görünür kılın. Bu jestler, büyük konulardaki pazarlıkta güveni artırır.",
+    "giris": "Bu profil karşılıklı taviz alışverişine açıktır ama tek taraflı geri adım atmaya pek yanaşmaz; her tavizin bir karşılığı olmasını bekler.",
+    "guclu": "Dengeli ve adil bir alışveriş anlayışı vardır.",
+    "zayif": "Karşı taraf için çok önemli, sizin için önemsiz konularda bile karşılık beklemek ilişkiyi gereksiz yere zorlaştırabilir. Thomas (1977), bu tür durumlarda karşılıksız uymanın ileride işe yarayacak iyi niyet birikimi sağladığını belirtir.",
+    "oneri": "Sizin için düşük maliyetli konularda zaman zaman karşılık beklemeden esnek davranın ve bunu görünür kılın. Bu jestler, büyük konulardaki pazarlıkta güveni artırır.",
     "kaynaklar": [
       "thomas-1977"
     ]
   },
   "kacinma__rekabet": {
     "baslik": "Baskın: Kaçınmacı · En az: Rekabetçi",
-    "metin": "Bu profil çatışmadan uzak durmayı tercih eder ve kendi hedeflerini açıkça savunmaya pek yönelmez. Güçlü yanı sakinlik ve gereksiz gerilim yaratmamasıdır. Zorluk, önemli konuların çözümsüz kalması ve haklı olunan durumlarda bile geri çekilmektir; karşı taraf sessizliği onay olarak yorumlayabilir (Pruitt & Rubin, 1986). Thomas (1977), sizden yararlanılmaya çalışıldığında ve kesin karar gerektiğinde iddialı olmanın gerekli olduğunu belirtir.\n\n**Öneri:** Önemli müzakerelerden önce iyi hazırlanın; ne istediğinizi ve anlaşma olmazsa ne yapacağınızı (BATNA) yazın (Fisher & Ury, 1981). Görüşünüzü kısa ve gerekçeli tek bir cümleyle ifade etmeyi deneyin; anlamadığınız noktalarda karşı taraftan açıklama isteyin.",
+    "giris": "Bu profil çatışmadan uzak durmayı tercih eder ve kendi hedeflerini açıkça savunmaya pek yönelmez.",
+    "guclu": "Sakindir ve gereksiz gerilim yaratmaz.",
+    "zayif": "Önemli konular çözümsüz kalabilir ve haklı olunan durumlarda bile geri çekilebilir; karşı taraf sessizliği onay olarak yorumlayabilir (Pruitt & Rubin, 1986). Thomas (1977), sizden yararlanılmaya çalışıldığında ve kesin karar gerektiğinde iddialı olmanın gerekli olduğunu belirtir.",
+    "oneri": "Önemli müzakerelerden önce iyi hazırlanın; ne istediğinizi ve anlaşma olmazsa ne yapacağınızı (BATNA) yazın (Fisher & Ury, 1981). Görüşünüzü kısa ve gerekçeli tek bir cümleyle ifade etmeyi deneyin; anlamadığınız noktalarda karşı taraftan açıklama isteyin.",
     "kaynaklar": [
       "pruitt-rubin-1986",
       "thomas-1977",
@@ -106,7 +145,10 @@
   },
   "kacinma__isbirligi": {
     "baslik": "Baskın: Kaçınmacı · En az: İşbirlikçi",
-    "metin": "Bu profil çatışmaları ertelemeye eğilimlidir ve sorunları karşı tarafla birlikte, derinlemesine çözmeye daha az yönelir. Güçlü yanı, konuları aceleye getirmemesi ve gereksiz gerilimden kaçınmasıdır. Zorluk, sorunların birikmesi ve iki tarafa da değer katabilecek ortak çözümlerin hiç aranmamasıdır. Rahim (2002), etkili çatışma yönetiminin işe yarayan görev çatışmasını bastırmak değil, makul düzeyde tutmak olduğunu vurgular.\n\n**Öneri:** Ertelediğiniz her konu için bir dönüş zamanı belirleyin. Konuya döndüğünüzde pozisyonlar yerine 'bunu neden istiyorsunuz?' sorusuyla başlayın (Fisher & Ury, 1981); ortak çıkarlar çoğu zaman sanıldığından fazladır.",
+    "giris": "Bu profil çatışmaları ertelemeye eğilimlidir ve sorunları karşı tarafla birlikte, derinlemesine çözmeye daha az yönelir.",
+    "guclu": "Konuları aceleye getirmez ve gereksiz gerilimden kaçınır.",
+    "zayif": "Sorunlar birikebilir ve iki tarafa da değer katabilecek ortak çözümler hiç aranmayabilir. Rahim (2002), etkili çatışma yönetiminin işe yarayan görev çatışmasını bastırmak değil, makul düzeyde tutmak olduğunu vurgular.",
+    "oneri": "Ertelediğiniz her konu için bir dönüş zamanı belirleyin. Konuya döndüğünüzde pozisyonlar yerine 'bunu neden istiyorsunuz?' sorusuyla başlayın (Fisher & Ury, 1981); ortak çıkarlar çoğu zaman sanıldığından fazladır.",
     "kaynaklar": [
       "rahim-2002",
       "fisher-ury-1981"
@@ -114,21 +156,30 @@
   },
   "kacinma__uzlasma": {
     "baslik": "Baskın: Kaçınmacı · En az: Uzlaşmacı",
-    "metin": "Bu profil çatışmaları ertelemeyi tercih eder; karşılıklı tavizlerle bir sonuca bağlamaya da pek yönelmez. Güçlü yanı, aceleyle kötü anlaşmalara girmemesidir. Zorluk, belirsizliğin uzaması ve konuların kilitlenmesidir; ne bir çözüm ne de bir ara anlaşma ortaya çıkar. Thomas (1977), karmaşık sorunlarda geçici bir çözümün ve zaman baskısı altında uzlaşmanın yerinde olduğunu belirtir.\n\n**Öneri:** Büyük bir konuyu tek seferde çözmeye çalışmak yerine küçük, geçici anlaşmalar önerin ('şimdilik şunu deneyelim, bir ay sonra bakalım'). Küçük sorunları çözerek ilerlemek, zor konuların da çözülebilme olasılığını artırır.",
+    "giris": "Bu profil çatışmaları ertelemeyi tercih eder; karşılıklı tavizlerle bir sonuca bağlamaya da pek yönelmez.",
+    "guclu": "Aceleyle kötü anlaşmalara girmez.",
+    "zayif": "Belirsizlik uzayabilir ve konular kilitlenebilir; ne bir çözüm ne de bir ara anlaşma ortaya çıkar. Thomas (1977), karmaşık sorunlarda geçici bir çözümün ve zaman baskısı altında uzlaşmanın yerinde olduğunu belirtir.",
+    "oneri": "Büyük bir konuyu tek seferde çözmeye çalışmak yerine küçük, geçici anlaşmalar önerin ('şimdilik şunu deneyelim, bir ay sonra bakalım'). Küçük sorunları çözerek ilerlemek, zor konuların da çözülebilme olasılığını artırır.",
     "kaynaklar": [
       "thomas-1977"
     ]
   },
   "kacinma__iltifat": {
     "baslik": "Baskın: Kaçınmacı · En az: İltifatkar",
-    "metin": "Bu profil çatışmadan uzak durur ama karşı tarafın isteğine boyun eğerek de konuyu kapatmaz; tercih ettiği yol çoğunlukla konuyu askıda bırakmaktır. Güçlü yanı kendi çıkarından kolay vazgeçmemesidir. Zorluk, karşı tarafın bu tutumu ilgisizlik olarak algılaması ve ilişki kurma fırsatlarının kaçmasıdır. Thomas (1977), ilişkinin sürmesi önemli olduğunda ve iyi niyet birikimi oluşturmak istendiğinde uyma davranışının yerinde olduğunu belirtir.\n\n**Öneri:** Konuyu ertelerken bile ilgilendiğinizi gösterin ('bu sizin için önemli, düşünüp döneceğim'). Sizin için düşük maliyetli konularda küçük jestler yapmak, ileride daha zor konuları konuşmayı kolaylaştırır.",
+    "giris": "Bu profil çatışmadan uzak durur ama karşı tarafın isteğine boyun eğerek de konuyu kapatmaz; tercih ettiği yol çoğunlukla konuyu askıda bırakmaktır.",
+    "guclu": "Kendi çıkarından kolay vazgeçmez.",
+    "zayif": "Karşı taraf bu tutumu ilgisizlik olarak algılayabilir ve ilişki kurma fırsatları kaçabilir. Thomas (1977), ilişkinin sürmesi önemli olduğunda ve iyi niyet birikimi oluşturmak istendiğinde uyma davranışının yerinde olduğunu belirtir.",
+    "oneri": "Konuyu ertelerken bile ilgilendiğinizi gösterin ('bu sizin için önemli, düşünüp döneceğim'). Sizin için düşük maliyetli konularda küçük jestler yapmak, ileride daha zor konuları konuşmayı kolaylaştırır.",
     "kaynaklar": [
       "thomas-1977"
     ]
   },
   "iltifat__rekabet": {
     "baslik": "Baskın: İltifatkar · En az: Rekabetçi",
-    "metin": "Bu profil karşı tarafın isteğini kendi hedeflerinin önüne koymaya yatkındır ve kendi pozisyonunu sert biçimde savunmaktan kaçınır. Güçlü yanı anlayış, cömertlik ve ilişkiyi koruma becerisidir. Zorluk, kendi ihtiyaçlarının görünmez hale gelmesi ve özellikle rekabetçi karşı taraflarca istismar edilmektir; Pruitt ve Rubin (1986) kendi sonuçlarına düşük ilgi gösteren tarafın boyun eğmeye yatkın olduğunu belirtir. Thomas (1977), sizden yararlanılmaya çalışıldığında iddialı olmanın gerekli olduğunu vurgular.\n\n**Öneri:** Tavizlerinizi her zaman bir koşula bağlayın. Müzakere öncesinde vazgeçemeyeceğiniz konuları ve en iyi alternatifinizi (BATNA) yazın (Fisher & Ury, 1981); rekabetçi biriyle karşılaştığınızda bu listeye sadık kalın.",
+    "giris": "Bu profil karşı tarafın isteğini kendi hedeflerinin önüne koymaya yatkındır ve kendi pozisyonunu sert biçimde savunmaktan kaçınır.",
+    "guclu": "Anlayışlı ve cömerttir, ilişkiyi korumayı bilir.",
+    "zayif": "Kendi ihtiyaçları görünmez hale gelebilir ve özellikle rekabetçi karşı taraflarca istismar edilebilir; Pruitt ve Rubin (1986) kendi sonuçlarına düşük ilgi gösteren tarafın boyun eğmeye yatkın olduğunu belirtir. Thomas (1977), sizden yararlanılmaya çalışıldığında iddialı olmanın gerekli olduğunu vurgular.",
+    "oneri": "Tavizlerinizi her zaman bir koşula bağlayın. Müzakere öncesinde vazgeçemeyeceğiniz konuları ve en iyi alternatifinizi (BATNA) yazın (Fisher & Ury, 1981); rekabetçi biriyle karşılaştığınızda bu listeye sadık kalın.",
     "kaynaklar": [
       "pruitt-rubin-1986",
       "thomas-1977",
@@ -137,7 +188,10 @@
   },
   "iltifat__isbirligi": {
     "baslik": "Baskın: İltifatkar · En az: İşbirlikçi",
-    "metin": "Bu profil ilişkiyi korumak için geri adım atmayı tercih eder; kendi kaygılarını da masaya getirerek ortak bir çözüm aramaya ise daha az yönelir. Güçlü yanı uyumu koruması ve gerginliği yatıştırmasıdır. Zorluk, kalıcı bir çözüm yerine yüzeysel bir sükunetin oluşması ve kendi bakış açısının çözüme hiç yansımamasıdır. Rahim (2002), karmaşık konularda bütünleştirici yaklaşımın genellikle daha uygun olduğunu belirtir.\n\n**Öneri:** Geri adım atmadan önce kendi ihtiyacınızı da söyleyin ve 'ikimizin de istediğini karşılayan bir yol var mı?' diye sorun (Fisher & Ury, 1981). Görüşünüzü paylaşmak ilişkiye zarar vermez; çoğu zaman daha iyi bir çözümün yolunu açar.",
+    "giris": "Bu profil ilişkiyi korumak için geri adım atmayı tercih eder; kendi kaygılarını da masaya getirerek ortak bir çözüm aramaya ise daha az yönelir.",
+    "guclu": "Uyumu korur ve gerginliği yatıştırır.",
+    "zayif": "Kalıcı bir çözüm yerine yüzeysel bir sükunet oluşabilir ve kendi bakış açısı çözüme hiç yansımayabilir. Rahim (2002), karmaşık konularda bütünleştirici yaklaşımın genellikle daha uygun olduğunu belirtir.",
+    "oneri": "Geri adım atmadan önce kendi ihtiyacınızı da söyleyin ve 'ikimizin de istediğini karşılayan bir yol var mı?' diye sorun (Fisher & Ury, 1981). Görüşünüzü paylaşmak ilişkiye zarar vermez; çoğu zaman daha iyi bir çözümün yolunu açar.",
     "kaynaklar": [
       "rahim-2002",
       "fisher-ury-1981"
@@ -145,14 +199,20 @@
   },
   "iltifat__uzlasma": {
     "baslik": "Baskın: İltifatkar · En az: Uzlaşmacı",
-    "metin": "Bu profil taviz vermeye isteklidir ama karşılığında bir şey istemeye pek yönelmez; alışveriş çoğu zaman tek taraflı kalır. Güçlü yanı cömertlik ve iyi niyettir. Zorluk, karşılıksız verilen tavizlerin karşı tarafça yeni bir başlangıç noktası olarak görülmesi ve zamanla dengesiz bir ilişkinin oluşmasıdır. Thomas (1977), uymanın ilişki için yerinde olduğu durumların yanında karşılıklı tavizle ortada buluşmanın da uygun olduğu durumlar bulunduğunu belirtir.\n\n**Öneri:** Her taviz için 'bunu verirsem karşılığında ne isteyebilirim?' diye sorun. Tavizlerinizi küçükten büyüğe sıralayın ve hiçbirini karşılıksız vermeyin; bu, iyi niyetinizin değerini korur.",
+    "giris": "Bu profil taviz vermeye isteklidir ama karşılığında bir şey istemeye pek yönelmez; alışveriş çoğu zaman tek taraflı kalır.",
+    "guclu": "Cömerttir ve iyi niyetlidir.",
+    "zayif": "Karşılıksız verilen tavizler karşı tarafça yeni bir başlangıç noktası olarak görülebilir ve zamanla dengesiz bir ilişki oluşabilir. Thomas (1977), uymanın ilişki için yerinde olduğu durumların yanında karşılıklı tavizle ortada buluşmanın da uygun olduğu durumlar bulunduğunu belirtir.",
+    "oneri": "Her taviz için 'bunu verirsem karşılığında ne isteyebilirim?' diye sorun. Tavizlerinizi küçükten büyüğe sıralayın ve hiçbirini karşılıksız vermeyin; bu, iyi niyetinizin değerini korur.",
     "kaynaklar": [
       "thomas-1977"
     ]
   },
   "iltifat__kacinma": {
     "baslik": "Baskın: İltifatkar · En az: Kaçınmacı",
-    "metin": "Bu profil konuları ertelemez; ancak çözümü çoğunlukla karşı tarafın isteği doğrultusunda bağlar. Güçlü yanı ilgili ve yardımsever olması, sorunları bekletmemesidir. Zorluk, hızlı ama tek taraflı sonuçlardır: düşünmek ve hazırlanmak için zaman tanımadan verilen tavizler sonradan pişmanlık yaratabilir. Thomas (1977), bilgi toplamak ve ortamın sakinleşmesi için bir süre beklemenin yerinde olduğu durumlar bulunduğunu belirtir.\n\n**Öneri:** Bir talep karşısında hemen 'olur' demek yerine 'düşünüp size döneceğim' demeyi deneyin. Bu kısa ara, ne istediğinizi netleştirmenize ve tavizlerinizi bilinçli vermenize yardım eder.",
+    "giris": "Bu profil konuları ertelemez; ancak çözümü çoğunlukla karşı tarafın isteği doğrultusunda bağlar.",
+    "guclu": "İlgili ve yardımseverdir, sorunları bekletmez.",
+    "zayif": "Sonuçlar hızlı ama tek taraflı olabilir: düşünmek ve hazırlanmak için zaman tanımadan verilen tavizler sonradan pişmanlık yaratabilir. Thomas (1977), bilgi toplamak ve ortamın sakinleşmesi için bir süre beklemenin yerinde olduğu durumlar bulunduğunu belirtir.",
+    "oneri": "Bir talep karşısında hemen 'olur' demek yerine 'düşünüp size döneceğim' demeyi deneyin. Bu kısa ara, ne istediğinizi netleştirmenize ve tavizlerinizi bilinçli vermenize yardım eder.",
     "kaynaklar": [
       "thomas-1977"
     ]

@@ -274,3 +274,15 @@ def test_score_table_shows_normal_range_column(make_web_service) -> None:
     for aralik in ["4–7", "6–9", "5–8", "5–7", "4–6"]:
         assert f"<td>{aralik}</td>" in table
     assert "Seviyeler eğitimdeki eşiklere" not in page
+
+
+def test_ai_tab_is_prose_with_profile_strengths(make_web_service) -> None:
+    page = registered_client(make_web_service()).get(f"/sonuc/{PUBLIC_ID}").text
+    ai_tab = page[page.index('id="icerik-kaynak"'):page.index('id="icerik-sorular"')]
+
+    # AI sekmesinde sunum maddeleri yok; beş başlığın hepsi düz yazı.
+    cards = ai_tab[ai_tab.index('class="tarz-kart'):ai_tab.index('class="kaynakca"')]
+    assert "<li>" not in cards
+    assert cards.count('class="tarz-kart') == 5
+    assert cards.count('class="bolum ') == 25
+    assert "Güçlü yanları:" in ai_tab and "Zayıf yanları:" in ai_tab and "Öneri:" in ai_tab

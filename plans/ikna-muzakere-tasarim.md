@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Tasarım
 
-**Sürüm: v7 — 2026-11-11 23:18**
+**Sürüm: v8 — 2026-11-11 23:26**
 
 **Sürüm notları**
 
+- v8 — Kartlarda "Size tavsiyeler" 2. sırada; ikinci sekmenin adı "AI destekli yorum"; bu sekmede beş başlığın hepsi düz yazı (uygun, uygun değil ve karşı taraf için tarz başına yeni kaynaklı metin); profil kutusu giriş / güçlü yanlar / zayıf yanlar / öneri olarak bölündü.
 - v7 — Sunum maddeleri bölüm başına en fazla 4, her bölümde tek gramer kalıbı; Kaçınmacı uygun / uygun değil olarak bölündü (uygun değil, sunumdaki uygun koşulların tersinden); sonuç sayfasında 4 sekme (2 yorum + 2 cevap).
 - v6 — Puan tablosuna "Normal aralık" sütunu (orta seviye aralığı); tablonun altındaki eşik notu kaldırıldı.
 - v5 — "Cevaplarım" bölümü iki sekme: sorulara verilen cevaplar ve eğitimdeki kâğıt gibi 5 sütunlu cevap anahtarı.
@@ -87,7 +88,7 @@ Bu proje, testi bir web sitesine taşır. Kişi soruları çözer, puanlarını 
 4. **Yönetici ekranı:** Site sahibi, ana sayfadaki giriş formuna takma ad olarak yönetici adını (`ustaoglu`) ve yönetici şifresini yazınca doğrudan yönetici ekranına girer; `/yonetici` adresi de çalışır. Yönetici adı aday olarak kaydedilemez. Site sahibi adayların takma ad listesinden birini seçer ve onun gördüğü sonuç ekranını aynen görür. Şimdilik ek bir özellik yoktur.
 5. **Yorumlar** (sonuç sayfasında iki seçenek):
    1. **Sunum metinleri:** Varsayılan seçenek. Eğitimdeki hazır metinler gösterilir.
-   2. **Kaynaklarla genişletilmiş yorum:** Önceden hazırlanmış, akademik kaynaklara dayalı ve kaynakçalı yorumlar. "Yapay zekâ yardımıyla hazırlanmıştır" uyarısı taşır.
+   2. **AI destekli yorum** (v8'e kadar adı "Kaynaklarla genişletilmiş yorum"): Önceden hazırlanmış, akademik kaynaklara dayalı ve kaynakçalı yorumlar. "Yapay zekâ yardımıyla hazırlanmıştır" uyarısı taşır.
    3. Kaynaklı yorumların altında bir **"Kişiselleştir"** kutusu bulunur. Açıkken, uyarı onaylandıktan sonra Gemini'den profile özel yorum ister; üretilen yorum kaydedilir. **Şimdilik kapalıdır ve tıklanamaz**; `LIVE_COMMENT_ENABLED` ayarıyla açılır.
 6. Barındırma Render (ücretsiz), veritabanı Neon (ücretsiz), mimari tek Python uygulaması.
 
@@ -140,19 +141,27 @@ Sunumdan her tarz için şu bölümler alınır:
 
 Her bölümün bir türü vardır: `davranis`, `uygun`, `uygun_degil`, `siz_iseniz`, `karsi_taraf`. Her tarzda her türden tam olarak bir bölüm vardır.
 
-Gösterim kuralı (kullanıcı kararı, v4): Her tarz bir kart olarak gösterilir; bölümler sunumdaki sıradan bağımsız olarak şu **sabit sırayla** gelir:
+Gösterim kuralı (kullanıcı kararı, v4; sıra v8): Her tarz bir kart olarak gösterilir; bölümler sunumdaki sıradan bağımsız olarak şu **sabit sırayla** gelir:
 
-1. **Nasıl davranır** (`davranis`)
-2. **Uygun olduğu koşullar** (`uygun`)
-3. **Uygun olmadığı koşullar** (`uygun_degil`)
-4. **Size tavsiyeler** — kaynağı sekmeye göre değişir:
-   - *Sunum yorumları* sekmesi: yüksek seviyede "Siz … iseniz" maddeleri; orta ve düşükte kısa bir not ("Bu tarzı az / orta düzeyde kullanıyorsunuz…") ve "Bu tarzı kullandığınızda dikkat edin" başlığıyla aynı maddeler.
-   - *Kaynaklarla genişletilmiş yorum* sekmesi: o tarz ve seviyeye ait kaynaklı bloğun "Gelişim için" paragrafı ("kaynaklı öneri" etiketiyle).
-5. **Karşınızda bu tarzda biri varsa** (`karsi_taraf`)
+1. **Nasıl davranır**
+2. **Size tavsiyeler**
+3. **Uygun olduğu koşullar**
+4. **Uygun olmadığı koşullar**
+5. **Karşınızda bu tarzda biri varsa**
 
-Yüksek seviyedeki kartlar açık, diğerleri kapalı başlar. Kaynaklı sekmede ayrıca en üstte profil yorumu, "Nasıl davranır" altında "Kaynaklara göre" açıklaması ve en altta kaynakça bulunur.
+Bölümlerin içeriği sekmeye göre değişir:
 
-### 7.2 Kaynaklarla genişletilmiş yorum (2. seçenek)
+| Bölüm | Sunum yorumları (maddeler) | AI destekli yorum (düz yazı) |
+|---|---|---|
+| Nasıl davranır | `davranis` | Tarz–seviye bloğunun açıklama kısmı |
+| Size tavsiyeler | Yüksekte "Siz … iseniz" maddeleri; orta ve düşükte kısa not ("Bu tarzı az / orta düzeyde kullanıyorsunuz…") ve "Bu tarzı kullandığınızda dikkat edin" başlığıyla aynı maddeler | Tarz–seviye bloğunun "Gelişim için" paragrafı |
+| Uygun olduğu koşullar | `uygun` | Tarza özel kaynaklı metin (v8) |
+| Uygun olmadığı koşullar | `uygun_degil` | Tarza özel kaynaklı metin (v8) |
+| Karşınızda bu tarzda biri varsa | `karsi_taraf` | Tarza özel kaynaklı metin (v8) |
+
+Yüksek seviyedeki kartlar açık, diğerleri kapalı başlar. AI destekli sekmede ayrıca en üstte profil kutusu ve en altta kaynakça bulunur.
+
+### 7.2 AI destekli yorum (2. seçenek)
 
 - **Kaynak paketi:** Uygulamadan önce, çatışma tarzları üzerine güvenilir kaynaklar araştırılır ve doğrulanır. Adaylar:
   - Thomas & Kilmann (1974) TKI ve Thomas (1976/1992) çatışma modeli,
@@ -168,7 +177,8 @@ Yüksek seviyedeki kartlar açık, diğerleri kapalı başlar. Kaynaklı sekmede
 - **Kullanıcı onayı:** Kaynak paketi, 15 blok ve 20 profil yorumu yayına girmeden önce kullanıcı tarafından okunur ve onaylanır. Bu, uygulama planında ayrı bir adımdır.
 - **Metinler:**
   - **Tarz–seviye blokları:** 5 tarz × 3 seviye = 15 blok. Her blokta tarzın akademik tanımı, güçlü ve riskli yönleri, gelişim önerileri ve kaynak atıfları bulunur.
-  - **Profil yorumları:** Kişinin **en baskın** tarzı ile **en az kullandığı** tarzın birleşimine göre yazılır; 5 × 4 = 20 metin. Profil yorumu, bu ikisinin birlikte ne anlama geldiğini ve hangi durumlarda zorluk çıkarabileceğini anlatır.
+  - **Tarz bölümleri (v8):** 5 tarz × 3 başlık (uygun, uygun olmadığı, karşı taraf) = 15 kaynaklı paragraf; seviyeden bağımsızdır. Kullanıcı onaylıdır.
+  - **Profil yorumları:** Kişinin **en baskın** tarzı ile **en az kullandığı** tarzın birleşimine göre yazılır; 5 × 4 = 20 metin. Profil yorumu, bu ikisinin birlikte ne anlama geldiğini ve hangi durumlarda zorluk çıkarabileceğini anlatır. v8'den beri dört parçadır: giriş, **Güçlü yanları**, **Zayıf yanları**, **Öneri**.
 - **Baskın ve en az kullanılan tarzın belirlenmesi** (benim kararım): Eşikler tarzlar arasında farklı olduğu için ham puan değil, göreli puan karşılaştırılır:
 
   `göreli = (puan − düşük eşik) / (yüksek eşik − düşük eşik)`
@@ -199,7 +209,7 @@ Yüksek seviyedeki kartlar açık, diğerleri kapalı başlar. Kaynaklı sekmede
    - Puan tablosu: tarz, puan, normal aralık (düşük eşik + 1 ile yüksek eşik − 1 arası, ör. Rekabetçi 4–7) ve seviye.
    - İki eksenli grafik.
    - 2×2 düğme olarak dört sekme; üst satır yorumlar, alt satır cevaplar:
-     - "Sunum yorumları" ve "Kaynaklarla genişletilmiş yorum" (kaynaklı sekmenin altında canlı yapay zekâ düğmesi).
+     - "Sunum yorumları" ve "AI destekli yorum" (AI destekli sekmenin altında canlı yapay zekâ düğmesi).
      - "Sorulara cevaplarım": her soruda A ve B şıkkı, seçilen işaretli.
      - "Cevap anahtarım": eğitimdeki kâğıt gibi 30 satır × 5 tarz sütunu; A ve B kendi tarzının sütununda, seçilen hücre taralı, altta sütun toplamları (puanlar).
 5. **Sonucuma bak:** Kişi takma adını ve PIN'ini girer. En son sonucu açılır; önceki denemeleri tarih listesi olarak görür ve "Testi tekrar çöz" diyebilir.

@@ -23,6 +23,10 @@ SECTION_TYPES: Final[tuple[SectionType, ...]] = (
     "karsi_taraf",
 )
 
+# AI destekli sekmede sunum maddeleri yerine düz yazı gösterilen bölümler.
+AiSectionType = Literal["uygun", "uygun_degil", "karsi_taraf"]
+AI_SECTION_TYPES: Final[tuple[AiSectionType, ...]] = ("uygun", "uygun_degil", "karsi_taraf")
+
 
 class ContentError(ValueError):
     """İçerik dosyaları eksik ya da tutarsız olduğunda fırlatılır."""
@@ -80,9 +84,18 @@ class Block:
 
 
 @dataclass(frozen=True)
+class SourcedText:
+    metin: str
+    kaynaklar: list[str]
+
+
+@dataclass(frozen=True)
 class ProfileText:
     baslik: str
-    metin: str
+    giris: str
+    guclu: str
+    zayif: str
+    oneri: str
     kaynaklar: list[str]
 
 
@@ -94,6 +107,7 @@ class Content:
     sunum: dict[StyleKey, list[Section]]
     sources: list[Source]
     blocks: dict[tuple[StyleKey, Level], Block]
+    ai_bolumler: dict[StyleKey, dict[AiSectionType, SourcedText]]
     profiles: dict[tuple[StyleKey, StyleKey], ProfileText]
     style_by_key: dict[StyleKey, StyleDef] = field(init=False)
 

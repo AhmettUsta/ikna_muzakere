@@ -153,8 +153,9 @@ def test_result_view_owner(content, db, hasher) -> None:
     assert len(view.answers) == 30
     assert view.answers[0].secilen == "A" and view.answers[0].secilen_tarz == "kacinma"
     assert [card.style for card in view.kartlar_sunum] == ["rekabet", "isbirligi", "uzlasma", "kacinma", "iltifat"]
-    assert view.kartlar_sunum[0].tavsiye.kaynakli is False
-    assert view.kartlar_kaynakli[3].tavsiye.metin == content.blocks[("kacinma", "dusuk")].gelisim
+    assert view.kartlar_sunum[0].tavsiye.maddeler
+    assert view.kartlar_kaynakli[3].tavsiye == content.blocks[("kacinma", "dusuk")].gelisim
+    assert view.kartlar_kaynakli[3].uygun == content.ai_bolumler["kacinma"]["uygun"].metin
     assert view.live_enabled is False and view.can_request_live is False
 
 

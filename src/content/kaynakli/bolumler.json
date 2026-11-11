@@ -1,0 +1,108 @@
+{
+  "rekabet": {
+    "uygun": {
+      "metin": "Thomas (1977), rekabetçi tarzın en çok hızlı ve kesin karar gereken acil durumlarda işe yaradığını belirtir. Popüler olmayan ama zorunlu bir kararın uygulanması gerektiğinde ve kurum için yaşamsal bir konuda haklı olduğunuzu bildiğinizde de bu tarz yerindedir. Thomas, rekabetçi olmayan davranışı istismar eden kişilere karşı kendinizi korumayı da bu durumlar arasında sayar. Ortak nokta, sonucun ilişkiden daha önemli olduğu ve beklemenin bedelinin yüksek olduğu durumlardır.",
+      "kaynaklar": [
+        "thomas-1977"
+      ]
+    },
+    "uygun_degil": {
+      "metin": "Pruitt ve Rubin (1986), karşı tarafı kendi çözümünü kabul etmeye zorlayan üstünlük kurma stratejisini çatışmanın tırmanma süreciyle birlikte inceler. Uzun süreli ilişkilerde, iki tarafın kaygılarının da önemli olduğu karmaşık konularda ve karşı tarafın gücü sizinkine yakın olduğunda rekabetçi tarz bu yüzden çoğu zaman ters teper. Rahim (2002), ilişkiye zarar veren duygusal çatışmanın etkili çatışma yönetimini zayıflattığını vurgular; tartışma kişiselleşmeye başladıysa bu tarzı bırakmanın zamanı gelmiştir.",
+      "kaynaklar": [
+        "pruitt-rubin-1986",
+        "rahim-2002"
+      ]
+    },
+    "karsi_taraf": {
+      "metin": "Fisher ve Ury (1981), baskıya baskıyla karşılık vermek yerine insanları sorundan ayırmayı ve pozisyonlara değil çıkarlara odaklanmayı önerir. Rekabetçi biriyle görüşürken ısrarı kişiselleştirmeden, nesnel ölçütlerde diretmek tartışmayı güç gösterisinden çıkarır. Anlaşma olmazsa başvuracağınız en iyi alternatifi (BATNA) bilmek de baskıya boyun eğmeden masada kalmanızı sağlar.",
+      "kaynaklar": [
+        "fisher-ury-1981"
+      ]
+    }
+  },
+  "isbirligi": {
+    "uygun": {
+      "metin": "Thomas'a (1977) göre işbirlikçi tarz, iki tarafın kaygıları da feda edilemeyecek kadar önemli olduğunda ve bütünleşik bir çözüm gerektiğinde uygundur. Amacınız öğrenmek, farklı bakış açılarını birleştirmek ya da kararı ortak kılarak bağlılık yaratmak olduğunda da bu tarz en iyi sonucu verir. Rahim (2002), karmaşık ve stratejik konularda bütünleştirmenin genellikle daha uygun olduğunu tartışır.",
+      "kaynaklar": [
+        "thomas-1977",
+        "rahim-2002"
+      ]
+    },
+    "uygun_degil": {
+      "metin": "İşbirliği zaman, bilgi paylaşımı ve karşı tarafın istekliliğini gerektirir. Konu önemsiz olduğunda ya da zaman çok kısıtlı olduğunda harcanan emek sonuca değmeyebilir; Thomas (1977) bu durumlar için kaçınmayı ya da uzlaşmayı sayar. Pruitt ve Rubin'in (1986) ikili ilgi modeline göre problem çözme, kişinin hem kendi hem karşı tarafın sonuçlarına ilgi duymasına dayanır; karşı taraf yalnızca kendi kazancıyla ilgileniyorsa açık davranmak sizi savunmasız bırakır.",
+      "kaynaklar": [
+        "thomas-1977",
+        "pruitt-rubin-1986"
+      ]
+    },
+    "karsi_taraf": {
+      "metin": "İşbirlikçi biriyle çalışmak, Fisher ve Ury'nin (1981) ilkeli müzakere yaklaşımının doğal zeminidir: çıkarlarınızı açıkça paylaşın, birlikte seçenek üretin ve nesnel ölçütler üzerinde anlaşın. Onun açıklığını karşılıksız bırakmak güveni hızla zedeler. Yine de kendi sınırlarınızı ve alternatifinizi bilmek, ortak çözüm arayışında kendi çıkarlarınızı unutmamanızı sağlar.",
+      "kaynaklar": [
+        "fisher-ury-1981"
+      ]
+    }
+  },
+  "uzlasma": {
+    "uygun": {
+      "metin": "Thomas (1977), uzlaşmanın şu durumlarda işe yaradığını belirtir: hedefler önemli ama daha iddialı tarzların emeğine ya da yol açacağı gerginliğe değmediğinde, eşit güçteki taraflar birbirini dışlayan hedeflere bağlı olduğunda, karmaşık konularda geçici bir çözüm gerektiğinde ve zaman baskısı altında hızlı bir sonuç gerektiğinde. İşbirliği ya da rekabet sonuç vermediğinde uzlaşma bir yedek yol olarak da kullanılabilir.",
+      "kaynaklar": [
+        "thomas-1977"
+      ]
+    },
+    "uygun_degil": {
+      "metin": "Pruitt ve Rubin (1986), uzlaşmayı çoğu zaman yarım kalmış bir problem çözme olarak görür: iki tarafa daha fazla değer katabilecek seçenekler aranmadan orta noktada durulur. Bu yüzden konu iki taraf için de çok önemliyse ve yaratıcı bir çözüm için zaman varsa uzlaşma erken bir tercihtir. Görüşülemeyecek ilkeler ya da politikalar söz konusu olduğunda da ortada buluşmak doğru değildir; Fisher ve Ury (1981), bölüşümün pazarlık gücüyle değil nesnel ölçütlerle yapılmasını önerir.",
+      "kaynaklar": [
+        "pruitt-rubin-1986",
+        "fisher-ury-1981"
+      ]
+    },
+    "karsi_taraf": {
+      "metin": "Uzlaşmacı biri hızlıca \"ortada buluşalım\" önerisiyle gelir. Fisher ve Ury (1981), ortanın adil olup olmadığını nesnel ölçütlerle sınamayı ve önce çıkarları konuşmayı önerir; böylece daha iyi seçenekler masaya gelmeden anlaşma kapanmaz. Başlangıç noktalarının orta noktayı belirlediğini akılda tutmak ve tavizleri karşılıklı, koşullu vermek de dengesiz bir sonucu önler.",
+      "kaynaklar": [
+        "fisher-ury-1981"
+      ]
+    }
+  },
+  "kacinma": {
+    "uygun": {
+      "metin": "Thomas (1977), kaçınmanın akıllıca olduğu durumları şöyle sıralar: konu önemsiz olduğunda ya da daha önemli konular beklerken, kaygılarınızı karşılama şansı olmadığında, çatışmanın vereceği zarar kazancından büyük olduğunda, tarafların sakinleşmesi gerektiğinde, hemen karar vermek yerine bilgi toplamak daha önemli olduğunda ve sorunu başkaları daha etkili çözebileceğinde. Bu durumlarda geri çekilmek bir zayıflık değil, zamanlamayı kullanan bilinçli bir tercihtir.",
+      "kaynaklar": [
+        "thomas-1977"
+      ]
+    },
+    "uygun_degil": {
+      "metin": "Kaçınma, konu sizin için önemliyse ve çözümsüz kaldıkça büyüyecekse uygun değildir. Rahim (2002), etkili çatışma yönetiminin işe yarayan görev çatışmasını bastırmak değil, makul düzeyde tutmak olduğunu vurgular; sürekli kaçınmak bu yararlı tartışmayı da ortadan kaldırır. Zaman baskısı sizin tarafınızdaysa ya da karşı taraf sessizliğinizi onay olarak yorumlayacaksa ertelemek, kararı karşı tarafa bırakmak anlamına gelir.",
+      "kaynaklar": [
+        "rahim-2002"
+      ]
+    },
+    "karsi_taraf": {
+      "metin": "Pruitt ve Rubin (1986), iki tarafın sonuçlarına da düşük ilgiyi hareketsizlik olarak tanımlar; kaçınmacı biri baskı arttıkça daha da geri çekilebilir. Konuyu kişiden ayırmak ve onun çıkarlarını sormak (Fisher & Ury, 1981) konuşmayı güvenli kılar ve görüşünü söylemesini kolaylaştırır. Ertelenen konular için açık bir dönüş zamanı belirlemek ve küçük, net kararlar istemek de süreci ilerletir.",
+      "kaynaklar": [
+        "pruitt-rubin-1986",
+        "fisher-ury-1981"
+      ]
+    }
+  },
+  "iltifat": {
+    "uygun": {
+      "metin": "Thomas (1977), uyma tarzının uygun olduğu durumları şöyle sayar: haksız olduğunuzu fark ettiğinizde ve daha iyi bir görüşün duyulmasına izin vermek istediğinizde, konu karşı taraf için sizden çok daha önemli olduğunda, ileride işe yarayacak bir iyi niyet birikimi oluşturmak istediğinizde, güçsüz ve kaybeden taraf olduğunuzda kaybı en aza indirmek için, uyum ve istikrar özellikle önemli olduğunda ve astların hatalarından öğrenmesine izin vermek istediğinizde.",
+      "kaynaklar": [
+        "thomas-1977"
+      ]
+    },
+    "uygun_degil": {
+      "metin": "Pruitt ve Rubin'in (1986) boyun eğme olarak tanımladığı bu tarz, konu sizin için önemliyse ya da ilkeler ve güvenlik gibi pazarlığa açık olmayan konular söz konusuysa uygun değildir. Tavizleriniz karşılıksız kalıyorsa ya da karşı taraf iyi niyetinizi istismar ediyorsa uyum sürdükçe kaybınız büyür. Fisher ve Ury (1981), ilişkiyi korumak için esas konuda taviz vermek yerine insanları sorundan ayırmayı önerir: ilişkiye özen gösterirken esas konuda kararlı olmak mümkündür.",
+      "kaynaklar": [
+        "pruitt-rubin-1986",
+        "fisher-ury-1981"
+      ]
+    },
+    "karsi_taraf": {
+      "metin": "İltifatkar biri kendi ihtiyaçlarını geri planda tuttuğu için onun tavizlerini sonuna kadar kullanmak kısa vadede kazanç gibi görünür. Ancak tek taraflı anlaşmalar uygulamada sorun çıkarır ve ilişkiyi yıpratır; Fisher ve Ury (1981), iki tarafın çıkarlarını karşılayan ve nesnel ölçütlere dayanan anlaşmaların daha kalıcı olduğunu savunur. Onun gerçekten ne istediğini sormak ve vazgeçtiği konuları açıkça konuşmak, ileride çıkacak kırgınlıkları önler.",
+      "kaynaklar": [
+        "fisher-ury-1981"
+      ]
+    }
+  }
+}

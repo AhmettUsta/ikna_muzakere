@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Final
 
-from content_types import Block, Level, Question, Section, StyleKey
+from content_types import AiSectionType, Block, Level, Question, Section, SourcedText, StyleKey
 from scoring import StyleResult
 
 LOW_NOTE: Final[str] = "Bu tarzı az kullanıyorsunuz. Aşağıdaki uygun koşullarda bu tarza geçmeyi deneyin."
@@ -14,8 +14,6 @@ class Advice:
     not_metni: str | None
     liste_basligi: str | None
     maddeler: list[str] = field(default_factory=list)
-    metin: str | None = None
-    kaynakli: bool = False
 
 
 @dataclass(frozen=True)
@@ -24,7 +22,6 @@ class StyleCard:
     level: Level
     acik: bool
     davranis: Section
-    kaynak_aciklama: str | None
     uygun: Section
     uygun_degil: Section
     tavsiye: Advice
@@ -44,23 +41,45 @@ def _sunum_advice(level: Level, siz_iseniz: Section) -> Advice:
     return Advice(not_metni=note, liste_basligi=CAUTION_TITLE, maddeler=list(siz_iseniz.maddeler))
 
 
-def style_card(result: StyleResult, sections: list[Section], block: Block | None) -> StyleCard:
-    """Bir tarzın kartını sabit sırayla kurar; block verilirse tavsiye kaynaklı metinden gelir."""
-    siz_iseniz = _first(sections, "siz_iseniz")
-    if block is None:
-        advice = _sunum_advice(result.level, siz_iseniz)
-    else:
-        advice = Advice(not_metni=None, liste_basligi=None, metin=block.gelisim, kaynakli=True)
+def style_card(result: StyleResult, sections: list[Section]) -> StyleCard:
+    """Sunum sekmesindeki kartı sunum maddelerinden kurar."""
     return StyleCard(
         style=result.style,
         level=result.level,
         acik=result.level == "yuksek",
         davranis=_first(sections, "davranis"),
-        kaynak_aciklama=block.aciklama if block is not None else None,
         uygun=_first(sections, "uygun"),
         uygun_degil=_first(sections, "uygun_degil"),
-        tavsiye=advice,
+        tavsiye=_sunum_advice(result.level, _first(sections, "siz_iseniz")),
         karsi_taraf=_first(sections, "karsi_taraf"),
+    )
+
+
+@dataclass(frozen=True)
+class AiCard:
+    """AI destekli sekmedeki kart: bütün bölümler kaynaklı düz yazıdır."""
+
+    style: StyleKey
+    level: Level
+    acik: bool
+    davranis: str
+    tavsiye: str
+    uygun: str
+    uygun_degil: str
+    karsi_taraf: str
+
+
+def ai_card(result: StyleResult, block: Block, sections: dict[AiSectionType, SourcedText]) -> AiCard:
+    """Davranış ve tavsiye seviyeye özel bloktan, diğer bölümler tarza özel metinlerden gelir."""
+    return AiCard(
+        style=result.style,
+        level=result.level,
+        acik=result.level == "yuksek",
+        davranis=block.aciklama,
+        tavsiye=block.gelisim,
+        uygun=sections["uygun"].metin,
+        uygun_degil=sections["uygun_degil"].metin,
+        karsi_taraf=sections["karsi_taraf"].metin,
     )
 
 

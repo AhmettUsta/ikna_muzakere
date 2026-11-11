@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Mimari
 
-**Sürüm: v4 — 2026-11-11 23:18**
+**Sürüm: v5 — 2026-11-11 23:26**
 
 **Sürüm notları**
 
+- v5 — `kaynakli/bolumler.json` (tarz başına uygun / uygun değil / karşı taraf düz yazısı); profil alanları giriş / güçlü / zayıf / öneri; AI destekli sekme için ayrı kart modeli (`AiCard`).
 - v4 — Kaçınmacı istisnası kalktı: her tarzda her bölüm türünden tam bir tane; bölüm başına en fazla 4 madde denetimi.
 - v3 — Barındırma Render yerine Vercel (Render'a giriş yapılamadı); canlıda doğrulandı.
 - v2 — İçerik doğrulaması tür bazlı bölüm listesine göre güncellendi (Kaçınmacı istisnası); geliştirme veritabanı da Neon.
@@ -64,7 +65,7 @@ src/
     questions.json     # 30 soru: {no, a, b}
     scoring.json       # anahtar (soru→A/B→tarz), eşikler, tarz adları, grafik konumları
     sunum/             # tarz başına sunum metinleri (1. seçenek): sıralı bölüm listesi {tur, baslik, maddeler}
-    kaynakli/          # 15 tarz–seviye bloğu, 20 profil yorumu (2. seçenek)
+    kaynakli/          # 15 tarz–seviye bloğu, 15 tarz bölümü (bolumler.json), 20 profil yorumu (2. seçenek)
     kaynaklar.md       # kaynak paketi: özetler + tam kaynakça
 migrations/            # Alembic
 tests/                 # pytest

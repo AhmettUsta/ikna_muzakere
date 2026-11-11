@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from datetime import datetime
 
 from content_types import Content, ProfileText
-from presentation import AnswerRow, StyleCard, answer_rows, style_card
+from presentation import AiCard, AnswerRow, StyleCard, ai_card, answer_rows, style_card
 from scoring import Scorer, ScoreResult
 from security import LockoutPolicy, PinHasher, normalize_nickname, validate_pin
 from step_database import AttemptRow, DatabaseStep, NicknameTaken, ParticipantSummary
@@ -44,7 +44,7 @@ class ResultView:
     public_id: uuid.UUID
     score: ScoreResult
     kartlar_sunum: list[StyleCard]
-    kartlar_kaynakli: list[StyleCard]
+    kartlar_kaynakli: list[AiCard]
     profile: ProfileText
     answers: list[AnswerRow]
     ai_comment: str | None
@@ -152,14 +152,12 @@ class TestService:
             created_at=attempt.created_at,
             public_id=attempt.public_id,
             score=score,
-            kartlar_sunum=[
-                style_card(result, self.content.sunum[result.style], block=None) for result in score.results
-            ],
+            kartlar_sunum=[style_card(result, self.content.sunum[result.style]) for result in score.results],
             kartlar_kaynakli=[
-                style_card(
+                ai_card(
                     result,
-                    self.content.sunum[result.style],
-                    block=self.content.blocks[(result.style, result.level)],
+                    self.content.blocks[(result.style, result.level)],
+                    self.content.ai_bolumler[result.style],
                 )
                 for result in score.results
             ],

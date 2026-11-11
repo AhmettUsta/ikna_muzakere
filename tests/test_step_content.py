@@ -169,6 +169,36 @@ def test_profiles_complete() -> None:
         assert dominant in STYLE_ORDER and least in STYLE_ORDER
 
 
+def test_profiles_have_strengths_and_weaknesses() -> None:
+    content = ContentStep(CONTENT_ROOT).load()
+
+    for profile in content.profiles.values():
+        assert profile.giris and profile.guclu and profile.zayif and profile.oneri
+        assert not profile.guclu.startswith("Güçlü yanı")
+        assert "**" not in profile.oneri
+
+
+def test_ai_sections_complete() -> None:
+    content = ContentStep(CONTENT_ROOT).load()
+
+    for style in STYLE_ORDER:
+        sections = content.ai_bolumler[style]
+        assert set(sections) == {"uygun", "uygun_degil", "karsi_taraf"}
+        for text in sections.values():
+            assert text.metin.strip() and text.kaynaklar
+
+
+def test_ai_section_unknown_source_raises(content_copy: Path) -> None:
+    def mutate(data: dict) -> dict:
+        data["rekabet"]["uygun"]["kaynaklar"] = ["olmayan-kaynak"]
+        return data
+
+    _rewrite_json(content_copy / "kaynakli" / "bolumler.json", mutate)
+
+    with pytest.raises(ContentError, match="olmayan-kaynak"):
+        ContentStep(content_copy).load()
+
+
 def test_unknown_source_id_raises(content_copy: Path) -> None:
     def mutate(data: dict) -> dict:
         data["rekabet"]["yuksek"]["kaynaklar"] = ["olmayan-kaynak"]

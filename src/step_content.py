@@ -5,6 +5,8 @@ from pathlib import Path
 from typing import Any, Final
 
 from content_types import (
+    AI_SECTION_TYPES,
+    AiSectionType,
     DEVELOPMENT_MARKER,
     LEVELS,
     SECTION_TYPES,
@@ -17,6 +19,7 @@ from content_types import (
     Question,
     Section,
     Source,
+    SourcedText,
     StyleDef,
     StyleKey,
 )
@@ -43,6 +46,7 @@ class ContentStep:
         sources = self._load_sources()
         source_ids = {source.id for source in sources}
         blocks = self._load_blocks(source_ids)
+        ai_bolumler = self._load_ai_sections(source_ids)
         profiles = self._load_profiles(source_ids)
         logger.info(
             "İçerik yüklendi: %d soru, %d kaynak, %d blok, %d profil",
@@ -58,6 +62,7 @@ class ContentStep:
             sunum=sunum,
             sources=sources,
             blocks=blocks,
+            ai_bolumler=ai_bolumler,
             profiles=profiles,
         )
 
@@ -174,6 +179,22 @@ class ContentStep:
                 blocks[(style, level)] = block
         return blocks
 
+    def _load_ai_sections(self, source_ids: set[str]) -> dict[StyleKey, dict[AiSectionType, SourcedText]]:
+        relative = "kaynakli/bolumler.json"
+        raw = self._read_json(relative)
+        sections: dict[StyleKey, dict[AiSectionType, SourcedText]] = {}
+        for style in STYLE_ORDER:
+            sections[style] = {}
+            for tur in AI_SECTION_TYPES:
+                try:
+                    item = raw[style][tur]
+                    text = SourcedText(metin=str(item["metin"]), kaynaklar=[str(k) for k in item["kaynaklar"]])
+                except (KeyError, TypeError) as exc:
+                    raise ContentError(f"{relative}: {style}/{tur} eksik ya da hatalı") from exc
+                self._check_text(relative, f"{style}/{tur}", text.metin, text.kaynaklar, source_ids)
+                sections[style][tur] = text
+        return sections
+
     def _load_profiles(self, source_ids: set[str]) -> dict[tuple[StyleKey, StyleKey], ProfileText]:
         relative = "kaynakli/profiller.json"
         raw = self._read_json(relative)
@@ -187,12 +208,16 @@ class ContentStep:
                     item = raw[name]
                     profile = ProfileText(
                         baslik=str(item["baslik"]),
-                        metin=str(item["metin"]),
+                        giris=str(item["giris"]),
+                        guclu=str(item["guclu"]),
+                        zayif=str(item["zayif"]),
+                        oneri=str(item["oneri"]),
                         kaynaklar=[str(k) for k in item["kaynaklar"]],
                     )
                 except (KeyError, TypeError) as exc:
                     raise ContentError(f"{relative}: {name} eksik ya da hatalı") from exc
-                self._check_text(relative, name, profile.metin, profile.kaynaklar, source_ids)
+                for part in (profile.giris, profile.guclu, profile.zayif, profile.oneri):
+                    self._check_text(relative, name, part, profile.kaynaklar, source_ids)
                 profiles[(dominant, least)] = profile
         return profiles
 

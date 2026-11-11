@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_kart.html" import kart %}
+{% from "_kart.html" import kart, ai_kart %}
 {% block title %}Sonuç · Müzakere Tarzı Testi{% endblock %}
 {% set seviye_ad = {'yuksek': 'yüksek', 'orta': 'orta', 'dusuk': 'düşük'} %}
 {# Cevap anahtarı sütunları dar; eğitimdeki kâğıttaki kısa adlar kullanılır. #}
@@ -49,9 +49,12 @@
        profilinize göre seçilir, size özel yazılmamıştır. Psikolojik değerlendirme yerine geçmez.</p>
     <article class="profil">
       <h2>{{ view.profile.baslik }}</h2>
-      {{ view.profile.metin|md }}
+      {{ view.profile.giris|md }}
+      {{ ("**Güçlü yanları:** " ~ view.profile.guclu)|md }}
+      {{ ("**Zayıf yanları:** " ~ view.profile.zayif)|md }}
+      {{ ("**Öneri:** " ~ view.profile.oneri)|md }}
     </article>
-    {% for c in view.kartlar_kaynakli %}{{ kart(c, styles, view.score.by_style(c.style).score, seviye_ad) }}{% endfor %}
+    {% for c in view.kartlar_kaynakli %}{{ ai_kart(c, styles, view.score.by_style(c.style).score, seviye_ad) }}{% endfor %}
     <details class="kaynakca">
       <summary>Kaynakça</summary>
       <ul>{% for s in sources.values() %}<li>{{ s.kaynakca }}</li>{% endfor %}</ul>
