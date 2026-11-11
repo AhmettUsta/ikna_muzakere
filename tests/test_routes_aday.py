@@ -258,3 +258,14 @@ def test_result_shows_answers_and_answer_key_tabs(make_web_service) -> None:
     assert key.count('class="soru-no"') == 30
     assert key.count("secili") == 30
     assert "<td>9</td><td>7</td><td>6</td><td>3</td><td>5</td>" in key.replace(" ", "").replace("\n", "")
+
+
+def test_score_table_shows_normal_range_column(make_web_service) -> None:
+    page = registered_client(make_web_service()).get(f"/sonuc/{PUBLIC_ID}").text
+    table = page[page.index('class="puanlar"'):page.index("</table>", page.index('class="puanlar"'))]
+
+    assert "<th>Normal aralık</th>" in table
+    # Orta seviye aralığı: düşük eşik + 1 ile yüksek eşik − 1 (Rekabetçi 3/8 → 4–7).
+    for aralik in ["4–7", "6–9", "5–8", "5–7", "4–6"]:
+        assert f"<td>{aralik}</td>" in table
+    assert "Seviyeler eğitimdeki eşiklere" not in page

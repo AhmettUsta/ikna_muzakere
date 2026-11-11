@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Tasarım
 
-**Sürüm: v5 — 2026-11-11 23:02**
+**Sürüm: v6 — 2026-11-11 23:20**
 
 **Sürüm notları**
 
+- v6 — Puan tablosuna "Normal aralık" sütunu (orta seviye aralığı); tablonun altındaki eşik notu kaldırıldı.
 - v5 — "Cevaplarım" bölümü iki sekme: sorulara verilen cevaplar ve eğitimdeki kâğıt gibi 5 sütunlu cevap anahtarı.
 - v4 — Sonuç kartları: sabit bölüm sırası (davranış → uygun → uygun değil → tavsiye → karşı taraf); tavsiye kaynağı sekmeye göre.
 - v3 — Kullanıcı kararları: PIN 4 karakter, yalnızca İngilizce harf ve rakam; yönetici ana giriş formundan `ustaoglu` adıyla girer; canlı yorum, kaynaklı yorum sekmesinde "Kişiselleştir" kutusu olarak durur ve şimdilik kapalıdır.
@@ -185,7 +186,7 @@ Yüksek seviyedeki kartlar açık, diğerleri kapalı başlar. Kaynaklı sekmede
 2. **Teste başla:** Kişi bir takma ad ve 4 haneli PIN girer (PIN iki kez yazılır). Takma ad alınmışsa başka bir ad istenir.
 3. **Test:** Her ekranda bir soru gösterilir. A ya da B'ye dokununca sonraki soruya geçilir. İlerleme çubuğu (ör. "12 / 30") ve "geri" düğmesi bulunur. Son soruda "Bitir" düğmesi çıkar.
 4. **Sonuç sayfası:**
-   - Puan tablosu ve seviyeler.
+   - Puan tablosu: tarz, puan, normal aralık (düşük eşik + 1 ile yüksek eşik − 1 arası, ör. Rekabetçi 4–7) ve seviye.
    - İki eksenli grafik.
    - Yorum sekmeleri: "Sunum yorumları" ve "Kaynaklarla genişletilmiş yorum".
    - En altta canlı yapay zekâ düğmesi.

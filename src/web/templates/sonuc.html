@@ -12,12 +12,15 @@
 
 <section class="ozet">
   <table class="puanlar">
-    <thead><tr><th>Tarz</th><th>Puan</th><th>Seviye</th></tr></thead>
+    <thead><tr><th>Tarz</th><th>Puan</th><th>Normal aralık</th><th>Seviye</th></tr></thead>
     <tbody>
     {% for r in view.score.results %}
+      {% set s = styles[r.style] %}
       <tr class="seviye-{{ r.level }}">
-        <td>{{ styles[r.style].name }}</td>
+        <td>{{ s.name }}</td>
         <td>{{ r.score }}</td>
+        {# Eşikler dahil: low ve altı düşük, high ve üstü yüksek; arası normal (orta). #}
+        <td>{{ s.low + 1 }}–{{ s.high - 1 }}</td>
         <td><span class="rozet">{{ seviye_ad[r.level] }}</span></td>
       </tr>
     {% endfor %}
@@ -25,7 +28,6 @@
   </table>
   <div class="grafik-kutu">{{ grafik|safe }}</div>
 </section>
-<p class="ipucu">Seviyeler eğitimdeki eşiklere göre hesaplanır (ör. Rekabetçi: 8 ve üstü yüksek, 3 ve altı düşük). Puanların toplamı her zaman 30'dur.</p>
 
 <div class="sekmeler">
   <input type="radio" name="sekme" id="sekme-sunum" {% if aktif_sekme != 'kaynak' %}checked{% endif %}>
