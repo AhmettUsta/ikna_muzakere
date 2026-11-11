@@ -18,18 +18,8 @@
       {% endif %}
     </section>
 
-    <section class="bolum bolum-uygun">
-      <h3><span class="bolum-no">2</span> Uygun olduğu koşullar</h3>
-      <ul>{% for m in c.uygun.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
-    </section>
-
-    <section class="bolum bolum-uygun-degil">
-      <h3><span class="bolum-no">3</span> Uygun olmadığı koşullar</h3>
-      <ul>{% for m in c.uygun_degil.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
-    </section>
-
     <section class="bolum bolum-tavsiye">
-      <h3><span class="bolum-no">4</span> Size tavsiyeler
+      <h3><span class="bolum-no">2</span> Size tavsiyeler
         {% if c.tavsiye.kaynakli %}<span class="mini-etiket">kaynaklı öneri</span>{% endif %}</h3>
       {% if c.tavsiye.not_metni %}<p class="tavsiye-not">{{ c.tavsiye.not_metni }}</p>{% endif %}
       {% if c.tavsiye.metin %}{{ c.tavsiye.metin|md }}{% endif %}
@@ -37,6 +27,16 @@
         {% if c.tavsiye.liste_basligi %}<p class="alt-baslik">{{ c.tavsiye.liste_basligi }}</p>{% endif %}
         <ul>{% for m in c.tavsiye.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
       {% endif %}
+    </section>
+
+    <section class="bolum bolum-uygun">
+      <h3><span class="bolum-no">3</span> Uygun olduğu koşullar</h3>
+      <ul>{% for m in c.uygun.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
+    </section>
+
+    <section class="bolum bolum-uygun-degil">
+      <h3><span class="bolum-no">4</span> Uygun olmadığı koşullar</h3>
+      <ul>{% for m in c.uygun_degil.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
     </section>
 
     <section class="bolum bolum-karsi">

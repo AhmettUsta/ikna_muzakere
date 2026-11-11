@@ -4,7 +4,7 @@ from typing import Final
 from content_types import Block, Level, Question, Section, StyleKey
 from scoring import StyleResult
 
-LOW_NOTE: Final[str] = "Bu tarzı az kullanıyorsunuz. Yukarıdaki uygun koşullarda bu tarza geçmeyi deneyin."
+LOW_NOTE: Final[str] = "Bu tarzı az kullanıyorsunuz. Aşağıdaki uygun koşullarda bu tarza geçmeyi deneyin."
 MID_NOTE: Final[str] = "Bu tarzı orta düzeyde kullanıyorsunuz. Uygun koşullarda bilinçli olarak tercih edin."
 CAUTION_TITLE: Final[str] = "Bu tarzı kullandığınızda dikkat edin"
 

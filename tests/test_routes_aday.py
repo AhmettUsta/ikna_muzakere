@@ -106,7 +106,7 @@ def test_result_owner_sees_scores_and_chart(make_web_service) -> None:
     assert page.status_code == 200
     assert "<svg" in page.text and "Rekabetçi · 9" in page.text
     assert "kişilik testi değildir" in page.text
-    assert "Sunum yorumları" in page.text and "Kaynaklarla genişletilmiş yorum" in page.text
+    assert "Sunum yorumları" in page.text and "AI destekli yorum" in page.text
 
 
 def test_result_other_user_404(make_web_service, fake_db) -> None:
@@ -133,7 +133,7 @@ def test_personalize_box_disabled_when_live_off(make_web_service) -> None:
 
     assert "canli-yorum" not in page
     assert 'id="kisisellestir" disabled' in page
-    assert page.index("Kaynaklarla genişletilmiş yorum") < page.index('id="kisisellestir"')
+    assert page.index("AI destekli yorum") < page.index('id="kisisellestir"')
 
 
 def test_personalize_box_active_when_live_on(make_web_service) -> None:
@@ -244,7 +244,7 @@ def test_result_cards_show_sections_in_order(make_web_service) -> None:
     page = registered_client(make_web_service()).get(f"/sonuc/{PUBLIC_ID}").text
     first_card = page[page.index('class="tarz-kart'):page.index('class="tarz-kart', page.index('class="tarz-kart') + 1)]
 
-    headings = ["Nasıl davranır", "Uygun olduğu koşullar", "Uygun olmadığı koşullar", "Size tavsiyeler", "Karşınızda bu tarzda biri varsa"]
+    headings = ["Nasıl davranır", "Size tavsiyeler", "Uygun olduğu koşullar", "Uygun olmadığı koşullar", "Karşınızda bu tarzda biri varsa"]
     positions = [first_card.index(h) for h in headings]
     assert positions == sorted(positions)
 
@@ -254,7 +254,7 @@ def test_result_shows_answers_and_answer_key_tabs(make_web_service) -> None:
 
     # Dört sekme tek sekme çubuğunda: iki yorum, iki cevap görünümü; ayrı "Cevaplarım" bölümü yok.
     tab_bar = page[page.index('class="sekmeler"'):page.index('class="sekme-icerik"')]
-    labels = ["Sunum yorumları", "Kaynaklarla genişletilmiş yorum", "Sorulara cevaplarım", "Cevap anahtarım"]
+    labels = ["Sunum yorumları", "AI destekli yorum", "Sorulara cevaplarım", "Cevap anahtarım"]
     positions = [tab_bar.index(label) for label in labels]
     assert positions == sorted(positions)
     assert 'class="cevaplar"' not in page
