@@ -5,8 +5,8 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import datetime
 
-from content_types import Content, ProfileText, Question, StyleKey
-from presentation import StyleCard, style_card
+from content_types import Content, ProfileText
+from presentation import AnswerRow, StyleCard, answer_rows, style_card
 from scoring import Scorer, ScoreResult
 from security import LockoutPolicy, PinHasher, normalize_nickname, validate_pin
 from step_database import AttemptRow, DatabaseStep, NicknameTaken, ParticipantSummary
@@ -46,7 +46,7 @@ class ResultView:
     kartlar_sunum: list[StyleCard]
     kartlar_kaynakli: list[StyleCard]
     profile: ProfileText
-    answers: list[tuple[Question, str, StyleKey]]
+    answers: list[AnswerRow]
     ai_comment: str | None
     live_enabled: bool
     can_request_live: bool
@@ -164,7 +164,7 @@ class TestService:
                 for result in score.results
             ],
             profile=self.content.profiles[(score.dominant, score.least)],
-            answers=self._answer_rows(attempt.answers),
+            answers=answer_rows(self.content.questions, self.content.answer_key, attempt.answers),
             ai_comment=self._db.get_ai_comment(attempt.id),
             live_enabled=live_enabled,
             can_request_live=live_enabled and is_owner,
@@ -202,9 +202,3 @@ class TestService:
 
     def admin_participants(self) -> list[ParticipantSummary]:
         return self._db.list_participant_summaries()
-
-    def _answer_rows(self, answers: str) -> list[tuple[Question, str, StyleKey]]:
-        return [
-            (question, letter, self.content.answer_key[question.no][letter])
-            for question, letter in zip(self.content.questions, answers)
-        ]

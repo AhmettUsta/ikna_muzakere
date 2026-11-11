@@ -151,7 +151,7 @@ def test_result_view_owner(content, db, hasher) -> None:
     assert view.nickname == "Ali"
     assert [r.score for r in view.score.results] == [9, 7, 6, 3, 5]
     assert len(view.answers) == 30
-    assert view.answers[0][1] == "A" and view.answers[0][2] == "kacinma"
+    assert view.answers[0].secilen == "A" and view.answers[0].secilen_tarz == "kacinma"
     assert [card.style for card in view.kartlar_sunum] == ["rekabet", "isbirligi", "uzlasma", "kacinma", "iltifat"]
     assert view.kartlar_sunum[0].tavsiye.kaynakli is False
     assert view.kartlar_kaynakli[3].tavsiye.metin == content.blocks[("kacinma", "dusuk")].gelisim

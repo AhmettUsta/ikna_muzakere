@@ -247,3 +247,14 @@ def test_result_cards_show_sections_in_order(make_web_service) -> None:
     headings = ["Nasıl davranır", "Uygun olduğu koşullar", "Uygun olmadığı koşullar", "Size tavsiyeler", "Karşınızda bu tarzda biri varsa"]
     positions = [first_card.index(h) for h in headings]
     assert positions == sorted(positions)
+
+
+def test_result_shows_answers_and_answer_key_tabs(make_web_service) -> None:
+    page = registered_client(make_web_service()).get(f"/sonuc/{PUBLIC_ID}").text
+
+    assert "Sorulara cevaplarım" in page and "Cevap anahtarım" in page
+    key = page[page.index('class="cevap-anahtari'):page.index("</table>", page.index('class="cevap-anahtari'))]
+    # 30 soru satırı, her satırda tam bir seçili hücre; altta tasarım örneğinin toplamları.
+    assert key.count('class="soru-no"') == 30
+    assert key.count("secili") == 30
+    assert "<td>9</td><td>7</td><td>6</td><td>3</td><td>5</td>" in key.replace(" ", "").replace("\n", "")

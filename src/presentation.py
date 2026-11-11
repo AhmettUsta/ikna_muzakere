@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Final
 
-from content_types import Block, Level, Section, StyleKey
+from content_types import Block, Level, Question, Section, StyleKey
 from scoring import StyleResult
 
 LOW_NOTE: Final[str] = "Bu tarzı az kullanıyorsunuz. Yukarıdaki uygun koşullarda bu tarza geçmeyi deneyin."
@@ -62,3 +62,29 @@ def style_card(result: StyleResult, sections: list[Section], block: Block | None
         tavsiye=advice,
         karsi_taraf=_first(sections, "karsi_taraf"),
     )
+
+
+@dataclass(frozen=True)
+class AnswerRow:
+    question: Question
+    secilen: str
+    secilen_tarz: StyleKey
+    harfler: dict[StyleKey, str]
+
+
+def answer_rows(questions: list[Question], answer_key: dict[int, dict[str, StyleKey]], answers: str) -> list[AnswerRow]:
+    """Her soru için seçilen şıkkı ve cevap anahtarındaki tarz sütunlarını (tarz -> harf) verir."""
+    if len(answers) != len(questions):
+        raise ValueError(f"{len(questions)} cevap bekleniyordu, {len(answers)} geldi")
+    rows = []
+    for question, letter in zip(questions, answers):
+        options = answer_key[question.no]
+        rows.append(
+            AnswerRow(
+                question=question,
+                secilen=letter,
+                secilen_tarz=options[letter],
+                harfler={style: option for option, style in options.items()},
+            )
+        )
+    return rows

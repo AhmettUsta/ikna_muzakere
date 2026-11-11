@@ -2,6 +2,8 @@
 {% from "_kart.html" import kart %}
 {% block title %}Sonuç · Müzakere Tarzı Testi{% endblock %}
 {% set seviye_ad = {'yuksek': 'yüksek', 'orta': 'orta', 'dusuk': 'düşük'} %}
+{# Cevap anahtarı sütunları dar; eğitimdeki kâğıttaki kısa adlar kullanılır. #}
+{% set kisa_ad = {'rekabet': 'Rekabet', 'isbirligi': 'İşbirliği', 'uzlasma': 'Uzlaşma', 'kacinma': 'Kaçınma', 'iltifat': 'İltifat'} %}
 {% block content %}
 <h1>Sonuç</h1>
 <p class="meta">{{ view.nickname }} · {{ view.created_at|tarih }}</p>
@@ -81,11 +83,47 @@
 
 <details class="cevaplar">
   <summary>Cevaplarım</summary>
-  <ol>
-  {% for q, harf, tarz in view.answers %}
-    <li><b>{{ harf }}</b> {{ q.a if harf == 'A' else q.b }} <span class="kucuk">({{ styles[tarz].name }})</span></li>
-  {% endfor %}
-  </ol>
+  <div class="sekmeler cevap-sekmeler">
+    <input type="radio" name="cevap-sekme" id="sekme-sorular" checked>
+    <label for="sekme-sorular">Sorulara cevaplarım</label>
+    <input type="radio" name="cevap-sekme" id="sekme-anahtar">
+    <label for="sekme-anahtar">Cevap anahtarım</label>
+
+    <div class="sekme-icerik" id="icerik-sorular">
+      <ol class="soru-listesi">
+      {% for row in view.answers %}
+        <li>
+          {% for harf, metin in [('A', row.question.a), ('B', row.question.b)] %}
+          <p class="cevap-sik{% if harf == row.secilen %} sik-secili{% endif %}">
+            <b>{{ harf }})</b> {{ metin }}{% if harf == row.secilen %} <span class="isaret" aria-label="seçiminiz">✓</span>{% endif %}
+          </p>
+          {% endfor %}
+        </li>
+      {% endfor %}
+      </ol>
+    </div>
+
+    <div class="sekme-icerik" id="icerik-anahtar">
+      <p class="sekme-aciklama">Her sorunun A ve B şıkkı ait olduğu tarzın sütununda; seçtiğiniz şık işaretli. Sütun toplamları puanlarınızdır.</p>
+      <div class="tablo-kaydir">
+      <table class="cevap-anahtari">
+        <thead><tr><th></th>{% for r in view.score.results %}<th title="{{ styles[r.style].name }}">{{ kisa_ad[r.style] }}</th>{% endfor %}</tr></thead>
+        <tbody>
+        {% for row in view.answers %}
+          <tr>
+            <th class="soru-no">{{ row.question.no }}.</th>
+            {% for r in view.score.results %}
+              {% set harf = row.harfler.get(r.style) %}
+              <td{% if harf and harf == row.secilen %} class="secili"{% endif %}>{{ harf or '' }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot><tr><th>Puan</th>{% for r in view.score.results %}<td>{{ r.score }}</td>{% endfor %}</tr></tfoot>
+      </table>
+      </div>
+    </div>
+  </div>
 </details>
 
 {% if participant_id and not is_admin %}

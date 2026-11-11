@@ -253,3 +253,24 @@ table.adaylar th, table.adaylar td { padding: 8px; border-bottom: 1px solid var(
 .kaynak-aciklama .etiket { margin: 0 0 4px; font-size: 0.8rem; font-weight: 700; color: var(--soluk); text-transform: uppercase; letter-spacing: 0.03em; }
 .soluk { color: var(--soluk); font-size: 0.9rem; }
 .profil { background: var(--vurgu-acik); border-radius: 10px; padding: 4px 16px; margin: 12px 0 16px; }
+
+/* Sonuç sayfası: cevaplar ve cevap anahtarı */
+#sekme-sorular:checked ~ #icerik-sorular, #sekme-anahtar:checked ~ #icerik-anahtar { display: block; }
+.cevap-sekmeler { margin-top: 12px; }
+.soru-listesi { padding-left: 26px; margin: 4px 0; }
+.soru-listesi li { margin: 0 0 12px; }
+.cevap-sik { margin: 2px 0; padding: 4px 8px; border-radius: 6px; color: var(--soluk); }
+.cevap-sik.sik-secili { color: var(--yazi); background: var(--vurgu-acik); }
+.isaret { color: var(--vurgu); font-weight: 700; }
+.tablo-kaydir { overflow-x: auto; }
+.cevap-anahtari { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 0.85rem; }
+.cevap-anahtari th, .cevap-anahtari td { border: 1px solid var(--cizgi); padding: 4px 2px; text-align: center; }
+.cevap-anahtari thead th { font-size: 0.68rem; font-weight: 600; line-height: 1.2; padding: 4px 1px; overflow-wrap: anywhere; }
+.cevap-anahtari thead th:first-child, .cevap-anahtari .soru-no, .cevap-anahtari tfoot th { width: 2.7em; }
+.cevap-anahtari .soru-no { font-weight: 400; color: var(--soluk); }
+.cevap-anahtari td.secili {
+  background: repeating-linear-gradient(-45deg, var(--vurgu-acik), var(--vurgu-acik) 4px, #c9d9ee 4px, #c9d9ee 8px);
+  color: var(--vurgu); font-weight: 700;
+}
+.cevap-anahtari tfoot td { font-weight: 700; font-size: 0.95rem; }
+.cevap-anahtari tfoot th { font-size: 0.8rem; }

@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Tasarım
 
-**Sürüm: v4 — 2026-11-11 16:45**
+**Sürüm: v5 — 2026-11-11 23:02**
 
 **Sürüm notları**
 
+- v5 — "Cevaplarım" bölümü iki sekme: sorulara verilen cevaplar ve eğitimdeki kâğıt gibi 5 sütunlu cevap anahtarı.
 - v4 — Sonuç kartları: sabit bölüm sırası (davranış → uygun → uygun değil → tavsiye → karşı taraf); tavsiye kaynağı sekmeye göre.
 - v3 — Kullanıcı kararları: PIN 4 karakter, yalnızca İngilizce harf ve rakam; yönetici ana giriş formundan `ustaoglu` adıyla girer; canlı yorum, kaynaklı yorum sekmesinde "Kişiselleştir" kutusu olarak durur ve şimdilik kapalıdır.
 - v2 — Gözden geçirme sonrası: Kaçınmacı slaytlarının sunumdaki haliyle gösterilmesi (7.1), kaynak doğrulama ölçütü ve kullanıcı onay adımı (7.2), Neon'un ilk adım olması (10).
@@ -188,7 +189,9 @@ Yüksek seviyedeki kartlar açık, diğerleri kapalı başlar. Kaynaklı sekmede
    - İki eksenli grafik.
    - Yorum sekmeleri: "Sunum yorumları" ve "Kaynaklarla genişletilmiş yorum".
    - En altta canlı yapay zekâ düğmesi.
-   - "Cevaplarımı gör" bölümü: 30 soru ve kişinin seçtiği cevaplar.
+   - Katlanabilir "Cevaplarım" bölümü, iki sekme:
+     - "Sorulara cevaplarım": her soruda A ve B şıkkı, seçilen işaretli.
+     - "Cevap anahtarım": eğitimdeki kâğıt gibi 30 satır × 5 tarz sütunu; A ve B kendi tarzının sütununda, seçilen hücre taralı, altta sütun toplamları (puanlar).
 5. **Sonucuma bak:** Kişi takma adını ve PIN'ini girer. En son sonucu açılır; önceki denemeleri tarih listesi olarak görür ve "Testi tekrar çöz" diyebilir.
 
 **Yönetici**

@@ -1,5 +1,9 @@
+from collections import Counter
+
+import pytest
+
 from content_types import Block, Section
-from presentation import LOW_NOTE, MID_NOTE, style_card
+from presentation import LOW_NOTE, MID_NOTE, answer_rows, style_card
 from scoring import StyleResult
 
 DAVRANIS = Section(tur="davranis", baslik="D", maddeler=["d"])
@@ -71,3 +75,27 @@ def test_card_kacinma_two_uygun_and_no_uygun_degil() -> None:
 
     assert card.uygun == [UYGUN, UYGUN_2]
     assert card.uygun_degil is None
+
+
+def test_answer_rows_places_letters_in_style_columns(real_content) -> None:
+    rows = answer_rows(real_content.questions, real_content.answer_key, "ABBABBBBBBBBBBABAAABBBABABBABB")
+
+    assert len(rows) == 30
+    # Cevap anahtarı fotoğrafı: 1. soruda A Kaçınma, B İltifatkar sütununda; A seçilmiş.
+    assert rows[0].question.no == 1
+    assert rows[0].harfler == {"kacinma": "A", "iltifat": "B"}
+    assert rows[0].secilen == "A" and rows[0].secilen_tarz == "kacinma"
+    assert rows[1].harfler == {"uzlasma": "A", "isbirligi": "B"}
+    assert rows[1].secilen == "B" and rows[1].secilen_tarz == "isbirligi"
+
+
+def test_answer_rows_column_counts_match_scores(real_content) -> None:
+    rows = answer_rows(real_content.questions, real_content.answer_key, "ABBABBBBBBBBBBABAAABBBABABBABB")
+
+    chosen = Counter(row.secilen_tarz for row in rows)
+    assert chosen == {"rekabet": 9, "isbirligi": 7, "uzlasma": 6, "kacinma": 3, "iltifat": 5}
+
+
+def test_answer_rows_rejects_wrong_length(real_content) -> None:
+    with pytest.raises(ValueError):
+        answer_rows(real_content.questions, real_content.answer_key, "A" * 29)
