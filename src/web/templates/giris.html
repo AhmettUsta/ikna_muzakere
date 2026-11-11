@@ -7,8 +7,21 @@
   <p class="not">Bu bir kişilik testi değildir; doğru ya da yanlış cevap yoktur. Gerçek adınızı değil, bir takma ad kullanın.</p>
 </section>
 
-<div class="kartlar">
-  <section class="kart">
+<div class="secim">
+  <input type="radio" name="secim" id="secim-basla" {% if kayit_hata %}checked{% endif %}>
+  <input type="radio" name="secim" id="secim-sonuc" {% if giris_hata %}checked{% endif %}>
+  <div class="secim-dugmeler">
+    <label for="secim-basla" class="secim-dugme" id="etiket-basla">
+      <strong>Teste başla</strong>
+      <span>İlk kez çözüyorum</span>
+    </label>
+    <label for="secim-sonuc" class="secim-dugme" id="etiket-sonuc">
+      <strong>Sonucuma bak</strong>
+      <span>Daha önce çözdüm</span>
+    </label>
+  </div>
+
+  <section class="kart secim-form" id="form-basla">
     <h2>Teste başla</h2>
     {% if kayit_hata %}<p class="hata">{{ kayit_hata }}</p>{% endif %}
     <form method="post" action="/kayit">
@@ -28,7 +41,7 @@
     <p class="ipucu">PIN tam 4 karakterdir; İngilizce harf ve rakam kullanabilirsiniz (Türkçe karakter ve sembol olmaz, büyük-küçük harf fark eder). Takma adınızı ve PIN'inizi not edin; sonucunuza tekrar bakmak için gerekecek.</p>
   </section>
 
-  <section class="kart">
+  <section class="kart secim-form" id="form-sonuc">
     <h2>Sonucuma bak</h2>
     {% if giris_hata %}<p class="hata">{{ giris_hata }}</p>{% endif %}
     <form method="post" action="/giris">
@@ -36,7 +49,7 @@
         <input name="nickname" value="{{ giris_nickname or '' }}" maxlength="30" required autocomplete="off">
       </label>
       <label>PIN
-        <input name="pin" type="password" pattern="[A-Za-z0-9]{4}" minlength="4" maxlength="4" required autocapitalize="off">
+        <input name="pin" type="password" maxlength="64" required autocapitalize="off">
       </label>
       <button type="submit" class="ikincil">Giriş yap</button>
     </form>

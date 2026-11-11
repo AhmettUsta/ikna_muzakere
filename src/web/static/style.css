@@ -184,3 +184,25 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 table.adaylar { width: 100%; border-collapse: collapse; background: var(--kart); }
 table.adaylar th, table.adaylar td { padding: 8px; border-bottom: 1px solid var(--cizgi); text-align: left; }
+
+/* Ana sayfa: iki seçenek; seçilenin formu açılır (JavaScript gerekmez). */
+.secim > input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+.secim-dugmeler { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; margin: 8px 0 16px; }
+.secim-dugme {
+  margin: 0;
+  padding: 18px 16px;
+  border: 2px solid var(--cizgi);
+  border-radius: 10px;
+  background: var(--kart);
+  cursor: pointer;
+  text-align: center;
+  font-weight: 400;
+}
+.secim-dugme strong { display: block; font-size: 1.1rem; color: var(--vurgu); }
+.secim-dugme span { color: var(--soluk); font-size: 0.88rem; }
+.secim-form { display: none; }
+#secim-basla:checked ~ #form-basla, #secim-sonuc:checked ~ #form-sonuc { display: block; }
+#secim-basla:checked ~ .secim-dugmeler #etiket-basla,
+#secim-sonuc:checked ~ .secim-dugmeler #etiket-sonuc { border-color: var(--vurgu); background: var(--vurgu-acik); }
+#secim-basla:focus-visible ~ .secim-dugmeler #etiket-basla,
+#secim-sonuc:focus-visible ~ .secim-dugmeler #etiket-sonuc { outline: 2px solid var(--vurgu); }

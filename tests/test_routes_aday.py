@@ -208,3 +208,33 @@ def test_logout_clears_session(make_web_service) -> None:
     client.post("/cikis")
 
     assert client.get("/test", follow_redirects=False).status_code == 303
+
+
+def _checked_choice(html: str) -> list[str]:
+    import re
+
+    return re.findall(r'<input type="radio" name="secim" id="(secim-\w+)"\s+checked', html)
+
+
+def test_home_shows_two_choices_none_open(make_web_service) -> None:
+    page = client_for(make_web_service()).get("/").text
+
+    assert 'id="secim-basla"' in page and 'id="secim-sonuc"' in page
+    assert _checked_choice(page) == []
+
+
+def test_register_error_opens_start_choice(make_web_service) -> None:
+    page = client_for(make_web_service()).post(
+        "/kayit", data={"nickname": "Ali", "pin": "1234", "pin_again": "9999"}
+    ).text
+
+    assert _checked_choice(page) == ["secim-basla"]
+
+
+def test_login_error_opens_result_choice(make_web_service, fake_db) -> None:
+    fake_db.reserve_login_attempt.return_value = None
+    fake_db.get_participant_by_key.return_value = None
+
+    page = client_for(make_web_service()).post("/giris", data={"nickname": "yok", "pin": "1234"}).text
+
+    assert _checked_choice(page) == ["secim-sonuc"]
