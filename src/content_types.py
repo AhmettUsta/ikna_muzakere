@@ -105,6 +105,8 @@ class Content:
     styles: list[StyleDef]
     answer_key: dict[int, dict[str, StyleKey]]
     sunum: dict[StyleKey, list[Section]]
+    # Sunumda yalnızca yüksek seviyeye tavsiye var; düşük ve orta seviyenin maddeleri ayrı dosyadan gelir.
+    sunum_tavsiye: dict[StyleKey, dict[Level, list[str]]]
     sources: list[Source]
     blocks: dict[tuple[StyleKey, Level], Block]
     ai_bolumler: dict[StyleKey, dict[AiSectionType, SourcedText]]

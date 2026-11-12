@@ -160,7 +160,10 @@ class TestService:
             created_at=attempt.created_at,
             public_id=attempt.public_id,
             score=score,
-            kartlar_sunum=[style_card(result, self.content.sunum[result.style]) for result in score.results],
+            kartlar_sunum=[
+                style_card(result, self.content.sunum[result.style], self.content.sunum_tavsiye[result.style])
+                for result in score.results
+            ],
             kartlar_kaynakli=[
                 ai_card(
                     result,

@@ -1,0 +1,67 @@
+{
+  "rekabet": {
+    "dusuk": [
+      "Haklı olduğunuz ve kurum için önemli konularda geri adım atmayın.",
+      "Acil ve kesin karar gerektiğinde inisiyatifi elinize alın.",
+      "Limitlerinizi masaya oturmadan belirleyin ve gerektiğinde net söyleyin.",
+      "Sizi istismar etmeye çalışan karşı tarafa karşı kendinizi koruyun."
+    ],
+    "orta": [
+      "Rekabeti yalnızca acil ve gerçekten önemli konular için saklayın.",
+      "Kesin davranmanız gereken anı, ilişkiyi korumanız gereken andan ayırt edin.",
+      "Kazanmaya çalışırken karşı tarafın ne hissettiğini de gözetin."
+    ]
+  },
+  "isbirligi": {
+    "dusuk": [
+      "Önemli ve uzun vadeli konularda karşı tarafa “bunu neden istiyorsunuz?” diye sorun.",
+      "Pozisyon yerine çıkarlara odaklanın ve birlikte birkaç seçenek üretin.",
+      "Farklı bakış açılarını dinleyin ve özetleyerek anladığınızı gösterin.",
+      "Kalıcı bağlılık gereken kararlarda karşı tarafı sürece katın."
+    ],
+    "orta": [
+      "Ortak çözüm arayışını önemli ve uzun vadeli konulara ayırın.",
+      "Karşı tarafın işbirliğine açık olup olmadığını erken sınayın.",
+      "Zaman baskısı olduğunda hızlı bir ara yol seçmekten çekinmeyin."
+    ]
+  },
+  "uzlasma": {
+    "dusuk": [
+      "Zaman baskısı altında ya da kilitlenen görüşmelerde orta bir nokta önerin.",
+      "Önemi sınırlı konularda karşılıklı tavizle hızlıca anlaşın.",
+      "Tavizlerinizi küçükten büyüğe sıralayın ve her tavizin karşılığını isteyin.",
+      "Karmaşık konularda geçici bir anlaşma önermeyi deneyin."
+    ],
+    "orta": [
+      "Ortaya inmeden önce iki tarafın çıkarlarını konuşun.",
+      "Orta noktayı karşı tarafın ilk talebine göre değil, nesnel ölçütlere göre hesaplayın.",
+      "Her konu üzerinde yalnızca bir kez ödün verin."
+    ]
+  },
+  "kacinma": {
+    "dusuk": [
+      "Önemsiz konuları bilinçli olarak bırakın ve enerjinizi önemli konulara saklayın.",
+      "Ortam gerildiğinde konuyu erteleyin ve tarafların sakinleşmesini bekleyin.",
+      "Eksik bilgiyle karar vermek yerine “düşünüp döneceğim” demeyi deneyin.",
+      "Her konuyu hemen masaya getirmeden önce zamanlamasını düşünün."
+    ],
+    "orta": [
+      "Ertelediğiniz her konu için bir dönüş zamanı belirleyin.",
+      "Konuyu ertelerken bunu açıkça söyleyin ve gerekçesini paylaşın.",
+      "Rahatsızlık nedeniyle kaçtığınız konuları bilinçli ertelemelerden ayırın."
+    ]
+  },
+  "iltifat": {
+    "dusuk": [
+      "Haksız olduğunuzu fark ettiğinizde bunu açıkça kabul edin.",
+      "Karşı taraf için önemli, sizin için önemsiz konularda esnek davranın.",
+      "İlişkinin sürmesi önemli olduğunda küçük jestlerle iyi niyet biriktirin.",
+      "Karşınızdakinin ihtiyaçlarını da sorun ve dinleyin."
+    ],
+    "orta": [
+      "Tavizlerinizi karşılıksız değil, bir koşula bağlayarak verin.",
+      "Hangi konularda esneyebileceğinizi müzakereden önce belirleyin.",
+      "Uyum sağlarken kendi ihtiyacınızı da masada dile getirin."
+    ]
+  }
+}

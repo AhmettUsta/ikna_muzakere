@@ -6,7 +6,6 @@ from scoring import StyleResult
 
 LOW_NOTE: Final[str] = "Bu tarzı az kullanıyorsunuz. Aşağıdaki uygun koşullarda bu tarza geçmeyi deneyin."
 MID_NOTE: Final[str] = "Bu tarzı orta düzeyde kullanıyorsunuz. Uygun koşullarda bilinçli olarak tercih edin."
-CAUTION_TITLE: Final[str] = "Bu tarzı kullandığınızda dikkat edin"
 
 
 @dataclass(frozen=True)
@@ -32,25 +31,28 @@ def _first(sections: list[Section], tur: str) -> Section | None:
     return next((section for section in sections if section.tur == tur), None)
 
 
-def _sunum_advice(level: Level, siz_iseniz: Section) -> Advice:
+def _is_open(level: Level) -> bool:
+    # Uç seviyeler (yüksek ve düşük) dikkat gerektirir; yalnızca orta seviye kapalı başlar.
+    return level != "orta"
+
+
+def _sunum_advice(level: Level, siz_iseniz: Section, level_advice: dict[Level, list[str]]) -> Advice:
     if level == "yuksek":
         return Advice(not_metni=None, liste_basligi=None, maddeler=list(siz_iseniz.maddeler))
-    # Sunumda yalnızca bu tarzı çok kullananlara tavsiye var; az ya da orta kullananlara
-    # aynı maddeler "kullandığınızda dikkat edin" çerçevesiyle gösterilir.
     note = LOW_NOTE if level == "dusuk" else MID_NOTE
-    return Advice(not_metni=note, liste_basligi=CAUTION_TITLE, maddeler=list(siz_iseniz.maddeler))
+    return Advice(not_metni=note, liste_basligi=None, maddeler=list(level_advice[level]))
 
 
-def style_card(result: StyleResult, sections: list[Section]) -> StyleCard:
-    """Sunum sekmesindeki kartı sunum maddelerinden kurar."""
+def style_card(result: StyleResult, sections: list[Section], level_advice: dict[Level, list[str]]) -> StyleCard:
+    """Sunum sekmesindeki kartı kurar; tavsiye yüksekte sunumdan, düşük ve ortada seviye maddelerinden gelir."""
     return StyleCard(
         style=result.style,
         level=result.level,
-        acik=result.level == "yuksek",
+        acik=_is_open(result.level),
         davranis=_first(sections, "davranis"),
         uygun=_first(sections, "uygun"),
         uygun_degil=_first(sections, "uygun_degil"),
-        tavsiye=_sunum_advice(result.level, _first(sections, "siz_iseniz")),
+        tavsiye=_sunum_advice(result.level, _first(sections, "siz_iseniz"), level_advice),
         karsi_taraf=_first(sections, "karsi_taraf"),
     )
 
@@ -74,7 +76,7 @@ def ai_card(result: StyleResult, block: Block, sections: dict[AiSectionType, Sou
     return AiCard(
         style=result.style,
         level=result.level,
-        acik=result.level == "yuksek",
+        acik=_is_open(result.level),
         davranis=block.aciklama,
         tavsiye=block.gelisim,
         uygun=sections["uygun"].metin,

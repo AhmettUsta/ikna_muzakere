@@ -40,7 +40,7 @@
   <label for="sekme-anahtar">Cevap anahtarım</label>
 
   <div class="sekme-icerik" id="icerik-sunum">
-    <p class="sekme-aciklama">Eğitim sunumundaki metinler. Yüksek çıkan tarzlar açık gelir; diğerlerini başlığına dokunarak açabilirsiniz.</p>
+    <p class="sekme-aciklama">Eğitim sunumundaki metinler. Yüksek ve düşük çıkan tarzlar açık gelir; orta çıkanları başlığına dokunarak açabilirsiniz.</p>
     {% for c in view.kartlar_sunum %}{{ kart(c, styles, view.score.by_style(c.style).score, seviye_ad) }}{% endfor %}
   </div>
 

@@ -127,6 +127,29 @@ def test_sunum_spot_text() -> None:
     assert kacinma_uygun_degil.maddeler[0] == "Elinizdeki bilgiler karar vermeye yettiğinde ve karşı tarafın söylemi doğrulandığında"
 
 
+def test_level_advice_complete_and_imperative() -> None:
+    content = ContentStep(CONTENT_ROOT).load()
+
+    for style in STYLE_ORDER:
+        advice = content.sunum_tavsiye[style]
+        assert set(advice) == {"dusuk", "orta"}
+        for level, items in advice.items():
+            assert 1 <= len(items) <= 4, f"{style}/{level}"
+            for item in items:
+                assert item.endswith("n."), f"{style}/{level}: {item}"
+
+
+def test_level_advice_too_many_items_raises(content_copy: Path) -> None:
+    def mutate(data: dict) -> dict:
+        data["rekabet"]["dusuk"] = ["Bir şey yapın."] * 5
+        return data
+
+    _rewrite_json(content_copy / "sunum" / "tavsiyeler.json", mutate)
+
+    with pytest.raises(ContentError, match="en fazla 4"):
+        ContentStep(content_copy).load()
+
+
 def test_sunum_too_many_items_raises(content_copy: Path) -> None:
     def mutate(data: dict) -> dict:
         data["bolumler"][0]["maddeler"] = ["Bir şey yapar."] * 5

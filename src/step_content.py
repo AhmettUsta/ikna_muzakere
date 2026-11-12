@@ -32,6 +32,7 @@ EXPECTED_SECTION_COUNTS: Final[Counter[str]] = Counter(
 )
 # Kartlar kısa ve taranabilir kalsın diye her bölümde en fazla bu kadar madde olur.
 MAX_SECTION_ITEMS: Final[int] = 4
+ADVICE_LEVELS: Final[tuple[Level, ...]] = ("dusuk", "orta")
 
 class ContentStep:
     """src/content altındaki içerik dosyalarını yükler ve doğrular."""
@@ -43,6 +44,7 @@ class ContentStep:
         questions = self._load_questions()
         styles, answer_key = self._load_scoring()
         sunum = {style: self._load_sunum(style) for style in STYLE_ORDER}
+        sunum_tavsiye = self._load_level_advice()
         sources = self._load_sources()
         source_ids = {source.id for source in sources}
         blocks = self._load_blocks(source_ids)
@@ -60,6 +62,7 @@ class ContentStep:
             styles=styles,
             answer_key=answer_key,
             sunum=sunum,
+            sunum_tavsiye=sunum_tavsiye,
             sources=sources,
             blocks=blocks,
             ai_bolumler=ai_bolumler,
@@ -149,6 +152,24 @@ class ContentStep:
                 f"{relative}: bölüm türleri {dict(EXPECTED_SECTION_COUNTS)} olmalı, {dict(counts)} bulundu"
             )
         return sections
+
+    def _load_level_advice(self) -> dict[StyleKey, dict[Level, list[str]]]:
+        relative = "sunum/tavsiyeler.json"
+        raw = self._read_json(relative)
+        advice: dict[StyleKey, dict[Level, list[str]]] = {}
+        for style in STYLE_ORDER:
+            advice[style] = {}
+            for level in ADVICE_LEVELS:
+                try:
+                    items = [str(item) for item in raw[style][level]]
+                except (KeyError, TypeError) as exc:
+                    raise ContentError(f"{relative}: {style}/{level} eksik ya da hatalı") from exc
+                if not items or any(not item.strip() for item in items):
+                    raise ContentError(f"{relative}: {style}/{level} boş madde içeriyor")
+                if len(items) > MAX_SECTION_ITEMS:
+                    raise ContentError(f"{relative}: {style}/{level} en fazla {MAX_SECTION_ITEMS} madde olmalı")
+                advice[style][level] = items
+        return advice
 
     def _load_sources(self) -> list[Source]:
         relative = "kaynakli/kaynaklar.json"

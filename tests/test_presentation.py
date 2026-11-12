@@ -14,6 +14,7 @@ KARSI = Section(tur="karsi_taraf", baslik="K", maddeler=["k"])
 # Sunumdaki sıra kartta kullanılmaz; kart sırası sabittir.
 SECTIONS = [DAVRANIS, UYGUN, UYGUN_DEGIL, KARSI, SIZ]
 BLOCK = Block(metin="Akademik açıklama.\n\n**Gelişim için:** Şunu deneyin.", kaynaklar=["thomas-1977"])
+LEVEL_ADVICE = {"dusuk": ["d1", "d2"], "orta": ["o1"]}
 AI_SECTIONS = {
     "uygun": SourcedText(metin="Uygun metni.", kaynaklar=["thomas-1977"]),
     "uygun_degil": SourcedText(metin="Uygun değil metni.", kaynaklar=["rahim-2002"]),
@@ -26,7 +27,7 @@ def _result(level: str) -> StyleResult:
 
 
 def test_card_has_fixed_section_order() -> None:
-    card = style_card(_result("yuksek"), SECTIONS)
+    card = style_card(_result("yuksek"), SECTIONS, LEVEL_ADVICE)
 
     assert card.davranis == DAVRANIS
     assert card.uygun == UYGUN
@@ -35,34 +36,34 @@ def test_card_has_fixed_section_order() -> None:
 
 
 def test_card_high_sunum_advice_is_siz_iseniz() -> None:
-    card = style_card(_result("yuksek"), SECTIONS)
+    card = style_card(_result("yuksek"), SECTIONS, LEVEL_ADVICE)
 
     assert card.acik is True
     assert card.tavsiye.not_metni is None
     assert card.tavsiye.maddeler == ["s1", "s2"]
 
 
-def test_card_low_sunum_advice_is_derived_from_presentation() -> None:
-    card = style_card(_result("dusuk"), SECTIONS)
+def test_card_low_sunum_advice_uses_low_level_items() -> None:
+    card = style_card(_result("dusuk"), SECTIONS, LEVEL_ADVICE)
 
-    assert card.acik is False
+    assert card.acik is True
     assert card.tavsiye.not_metni == LOW_NOTE
-    assert card.tavsiye.liste_basligi == "Bu tarzı kullandığınızda dikkat edin"
-    assert card.tavsiye.maddeler == ["s1", "s2"]
+    assert card.tavsiye.liste_basligi is None
+    assert card.tavsiye.maddeler == ["d1", "d2"]
 
 
-def test_card_mid_sunum_advice_has_mid_note() -> None:
-    card = style_card(_result("orta"), SECTIONS)
+def test_card_mid_sunum_advice_uses_mid_level_items() -> None:
+    card = style_card(_result("orta"), SECTIONS, LEVEL_ADVICE)
 
     assert card.acik is False
     assert card.tavsiye.not_metni == MID_NOTE
-    assert card.tavsiye.maddeler == ["s1", "s2"]
+    assert card.tavsiye.maddeler == ["o1"]
 
 
 def test_ai_card_uses_prose_for_every_section() -> None:
-    card = ai_card(_result("dusuk"), BLOCK, AI_SECTIONS)
+    card = ai_card(_result("orta"), BLOCK, AI_SECTIONS)
 
-    assert card.style == "rekabet" and card.level == "dusuk" and card.acik is False
+    assert card.style == "rekabet" and card.level == "orta" and card.acik is False
     assert card.davranis == "Akademik açıklama."
     assert card.tavsiye == "Şunu deneyin."
     assert card.uygun == "Uygun metni."
@@ -70,8 +71,9 @@ def test_ai_card_uses_prose_for_every_section() -> None:
     assert card.karsi_taraf == "Karşı taraf metni."
 
 
-def test_ai_card_high_level_is_open() -> None:
-    assert ai_card(_result("yuksek"), BLOCK, AI_SECTIONS).acik is True
+@pytest.mark.parametrize("level", ["yuksek", "dusuk"])
+def test_ai_card_high_and_low_levels_are_open(level: str) -> None:
+    assert ai_card(_result(level), BLOCK, AI_SECTIONS).acik is True
 
 
 def test_answer_rows_places_letters_in_style_columns(real_content) -> None:

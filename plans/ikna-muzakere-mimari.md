@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Mimari
 
-**Sürüm: v6 — 2026-11-12 14:10**
+**Sürüm: v7 — 2026-11-12 15:05**
 
 **Sürüm notları**
 
+- v7 — `sunum/tavsiyeler.json`: düşük ve orta seviye tavsiye maddeleri (`Content.sunum_tavsiye`), bölüm başına en fazla 4 madde denetimi.
 - v6 — Yönetici için ad değiştirme ve silme route'ları; `DatabaseStep.rename_participant`, `delete_participant`, `ParticipantMissing`.
 - v5 — `kaynakli/bolumler.json` (tarz başına uygun / uygun değil / karşı taraf düz yazısı); profil alanları giriş / güçlü / zayıf / öneri; AI destekli sekme için ayrı kart modeli (`AiCard`).
 - v4 — Kaçınmacı istisnası kalktı: her tarzda her bölüm türünden tam bir tane; bölüm başına en fazla 4 madde denetimi.

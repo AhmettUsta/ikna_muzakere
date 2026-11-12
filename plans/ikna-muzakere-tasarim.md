@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Tasarım
 
-**Sürüm: v9 — 2026-11-12 14:10**
+**Sürüm: v10 — 2026-11-12 15:05**
 
 **Sürüm notları**
 
+- v10 — Sunum sekmesinde düşük ve orta seviye tavsiyeleri seviyeye özel (sunumdan ve kaynaklardan türetilmiş, kullanıcı onaylı); yüksek ve düşük kartlar açık; seviye renkleri: yüksek kırmızı, orta yeşil, düşük turuncu.
 - v9 — Yönetici aday listesinden adayın takma adını değiştirebilir ve adayı bütün denemeleriyle silebilir (tarayıcı onay penceresiyle).
 - v8 — Kartlarda "Size tavsiyeler" 2. sırada; ikinci sekmenin adı "AI destekli yorum"; bu sekmede beş başlığın hepsi düz yazı (uygun, uygun değil ve karşı taraf için tarz başına yeni kaynaklı metin); profil kutusu giriş / güçlü yanlar / zayıf yanlar / öneri olarak bölündü.
 - v7 — Sunum maddeleri bölüm başına en fazla 4, her bölümde tek gramer kalıbı; Kaçınmacı uygun / uygun değil olarak bölündü (uygun değil, sunumdaki uygun koşulların tersinden); sonuç sayfasında 4 sekme (2 yorum + 2 cevap).
@@ -155,12 +156,12 @@ Bölümlerin içeriği sekmeye göre değişir:
 | Bölüm | Sunum yorumları (maddeler) | AI destekli yorum (düz yazı) |
 |---|---|---|
 | Nasıl davranır | `davranis` | Tarz–seviye bloğunun açıklama kısmı |
-| Size tavsiyeler | Yüksekte "Siz … iseniz" maddeleri; orta ve düşükte kısa not ("Bu tarzı az / orta düzeyde kullanıyorsunuz…") ve "Bu tarzı kullandığınızda dikkat edin" başlığıyla aynı maddeler | Tarz–seviye bloğunun "Gelişim için" paragrafı |
+| Size tavsiyeler | Yüksekte "Siz … iseniz" maddeleri; düşük ve ortada kısa not ("Bu tarzı az / orta düzeyde kullanıyorsunuz…") ve o seviyeye özel 3–4 madde (`sunum/tavsiyeler.json`; sunumdan ve kaynaklardan türetilmiş, v10) | Tarz–seviye bloğunun "Gelişim için" paragrafı |
 | Uygun olduğu koşullar | `uygun` | Tarza özel kaynaklı metin (v8) |
 | Uygun olmadığı koşullar | `uygun_degil` | Tarza özel kaynaklı metin (v8) |
 | Karşınızda bu tarzda biri varsa | `karsi_taraf` | Tarza özel kaynaklı metin (v8) |
 
-Yüksek seviyedeki kartlar açık, diğerleri kapalı başlar. AI destekli sekmede ayrıca en üstte profil kutusu ve en altta kaynakça bulunur.
+Yüksek ve düşük seviyedeki kartlar açık, orta seviyedekiler kapalı başlar (v10). Seviye renkleri: yüksek kırmızı, orta yeşil, düşük turuncu; uçların ikisi de dikkat ister. AI destekli sekmede ayrıca en üstte profil kutusu ve en altta kaynakça bulunur.
 
 ### 7.2 AI destekli yorum (2. seçenek)
 

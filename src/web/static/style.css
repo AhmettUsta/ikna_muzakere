@@ -6,9 +6,11 @@
   --cizgi: #e2ded5;
   --vurgu: #1d4e89;
   --vurgu-acik: #e6eef8;
+  /* Seviye renkleri: orta dengeli (yeşil); uçlar dikkat ister (yüksek kırmızı, düşük turuncu). */
   --yuksek: #b4432f;
-  --orta: #c08a1e;
-  --dusuk: #3f7d5a;
+  --orta: #3f7d5a;
+  --dusuk: #b0640c;
+  --uyari-cizgi: #c08a1e;
   --hata: #a32020;
 }
 
@@ -52,7 +54,7 @@ h3 { font-size: 1rem; margin: 1em 0 0.3em; }
 .hata { color: var(--hata); font-weight: 600; }
 .uyari {
   background: #fff7e6;
-  border-left: 4px solid var(--orta);
+  border-left: 4px solid var(--uyari-cizgi);
   padding: 10px 12px;
   border-radius: 4px;
 }
