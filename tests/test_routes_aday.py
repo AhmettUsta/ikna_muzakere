@@ -268,6 +268,9 @@ def test_condition_headings_name_the_style_in_both_tabs(make_web_service) -> Non
     # Sunum sekmesinde davranış başlığı tarzı adlandırır; AI sekmesinde kişinin seviyesini anlattığı için genel kalır.
     assert "İşbirlikçi nasıl davranır" in sunum
     assert "İşbirlikçi nasıl davranır" not in ai
+    # AI sekmesindeki ilk bölüm kişinin kendi seviyesini anlatır.
+    assert ai.count("Nasıl davranırsınız") == 5
+    assert "Nasıl davranırsınız" not in sunum
     # Türkçe küçük harf: "İ" → "i" (birleşik nokta karakteri olmadan).
     assert "\u0307" not in page
 

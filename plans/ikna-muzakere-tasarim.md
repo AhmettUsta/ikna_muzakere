@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Tasarım
 
-**Sürüm: v12 — 2026-11-12 15:50**
+**Sürüm: v13 — 2026-11-12 16:00**
 
 **Sürüm notları**
 
+- v13 — AI destekli sekmede ilk bölümün başlığı "Nasıl davranırsınız" (kişinin seviyesine göre yazıldığı için).
 - v12 — Profil kutusunun her bölümüne (giriş, güçlü yanlar, zayıf yanlar, öneri) birer cümle eklendi (20 profil, kullanıcı onaylı).
 - v11 — Kart başlıkları tarzı adlandırır: sunumda "Rekabetçi nasıl davranır"; iki sekmede de "Yüksek rekabetçi davranışın uygun (olmadığı) koşullar" ve "Karşınızda yüksek rekabetçi biri varsa" (koşulların kişinin puanına değil, davranışa ait olduğu açık olsun diye).
 - v10 — Sunum sekmesinde düşük ve orta seviye tavsiyeleri seviyeye özel (sunumdan ve kaynaklardan türetilmiş, kullanıcı onaylı); yüksek ve düşük kartlar açık; seviye renkleri: yüksek kırmızı, orta yeşil, düşük turuncu.
@@ -147,7 +148,7 @@ Her bölümün bir türü vardır: `davranis`, `uygun`, `uygun_degil`, `siz_isen
 
 Gösterim kuralı (kullanıcı kararı, v4; sıra v8): Her tarz bir kart olarak gösterilir; bölümler sunumdaki sıradan bağımsız olarak şu **sabit sırayla** gelir:
 
-1. **Nasıl davranır** (sunum sekmesinde "Rekabetçi nasıl davranır")
+1. **Nasıl davranır** (sunum sekmesinde "Rekabetçi nasıl davranır"; AI destekli sekmede "Nasıl davranırsınız", çünkü metin kişinin seviyesine göre seçilir)
 2. **Size tavsiyeler**
 3. **Yüksek rekabetçi davranışın uygun olduğu koşullar**
 4. **Yüksek rekabetçi davranışın uygun olmadığı koşullar**
