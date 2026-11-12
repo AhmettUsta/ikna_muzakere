@@ -1,3 +1,6 @@
+{# Tarz adlarının cümle içi küçük hâlleri; Jinja'nın lower() filtresi Türkçe "İ" harfini bozar. #}
+{% set kucuk_ad = {'rekabet': 'rekabetçi', 'isbirligi': 'işbirlikçi', 'uzlasma': 'uzlaşmacı', 'kacinma': 'kaçınmacı', 'iltifat': 'iltifatkar'} %}
+
 {% macro _ozet(c, styles, puan, seviye_ad) %}
   <summary class="tarz-baslik">
     <span class="tarz-ad">{{ styles[c.style].name }}</span>
@@ -11,7 +14,7 @@
   {{ _ozet(c, styles, puan, seviye_ad) }}
   <div class="tarz-govde">
     <section class="bolum bolum-davranis">
-      <h3><span class="bolum-no">1</span> Nasıl davranır</h3>
+      <h3><span class="bolum-no">1</span> {{ styles[c.style].name }} nasıl davranır</h3>
       <ul>{% for m in c.davranis.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
     </section>
 
@@ -23,17 +26,17 @@
     </section>
 
     <section class="bolum bolum-uygun">
-      <h3><span class="bolum-no">3</span> Uygun olduğu koşullar</h3>
+      <h3><span class="bolum-no">3</span> Yüksek {{ kucuk_ad[c.style] }} davranışın uygun olduğu koşullar</h3>
       <ul>{% for m in c.uygun.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
     </section>
 
     <section class="bolum bolum-uygun-degil">
-      <h3><span class="bolum-no">4</span> Uygun olmadığı koşullar</h3>
+      <h3><span class="bolum-no">4</span> Yüksek {{ kucuk_ad[c.style] }} davranışın uygun olmadığı koşullar</h3>
       <ul>{% for m in c.uygun_degil.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
     </section>
 
     <section class="bolum bolum-karsi">
-      <h3><span class="bolum-no">5</span> Karşınızda bu tarzda biri varsa</h3>
+      <h3><span class="bolum-no">5</span> Karşınızda yüksek {{ kucuk_ad[c.style] }} biri varsa</h3>
       <ul>{% for m in c.karsi_taraf.maddeler %}<li>{{ m }}</li>{% endfor %}</ul>
     </section>
   </div>
@@ -55,17 +58,17 @@
     </section>
 
     <section class="bolum bolum-uygun">
-      <h3><span class="bolum-no">3</span> Uygun olduğu koşullar</h3>
+      <h3><span class="bolum-no">3</span> Yüksek {{ kucuk_ad[c.style] }} davranışın uygun olduğu koşullar</h3>
       {{ c.uygun|md }}
     </section>
 
     <section class="bolum bolum-uygun-degil">
-      <h3><span class="bolum-no">4</span> Uygun olmadığı koşullar</h3>
+      <h3><span class="bolum-no">4</span> Yüksek {{ kucuk_ad[c.style] }} davranışın uygun olmadığı koşullar</h3>
       {{ c.uygun_degil|md }}
     </section>
 
     <section class="bolum bolum-karsi">
-      <h3><span class="bolum-no">5</span> Karşınızda bu tarzda biri varsa</h3>
+      <h3><span class="bolum-no">5</span> Karşınızda yüksek {{ kucuk_ad[c.style] }} biri varsa</h3>
       {{ c.karsi_taraf|md }}
     </section>
   </div>

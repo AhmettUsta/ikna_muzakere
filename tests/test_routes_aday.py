@@ -244,9 +244,32 @@ def test_result_cards_show_sections_in_order(make_web_service) -> None:
     page = registered_client(make_web_service()).get(f"/sonuc/{PUBLIC_ID}").text
     first_card = page[page.index('class="tarz-kart'):page.index('class="tarz-kart', page.index('class="tarz-kart') + 1)]
 
-    headings = ["Nasıl davranır", "Size tavsiyeler", "Uygun olduğu koşullar", "Uygun olmadığı koşullar", "Karşınızda bu tarzda biri varsa"]
+    headings = [
+        "Rekabetçi nasıl davranır",
+        "Size tavsiyeler",
+        "Yüksek rekabetçi davranışın uygun olduğu koşullar",
+        "Yüksek rekabetçi davranışın uygun olmadığı koşullar",
+        "Karşınızda yüksek rekabetçi biri varsa",
+    ]
     positions = [first_card.index(h) for h in headings]
     assert positions == sorted(positions)
+
+
+def test_condition_headings_name_the_style_in_both_tabs(make_web_service) -> None:
+    page = registered_client(make_web_service()).get(f"/sonuc/{PUBLIC_ID}").text
+    sunum = page[page.index('id="icerik-sunum"'):page.index('id="icerik-kaynak"')]
+    ai = page[page.index('id="icerik-kaynak"'):page.index('id="icerik-sorular"')]
+
+    for tab in (sunum, ai):
+        for name in ["rekabetçi", "işbirlikçi", "uzlaşmacı", "kaçınmacı", "iltifatkar"]:
+            assert f"Yüksek {name} davranışın uygun olduğu koşullar" in tab
+            assert f"Yüksek {name} davranışın uygun olmadığı koşullar" in tab
+            assert f"Karşınızda yüksek {name} biri varsa" in tab
+    # Sunum sekmesinde davranış başlığı tarzı adlandırır; AI sekmesinde kişinin seviyesini anlattığı için genel kalır.
+    assert "İşbirlikçi nasıl davranır" in sunum
+    assert "İşbirlikçi nasıl davranır" not in ai
+    # Türkçe küçük harf: "İ" → "i" (birleşik nokta karakteri olmadan).
+    assert "\u0307" not in page
 
 
 def test_result_shows_answers_and_answer_key_tabs(make_web_service) -> None:

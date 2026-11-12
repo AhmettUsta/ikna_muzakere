@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Tasarım
 
-**Sürüm: v10 — 2026-11-12 15:05**
+**Sürüm: v11 — 2026-11-12 15:30**
 
 **Sürüm notları**
 
+- v11 — Kart başlıkları tarzı adlandırır: sunumda "Rekabetçi nasıl davranır"; iki sekmede de "Yüksek rekabetçi davranışın uygun (olmadığı) koşullar" ve "Karşınızda yüksek rekabetçi biri varsa" (koşulların kişinin puanına değil, davranışa ait olduğu açık olsun diye).
 - v10 — Sunum sekmesinde düşük ve orta seviye tavsiyeleri seviyeye özel (sunumdan ve kaynaklardan türetilmiş, kullanıcı onaylı); yüksek ve düşük kartlar açık; seviye renkleri: yüksek kırmızı, orta yeşil, düşük turuncu.
 - v9 — Yönetici aday listesinden adayın takma adını değiştirebilir ve adayı bütün denemeleriyle silebilir (tarayıcı onay penceresiyle).
 - v8 — Kartlarda "Size tavsiyeler" 2. sırada; ikinci sekmenin adı "AI destekli yorum"; bu sekmede beş başlığın hepsi düz yazı (uygun, uygun değil ve karşı taraf için tarz başına yeni kaynaklı metin); profil kutusu giriş / güçlü yanlar / zayıf yanlar / öneri olarak bölündü.
@@ -145,11 +146,13 @@ Her bölümün bir türü vardır: `davranis`, `uygun`, `uygun_degil`, `siz_isen
 
 Gösterim kuralı (kullanıcı kararı, v4; sıra v8): Her tarz bir kart olarak gösterilir; bölümler sunumdaki sıradan bağımsız olarak şu **sabit sırayla** gelir:
 
-1. **Nasıl davranır**
+1. **Nasıl davranır** (sunum sekmesinde "Rekabetçi nasıl davranır")
 2. **Size tavsiyeler**
-3. **Uygun olduğu koşullar**
-4. **Uygun olmadığı koşullar**
-5. **Karşınızda bu tarzda biri varsa**
+3. **Yüksek rekabetçi davranışın uygun olduğu koşullar**
+4. **Yüksek rekabetçi davranışın uygun olmadığı koşullar**
+5. **Karşınızda yüksek rekabetçi biri varsa**
+
+Başlıklardaki tarz adı her kartın kendi tarzıdır (v11). 3–5. bölümler kişinin puanını değil, o tarzı yüksek düzeyde kullanan davranışı anlatır; başlık bunu açıkça söyler.
 
 Bölümlerin içeriği sekmeye göre değişir:
 
