@@ -7,6 +7,7 @@ from fastapi import APIRouter, Form, Request
 from fastapi.responses import RedirectResponse, Response
 
 from security import LockoutPolicy
+from service import RegistrationError
 from web.deps import get_service, is_admin, render
 
 logger = logging.getLogger(__name__)
@@ -84,7 +85,7 @@ def try_admin_login(request: Request, password: str) -> AdminLoginOutcome:
 def candidates(request: Request) -> Response:
     if not is_admin(request):
         return _redirect("/yonetici")
-    return render(request, "yonetici_adaylar.html", {"adaylar": get_service(request).admin_participants()})
+    return _candidate_list(request)
 
 
 @router.get("/aday/{participant_id}")
@@ -95,3 +96,30 @@ def candidate(request: Request, participant_id: int) -> Response:
     if view is None:
         return render(request, "hata.html", {"mesaj": "Aday bulunamadı."}, status_code=404)
     return render(request, "gecmis.html", {"view": view, "yonetici_gorunumu": True})
+
+
+def _candidate_list(request: Request, hata: str | None = None, status_code: int = 200) -> Response:
+    context = {"adaylar": get_service(request).admin_participants(), "hata": hata}
+    return render(request, "yonetici_adaylar.html", context, status_code=status_code)
+
+
+@router.post("/aday/{participant_id}/ad")
+def rename_candidate(request: Request, participant_id: int, nickname: str = Form("")) -> Response:
+    if not is_admin(request):
+        return _redirect("/yonetici")
+    try:
+        get_service(request).admin_rename(participant_id, nickname)
+    except RegistrationError as exc:
+        return _candidate_list(request, hata=str(exc), status_code=400)
+    except LookupError:
+        return render(request, "hata.html", {"mesaj": "Aday bulunamadı."}, status_code=404)
+    return _redirect("/yonetici/adaylar")
+
+
+@router.post("/aday/{participant_id}/sil")
+def delete_candidate(request: Request, participant_id: int) -> Response:
+    if not is_admin(request):
+        return _redirect("/yonetici")
+    if not get_service(request).admin_delete(participant_id):
+        return render(request, "hata.html", {"mesaj": "Aday bulunamadı."}, status_code=404)
+    return _redirect("/yonetici/adaylar")

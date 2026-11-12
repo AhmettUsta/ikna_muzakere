@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Tasarım
 
-**Sürüm: v8 — 2026-11-11 23:26**
+**Sürüm: v9 — 2026-11-12 14:10**
 
 **Sürüm notları**
 
+- v9 — Yönetici aday listesinden adayın takma adını değiştirebilir ve adayı bütün denemeleriyle silebilir (tarayıcı onay penceresiyle).
 - v8 — Kartlarda "Size tavsiyeler" 2. sırada; ikinci sekmenin adı "AI destekli yorum"; bu sekmede beş başlığın hepsi düz yazı (uygun, uygun değil ve karşı taraf için tarz başına yeni kaynaklı metin); profil kutusu giriş / güçlü yanlar / zayıf yanlar / öneri olarak bölündü.
 - v7 — Sunum maddeleri bölüm başına en fazla 4, her bölümde tek gramer kalıbı; Kaçınmacı uygun / uygun değil olarak bölündü (uygun değil, sunumdaki uygun koşulların tersinden); sonuç sayfasında 4 sekme (2 yorum + 2 cevap).
 - v6 — Puan tablosuna "Normal aralık" sütunu (orta seviye aralığı); tablonun altındaki eşik notu kaldırıldı.
@@ -219,6 +220,9 @@ Yüksek seviyedeki kartlar açık, diğerleri kapalı başlar. AI destekli sekme
 1. `/yonetici` adresinden şifreyle girer.
 2. Takma ad listesini görür: takma ad, deneme sayısı, son deneme tarihi.
 3. Bir takma adı seçince o kişinin "Sonucuma bak" ekranını aynen görür. Yönetici kendi oturumundan çıkmaz, yalnızca görüntüler; adayın verisi değişmez.
+4. (Kullanıcı kararı, v9) Listede her satırda iki işlem vardır:
+   - **Adı değiştir:** Yeni ad, kayıttaki kurallarla denetlenir (2–30 karakter, başkasında olmayan ad, yönetici adı yasak); hata listede mesaj olarak görünür.
+   - **Sil:** Tarayıcı onay penceresinden sonra aday, denemeleri ve yapay zekâ yorumları kalıcı olarak silinir. Silinen adayın açık oturumu, bir sonraki test gönderiminde kapatılıp ana sayfaya yönlendirilir.
 
 ## 9. Güvenlik ve gizlilik (benim kararlarım)
 

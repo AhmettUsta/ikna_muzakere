@@ -5,7 +5,7 @@ from fastapi.testclient import TestClient
 
 from conftest import DESIGN_EXAMPLE, OWNER_ID, PUBLIC_ID
 from main import create_app
-from step_database import DatabaseUnavailable
+from step_database import DatabaseUnavailable, ParticipantMissing
 from step_gemini import LiveCommentUnavailable
 
 
@@ -286,3 +286,15 @@ def test_ai_tab_is_prose_with_profile_strengths(make_web_service) -> None:
     assert cards.count('class="tarz-kart') == 5
     assert cards.count('class="bolum ') == 25
     assert "Güçlü yanları:" in ai_tab and "Zayıf yanları:" in ai_tab and "Öneri:" in ai_tab
+
+
+def test_submit_after_participant_deleted_logs_out(make_web_service, fake_db) -> None:
+    client = registered_client(make_web_service())
+    fake_db.create_attempt.side_effect = ParticipantMissing(OWNER_ID)
+
+    response = client.post("/test", data=answers_form(DESIGN_EXAMPLE), follow_redirects=False)
+
+    assert response.status_code == 303
+    assert response.headers["location"] == "/"
+    # Oturum kapandı: test sayfası artık ana sayfaya yönlendirir.
+    assert client.get("/test", follow_redirects=False).headers["location"] == "/"

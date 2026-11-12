@@ -272,3 +272,12 @@ table.adaylar th, table.adaylar td { padding: 8px; border-bottom: 1px solid var(
 }
 .cevap-anahtari tfoot td { font-weight: 700; font-size: 0.95rem; }
 .cevap-anahtari tfoot th { font-size: 0.8rem; }
+
+/* Yönetici: aday listesindeki ad değiştirme ve silme işlemleri */
+.adaylar .islemler { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start; min-width: 150px; }
+.ad-degistir { border-bottom: none; padding: 0; }
+.ad-degistir summary { font-weight: 400; color: var(--vurgu); text-decoration: underline; padding: 6px 0; }
+.ad-degistir form { display: flex; gap: 6px; margin-top: 6px; }
+.ad-degistir input { margin-top: 0; padding: 6px 8px; width: 140px; }
+.ad-degistir button, button.tehlike { padding: 6px 12px; font-size: 0.9rem; }
+button.tehlike { background: #fbeaea; color: var(--hata); }

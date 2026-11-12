@@ -8,6 +8,7 @@ from fastapi.responses import PlainTextResponse, RedirectResponse, Response
 from chart import chart_svg
 from scoring import ANSWER_COUNT
 from service import LOGIN_FAILED_MESSAGE, LoginError, RegistrationError
+from step_database import ParticipantMissing
 from step_gemini import LiveCommentUnavailable
 from web.deps import current_participant, get_service, render, viewer_of
 from web.routes_yonetici import LOCKED_MESSAGE, try_admin_login
@@ -97,6 +98,10 @@ async def submit_test(request: Request) -> Response:
         if any(value not in ("A", "B") for value in values):
             raise ValueError("Her soru için A veya B seçilmeli")
         public_id = service.submit(participant_id, "".join(values))
+    except ParticipantMissing:
+        # Aday yönetici tarafından silinmiş; eski oturum kapatılır.
+        request.session.clear()
+        return _redirect("/")
     except ValueError:
         previous = {f"q{n}": str(form.get(f"q{n}", "")) for n in range(1, ANSWER_COUNT + 1)}
         return render(

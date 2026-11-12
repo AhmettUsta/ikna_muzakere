@@ -5,7 +5,7 @@ from contextlib import contextmanager
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 
-from sqlalchemy import Engine, and_, case, create_engine, func, or_, select, update
+from sqlalchemy import Engine, and_, case, create_engine, delete, func, or_, select, update
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.engine import URL
 from sqlalchemy.exc import IntegrityError, OperationalError
@@ -26,6 +26,10 @@ class NicknameTaken(Exception):
 
 class DatabaseUnavailable(Exception):
     """Veritabanına ulaşılamıyor."""
+
+
+class ParticipantMissing(Exception):
+    """Katılımcı kaydı yok (ör. yönetici tarafından silinmiş)."""
 
 
 @dataclass
@@ -181,16 +185,43 @@ class DatabaseStep:
             return _to_participant(row) if row else None
 
     def create_attempt(self, participant_id: int, answers: str, scores: dict[StyleKey, int]) -> uuid.UUID:
+        try:
+            with self._session() as session:
+                attempt = Attempt(
+                    public_id=uuid.uuid4(),
+                    participant_id=participant_id,
+                    answers=answers,
+                    **{f"score_{style}": scores[style] for style in STYLE_ORDER},
+                )
+                session.add(attempt)
+                session.flush()
+                return attempt.public_id
+        except IntegrityError as exc:
+            # Tek yabancı anahtar participant_id'dir; ihlal, katılımcının silinmiş olduğu anlamına gelir.
+            raise ParticipantMissing(participant_id) from exc
+
+    def rename_participant(self, participant_id: int, nickname: str, nickname_key: str) -> bool:
+        """Takma adı değiştirir; katılımcı yoksa False döner, ad alınmışsa NicknameTaken fırlatır."""
+        try:
+            with self._session() as session:
+                result = session.execute(
+                    update(Participant)
+                    .where(Participant.id == participant_id)
+                    .values(nickname=nickname, nickname_key=nickname_key)
+                )
+                return result.rowcount > 0
+        except IntegrityError as exc:
+            raise NicknameTaken(nickname_key) from exc
+
+    def delete_participant(self, participant_id: int) -> bool:
+        """Katılımcıyı, denemelerini ve yapay zekâ yorumlarını tek işlemde siler; yoksa False döner."""
         with self._session() as session:
-            attempt = Attempt(
-                public_id=uuid.uuid4(),
-                participant_id=participant_id,
-                answers=answers,
-                **{f"score_{style}": scores[style] for style in STYLE_ORDER},
-            )
-            session.add(attempt)
-            session.flush()
-            return attempt.public_id
+            attempt_ids = select(Attempt.id).where(Attempt.participant_id == participant_id)
+            # Yabancı anahtarlarda cascade yok; çocuk satırlar önce silinir.
+            session.execute(delete(AiComment).where(AiComment.attempt_id.in_(attempt_ids)))
+            session.execute(delete(Attempt).where(Attempt.participant_id == participant_id))
+            result = session.execute(delete(Participant).where(Participant.id == participant_id))
+            return result.rowcount > 0
 
     def get_attempt(self, public_id: uuid.UUID) -> AttemptRow | None:
         with self._session() as session:

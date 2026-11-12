@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Mimari
 
-**Sürüm: v5 — 2026-11-11 23:26**
+**Sürüm: v6 — 2026-11-12 14:10**
 
 **Sürüm notları**
 
+- v6 — Yönetici için ad değiştirme ve silme route'ları; `DatabaseStep.rename_participant`, `delete_participant`, `ParticipantMissing`.
 - v5 — `kaynakli/bolumler.json` (tarz başına uygun / uygun değil / karşı taraf düz yazısı); profil alanları giriş / güçlü / zayıf / öneri; AI destekli sekme için ayrı kart modeli (`AiCard`).
 - v4 — Kaçınmacı istisnası kalktı: her tarzda her bölüm türünden tam bir tane; bölüm başına en fazla 4 madde denetimi.
 - v3 — Barındırma Render yerine Vercel (Render'a giriş yapılamadı); canlıda doğrulandı.
@@ -133,6 +134,8 @@ ai_comments
 | GET/POST | `/yonetici` | Şifre ile giriş | herkes |
 | GET | `/yonetici/adaylar` | Takma ad, deneme sayısı, son tarih | yönetici |
 | GET | `/yonetici/aday/{participant_id}` | Adayın `/gecmis` görünümü; sonuçlara tıklanır | yönetici |
+| POST | `/yonetici/aday/{participant_id}/ad` | Takma adı değiştirir (`nickname`); hata 400, aday yoksa 404 | yönetici |
+| POST | `/yonetici/aday/{participant_id}/sil` | Adayı denemeleri ve AI yorumlarıyla tek işlemde siler; aday yoksa 404 | yönetici |
 | GET | `/robots.txt` | `Disallow: /` | herkes |
 | GET | `/saglik` | `ok` döner; Render sağlık kontrolü için | herkes |
 

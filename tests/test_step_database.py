@@ -38,11 +38,12 @@ def nickname_key(engine):
     yield key
     # Testin oluşturduğu satırları, yabancı anahtar sırasına göre temizler.
     with engine.begin() as conn:
-        ids = select(Participant.id).where(Participant.nickname_key == key)
+        # Ad değiştirme testleri anahtarın türevlerini de kullanır (ör. "<key>-yeni").
+        ids = select(Participant.id).where(Participant.nickname_key.like(f"{key}%"))
         attempt_ids = select(Attempt.id).where(Attempt.participant_id.in_(ids))
         conn.execute(delete(AiComment).where(AiComment.attempt_id.in_(attempt_ids)))
         conn.execute(delete(Attempt).where(Attempt.participant_id.in_(ids)))
-        conn.execute(delete(Participant).where(Participant.nickname_key == key))
+        conn.execute(delete(Participant).where(Participant.nickname_key.like(f"{key}%")))
 
 
 def test_create_and_get_participant(db, nickname_key: str) -> None:
@@ -147,3 +148,52 @@ def test_reserve_login_attempt_unknown_key(db) -> None:
     from datetime import datetime, timezone
 
     assert db.reserve_login_attempt("olmayan-anahtar-xyz", datetime.now(timezone.utc), 5, 15) is None
+
+
+def test_rename_participant(db, nickname_key: str) -> None:
+    participant_id = db.create_participant("Eski", nickname_key, b"h", b"s")
+
+    assert db.rename_participant(participant_id, "Yeni Ad", f"{nickname_key}-yeni") is True
+
+    assert db.get_participant(participant_id).nickname == "Yeni Ad"
+    assert db.get_participant_by_key(nickname_key) is None
+    assert db.get_participant_by_key(f"{nickname_key}-yeni").id == participant_id
+
+
+def test_rename_participant_to_taken_key_raises(db, nickname_key: str) -> None:
+    from step_database import NicknameTaken
+
+    participant_id = db.create_participant("A", nickname_key, b"h", b"s")
+    db.create_participant("B", f"{nickname_key}-b", b"h", b"s")
+
+    with pytest.raises(NicknameTaken):
+        db.rename_participant(participant_id, "B", f"{nickname_key}-b")
+    assert db.get_participant(participant_id).nickname == "A"
+
+
+def test_rename_unknown_participant_returns_false(db) -> None:
+    assert db.rename_participant(-1, "X", "olmayan-anahtar-xyz") is False
+
+
+def test_delete_participant_removes_attempts_and_comments(db, nickname_key: str) -> None:
+    participant_id = db.create_participant("A", nickname_key, b"h", b"s")
+    public_id = db.create_attempt(participant_id, ANSWERS, SCORES)
+    attempt = db.get_attempt(public_id)
+    db.save_ai_comment(attempt.id, "model-x", "yorum")
+
+    assert db.delete_participant(participant_id) is True
+
+    assert db.get_participant(participant_id) is None
+    assert db.get_attempt(public_id) is None
+    assert db.get_ai_comment(attempt.id) is None
+
+
+def test_delete_unknown_participant_returns_false(db) -> None:
+    assert db.delete_participant(-1) is False
+
+
+def test_create_attempt_for_missing_participant_raises(db) -> None:
+    from step_database import ParticipantMissing
+
+    with pytest.raises(ParticipantMissing):
+        db.create_attempt(-1, ANSWERS, SCORES)

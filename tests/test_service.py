@@ -6,7 +6,7 @@ from unittest.mock import MagicMock
 import pytest
 
 from scoring import Scorer
-from security import LockoutPolicy, PinHasher
+from security import LockoutPolicy, PinHasher, normalize_nickname
 from service import AccountLocked, LoginError, RegistrationError, TestService, Viewer
 from step_content import ContentStep
 from step_database import AttemptRow, NicknameTaken, ParticipantRow
@@ -254,3 +254,46 @@ def test_history_view(content, db, hasher) -> None:
     view = make_service(content, db, hasher).history_view(OWNER_ID)
 
     assert view.nickname == "Ali" and len(view.attempts) == 1
+
+
+def test_admin_rename_normalizes_and_saves(content, db, hasher) -> None:
+    db.rename_participant.return_value = True
+    display, key = normalize_nickname("  Yeni İsim ")
+
+    assert make_service(content, db, hasher).admin_rename(OWNER_ID, "  Yeni İsim ") == display
+    db.rename_participant.assert_called_once_with(OWNER_ID, display, key)
+
+
+@pytest.mark.parametrize("nickname", ["a", "", "x" * 31, "ad<script>"])
+def test_admin_rename_rejects_invalid_nickname(content, db, hasher, nickname: str) -> None:
+    with pytest.raises(RegistrationError):
+        make_service(content, db, hasher).admin_rename(OWNER_ID, nickname)
+    db.rename_participant.assert_not_called()
+
+
+def test_admin_rename_rejects_admin_name(content, db, hasher) -> None:
+    with pytest.raises(RegistrationError, match="kullanılamaz"):
+        make_service(content, db, hasher).admin_rename(OWNER_ID, "Ustaoglu")
+    db.rename_participant.assert_not_called()
+
+
+def test_admin_rename_taken_nickname(content, db, hasher) -> None:
+    db.rename_participant.side_effect = NicknameTaken("veli")
+
+    with pytest.raises(RegistrationError, match="alınmış"):
+        make_service(content, db, hasher).admin_rename(OWNER_ID, "Veli")
+
+
+def test_admin_rename_unknown_participant(content, db, hasher) -> None:
+    db.rename_participant.return_value = False
+
+    with pytest.raises(LookupError):
+        make_service(content, db, hasher).admin_rename(OWNER_ID, "Veli")
+
+
+@pytest.mark.parametrize("found", [True, False])
+def test_admin_delete_returns_db_result(content, db, hasher, found: bool) -> None:
+    db.delete_participant.return_value = found
+
+    assert make_service(content, db, hasher).admin_delete(OWNER_ID) is found
+    db.delete_participant.assert_called_once_with(OWNER_ID)

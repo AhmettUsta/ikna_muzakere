@@ -88,13 +88,11 @@ class TestService:
         self._clock = clock
 
     def register(self, nickname: str, pin: str, pin_again: str) -> int:
+        display, key = self._checked_nickname(nickname)
         try:
-            display, key = normalize_nickname(nickname)
             validate_pin(pin)
         except ValueError as exc:
             raise RegistrationError(str(exc)) from exc
-        if key == self._admin_key:
-            raise RegistrationError("Bu takma ad kullanılamaz, lütfen başka bir ad seçin.")
         if pin != pin_again:
             raise RegistrationError("PIN'ler birbiriyle aynı değil.")
         digest, salt = self._hasher.hash(pin)
@@ -104,6 +102,16 @@ class TestService:
             raise RegistrationError("Bu takma ad alınmış, lütfen başka bir ad seçin.") from exc
         logger.info("Yeni katılımcı kaydedildi: id=%d", participant_id)
         return participant_id
+
+    def _checked_nickname(self, nickname: str) -> tuple[str, str]:
+        """Takma adı kayıt kurallarıyla doğrular; (görünen ad, anahtar) döner."""
+        try:
+            display, key = normalize_nickname(nickname)
+        except ValueError as exc:
+            raise RegistrationError(str(exc)) from exc
+        if key == self._admin_key:
+            raise RegistrationError("Bu takma ad kullanılamaz, lütfen başka bir ad seçin.")
+        return display, key
 
     def login(self, nickname: str, pin: str) -> int:
         try:
@@ -200,3 +208,22 @@ class TestService:
 
     def admin_participants(self) -> list[ParticipantSummary]:
         return self._db.list_participant_summaries()
+
+    def admin_rename(self, participant_id: int, nickname: str) -> str:
+        """Adayın takma adını değiştirir; geçersiz ya da alınmış adda RegistrationError, aday yoksa LookupError."""
+        display, key = self._checked_nickname(nickname)
+        try:
+            found = self._db.rename_participant(participant_id, display, key)
+        except NicknameTaken as exc:
+            raise RegistrationError("Bu takma ad alınmış, lütfen başka bir ad seçin.") from exc
+        if not found:
+            raise LookupError(f"Aday bulunamadı: id={participant_id}")
+        logger.info("Yönetici adayın adını değiştirdi: id=%d", participant_id)
+        return display
+
+    def admin_delete(self, participant_id: int) -> bool:
+        """Adayı bütün denemeleriyle siler; aday yoksa False döner."""
+        deleted = self._db.delete_participant(participant_id)
+        if deleted:
+            logger.info("Yönetici adayı sildi: id=%d", participant_id)
+        return deleted
