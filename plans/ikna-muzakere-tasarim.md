@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Tasarım
 
-**Sürüm: v11 — 2026-11-12 15:30**
+**Sürüm: v12 — 2026-11-12 15:50**
 
 **Sürüm notları**
 
+- v12 — Profil kutusunun her bölümüne (giriş, güçlü yanlar, zayıf yanlar, öneri) birer cümle eklendi (20 profil, kullanıcı onaylı).
 - v11 — Kart başlıkları tarzı adlandırır: sunumda "Rekabetçi nasıl davranır"; iki sekmede de "Yüksek rekabetçi davranışın uygun (olmadığı) koşullar" ve "Karşınızda yüksek rekabetçi biri varsa" (koşulların kişinin puanına değil, davranışa ait olduğu açık olsun diye).
 - v10 — Sunum sekmesinde düşük ve orta seviye tavsiyeleri seviyeye özel (sunumdan ve kaynaklardan türetilmiş, kullanıcı onaylı); yüksek ve düşük kartlar açık; seviye renkleri: yüksek kırmızı, orta yeşil, düşük turuncu.
 - v9 — Yönetici aday listesinden adayın takma adını değiştirebilir ve adayı bütün denemeleriyle silebilir (tarayıcı onay penceresiyle).
