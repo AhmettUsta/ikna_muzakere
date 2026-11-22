@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Uygulama Planı
 
-**Sürüm: v1 — 2026-11-11 14:36**
+**Sürüm: v2 — 2026-11-22 16:20**
 
 **Sürüm notları**
 
+- v2 — Commit takibi (kod commit'i `4d6ee0a`): tamamlanan görevler `[x]`; Docker adımı doğrulanmadı; Render yerine Vercel notu; veri sözlüğü bağlantısı. Plan metni tarihsel kayıt olarak korunur; güncel yapı mimaride.
 - v1 — İlk plan: 12 görev, ön koşullar, genel kısıtlar, gözden geçirme odakları.
 
 > **Uygulayıcı için:** Görevler sırayla, `superpowers:subagent-driven-development` ya da `superpowers:executing-plans` ile uygulanır. Adımlar `- [ ]` kutularıyla takip edilir.
@@ -14,11 +15,11 @@
 
 **Teknoloji:** Python 3.11, FastAPI, Jinja2, SQLAlchemy 2.0, psycopg 3, Alembic, google-genai, pytest.
 
-**Dayandığı dokümanlar:** [Tasarım](ikna-muzakere-tasarim.md) · [Mimari](ikna-muzakere-mimari.md). Uygulayıcı her ikisini de okur.
+**Dayandığı dokümanlar:** [Tasarım](ikna-muzakere-tasarim.md) · [Mimari](ikna-muzakere-mimari.md) · [Veri sözlüğü](ikna-muzakere-veri-sozlugu.md). Uygulayıcı hepsini okur.
 
 ## Ön koşullar (kod yazmadan önce)
 
-- [ ] **Paket onayı:** Aşağıdaki paketler için kullanıcıdan onay alınır (AGENTS.md P9):
+- [x] **Paket onayı:** Aşağıdaki paketler için kullanıcıdan onay alınır (AGENTS.md P9):
   - jinja2, python-multipart, itsdangerous
   - sqlalchemy, psycopg[binary], alembic
   - google-genai
@@ -26,7 +27,7 @@
 
   Onaydan sonra `python3 -m pip install ...` ile kurulur. Kurulan sürümler `pip show` ile okunur ve `requirements.txt`'ye `==` ile yazılır; mevcut `fastapi==0.116.1` ve `uvicorn==0.38.0` de eklenir.
 - [x] **Neon:** Bağlantı bilgileri `.env`'ye `PG_*` alanları olarak yazıldı: `neondb` veritabanı, `ikna_muzakere` şeması, Frankfurt. Şirket RDS bilgileri silindi; 5432 portuna erişim doğrulandı.
-- [ ] **Gizli değerler:** `SESSION_SECRET`, `secrets.token_urlsafe(32)` ile üretilip `.env`'ye yazılır. `ADMIN_PASSWORD` kullanıcıya sorulur. `GEMINI_API_KEY`'i kullanıcı Google AI Studio'dan alır; bu yalnızca Görev 7'deki gerçek deneme için gerekir.
+- [x] **Gizli değerler:** `SESSION_SECRET`, `secrets.token_urlsafe(32)` ile üretilip `.env`'ye yazılır. `ADMIN_PASSWORD` kullanıcıya sorulur. `GEMINI_API_KEY`'i kullanıcı Google AI Studio'dan alır; bu yalnızca Görev 7'deki gerçek deneme için gerekir.
 
 ## Genel kısıtlar
 
@@ -96,7 +97,7 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
     | kacinma | Kaçınmacı | 20 | 20 |
     | iltifat | İltifatkar | 80 | 20 |
 
-- [ ] **Adım 1: Başarısız testleri yaz**
+- [x] **Adım 1: Başarısız testleri yaz**
   - `test_load_real_content_passes`: Gerçek `src/content` yüklenir.
     - `len(questions) == 30`, `questions[0].a == "Problemin çözümünde sorumluluğu başkasının almasına izin verdiğim zamanlar vardır."`
     - `questions[29].b == "Problemi daima onunla paylaşırım, böylece üzerinde çalışabiliriz."`
@@ -106,10 +107,10 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
   - `test_load_missing_question_raises`: `tmp_path` altında 29 soruluk bir kopya → `ContentError`.
   - `test_load_unknown_style_in_key_raises`: Anahtarda `"X"` tarzı → `ContentError`.
   - `test_load_invalid_json_raises`: Bozuk JSON → `ContentError`. Mesajda dosya adı geçer.
-- [ ] **Adım 2:** `python3 -m pytest tests/test_step_content.py -v` → FAIL (modül yok).
-- [ ] **Adım 3:** `pytest.ini`, içerik dosyaları, `content_types.py` ve `ContentStep.load` yazılır. JSON `json.load` ile okunur ve `json.JSONDecodeError` ile `OSError` `ContentError`'a çevrilir. Soru numaraları 1–30 aralığında, eksiksiz ve tekrarsız olmalıdır.
-- [ ] **Adım 4:** Aynı komut → PASS.
-- [ ] **Adım 5:** `python3 -m pytest` tamamı yeşil. Rapor: aktarılan soru sayısı ve fotoğrafta okunması zor olan yerler, varsa.
+- [x] **Adım 2:** `python3 -m pytest tests/test_step_content.py -v` → FAIL (modül yok).
+- [x] **Adım 3:** `pytest.ini`, içerik dosyaları, `content_types.py` ve `ContentStep.load` yazılır. JSON `json.load` ile okunur ve `json.JSONDecodeError` ile `OSError` `ContentError`'a çevrilir. Soru numaraları 1–30 aralığında, eksiksiz ve tekrarsız olmalıdır.
+- [x] **Adım 4:** Aynı komut → PASS.
+- [x] **Adım 5:** `python3 -m pytest` tamamı yeşil. Rapor: aktarılan soru sayısı ve fotoğrafta okunması zor olan yerler, varsa.
 
 ### Görev 2: Puanlama
 
@@ -132,7 +133,7 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
   - `least`: `dominant` dışındaki tarzlar arasında en düşük `relative` değerine sahip olan. Eşitlikte yine `STYLE_ORDER`'da önce gelen seçilir.
   - Böylece `dominant` ile `least` hiçbir zaman aynı olmaz.
 
-- [ ] **Adım 1: Başarısız testleri yaz**
+- [x] **Adım 1: Başarısız testleri yaz**
   - `test_score_design_example`: `"ABBABBBBBBBBBBABAAABBBABABBABB"` şu sonucu verir:
     - Puanlar: rekabet 9, isbirligi 7, uzlasma 6, kacinma 3, iltifat 5.
     - Seviyeler: yuksek, orta, orta, dusuk, orta.
@@ -141,9 +142,9 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
   - `test_relative_tie_uses_style_order`: Tüm göreli puanları eşit olan bir `from_scores` girdisinde `dominant == "rekabet"` ve `least == "isbirligi"`.
   - `test_count_rejects_bad_input`: `"A"*29`, `"A"*31`, `"A"*29 + "C"` ve küçük harfle `"a"*30` girdileri `pytest.raises(ValueError)` ile reddedilir. (Gözden geçirme odağı 2.)
   - `test_scores_always_sum_to_30`: `"A"*30` ve `"B"*30` için puanların toplamı 30.
-- [ ] **Adım 2:** `python3 -m pytest tests/test_scoring.py -v` → FAIL.
-- [ ] **Adım 3:** `scoring.py` yazılır.
-- [ ] **Adım 4:** → PASS. **Adım 5:** Tüm testler yeşil; rapor verilir.
+- [x] **Adım 2:** `python3 -m pytest tests/test_scoring.py -v` → FAIL.
+- [x] **Adım 3:** `scoring.py` yazılır.
+- [x] **Adım 4:** → PASS. **Adım 5:** Tüm testler yeşil; rapor verilir.
 
 ### Görev 3: Sunum metinleri
 
@@ -176,12 +177,12 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
   - `dusuk`: `acik=True`, `not_metni="Bu tarzı az kullanıyorsunuz. Şu durumlarda işe yarayabilir:"`. Yalnızca `uygun` türündeki bölümler gösterilir.
   - `orta`: `acik=False`, tüm bölümler sunumdaki sırayla gösterilir.
 
-- [ ] **Adım 1: Başarısız testleri yaz**
+- [x] **Adım 1: Başarısız testleri yaz**
   - `test_sunum_section_types_per_style`: Kaçınma tarzında `uygun` türünden 2 bölüm ve hiç `uygun_degil` bölümü bulunur. Diğer dört tarzda her türden tam olarak 1 bölüm bulunur.
   - `test_sunum_spot_text`: Rekabet `davranis` bölümünün ilk maddesi `"Diğer tarafın ne hissettiğiyle ilgilenmezler"`. Kaçınma `siz_iseniz` bölümünün ilk maddesi `"Yutkunmayın,"`.
   - `test_sunum_missing_type_raises`: Rekabet dosyasından `uygun_degil` bölümü çıkarılınca `ContentError` fırlatılır.
   - `test_sunum_view_high_puts_siz_iseniz_first`, `test_sunum_view_low_shows_only_uygun` (kaçınma için 2 bölüm), `test_sunum_view_mid_collapsed`.
-- [ ] **Adım 2:** → FAIL. **Adım 3:** Dosyalar ve kod yazılır. **Adım 4:** → PASS. **Adım 5:** Tüm testler yeşil; rapor verilir.
+- [x] **Adım 2:** → FAIL. **Adım 3:** Dosyalar ve kod yazılır. **Adım 4:** → PASS. **Adım 5:** Tüm testler yeşil; rapor verilir.
 
 ### Görev 4: Kaynak paketi ve kaynaklı yorumlar (kullanıcı onayı ile biter)
 
@@ -202,22 +203,22 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
   - `bloklar.json`: `{"rekabet": {"yuksek": {...}, "orta": {...}, "dusuk": {...}}, ...}`
   - `profiller.json`: `{"rekabet__kacinma": {...}, ...}` — 20 anahtar; her biri birbirinden farklı iki tarzın sıralı ikilisidir.
 
-- [ ] **Adım 1: Araştır.** Tasarım 7.2'deki aday kaynaklar web aramasıyla doğrulanır:
+- [x] **Adım 1: Araştır.** Tasarım 7.2'deki aday kaynaklar web aramasıyla doğrulanır:
   - Ölçüt: eser gerçekten var ve kaynakça bilgisi doğru (yazar, yıl, başlık, yayıncı ya da dergi, varsa DOI).
   - Her kaynak için 3–6 cümlelik bir özet yazılır.
   - Doğrulanamayan kaynak pakete girmez; raporda bunlar listelenir.
-- [ ] **Adım 2: Başarısız testleri yaz**
+- [x] **Adım 2: Başarısız testleri yaz**
   - `test_blocks_complete`: 15 blok var ve her bloğun `kaynaklar` listesi en az 1 eleman içerir.
   - `test_profiles_complete`: 20 profil var ve `dominant != least`.
   - `test_unknown_source_id_raises`: Tanımsız bir kaynak kimliği `ContentError` verir.
   - `test_sources_have_citation`: Her `Source.kaynakca` alanı bir 4 haneli yıl içerir.
-- [ ] **Adım 3:** → FAIL.
-- [ ] **Adım 4: Metinleri yaz.**
+- [x] **Adım 3:** → FAIL.
+- [x] **Adım 4: Metinleri yaz.**
   - Bloklar 120–200 kelime olur ve tarzın akademik tanımını, güçlü ve riskli yönlerini, gelişim önerilerini içerir.
   - Profil metinleri 100–180 kelime olur.
   - Metinlerde kaynakta açıkça yer almayan sayısal iddia ya da alıntı bulunmaz. Kişilik tanısı dili kullanılmaz ("siz şusunuz" değil, "bu profil çoğunlukla şunu tercih eder").
-- [ ] **Adım 5:** → PASS. Tüm testler yeşil.
-- [ ] **Adım 6: DUR — kullanıcı onayı.** Kaynak listesi, 15 blok ve 20 profil metni okunabilir bir özet halinde kullanıcıya sunulur. Kullanıcının istediği düzeltmeler yapılır. Onay gelmeden Görev 9'daki kaynaklı yorum sekmesi yayına alınmaz; diğer görevlere devam edilebilir.
+- [x] **Adım 5:** → PASS. Tüm testler yeşil.
+- [x] **Adım 6: DUR — kullanıcı onayı.** Kaynak listesi, 15 blok ve 20 profil metni okunabilir bir özet halinde kullanıcıya sunulur. Kullanıcının istediği düzeltmeler yapılır. Onay gelmeden Görev 9'daki kaynaklı yorum sekmesi yayına alınmaz; diğer görevlere devam edilebilir.
 
 ### Görev 5: PIN güvenliği ve takma ad
 
@@ -241,13 +242,13 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
     - `is_locked(locked_until: datetime | None, now: datetime) -> bool`
     - `after_failure(failed: int, now: datetime) -> tuple[int, datetime | None]`. 5. hatada `(0, now + 15 dk)` döner, yani sayaç sıfırlanır ve kilit başlar.
 
-- [ ] **Adım 1: Başarısız testleri yaz**
+- [x] **Adım 1: Başarısız testleri yaz**
   - `test_normalize_nickname_same_key` (gözden geçirme odağı 1): `"Ali"`, `" ali "`, `"ALİ"` ve `"ali"` aynı anahtarı üretir. `"Işık"` girdisinin anahtarı `"ışık"` olur.
   - `test_normalize_nickname_rejects`: `""`, `"a"`, 31 karakterlik bir ad ve `"ali<script>"` → `ValueError`.
   - `test_validate_pin_rejects`: `"123"`, `"12345"` ve `"12a4"` → `ValueError`.
   - `test_pin_hash_verify`: Doğru PIN `True`, yanlış PIN `False` döner. Aynı PIN iki kez özetlenince farklı tuz üretilir.
   - `test_lockout_after_five_failures` ve `test_lock_expires`.
-- [ ] **Adım 2:** → FAIL. **Adım 3:** Kod yazılır. **Adım 4:** → PASS. **Adım 5:** Tüm testler yeşil; rapor verilir.
+- [x] **Adım 2:** → FAIL. **Adım 3:** Kod yazılır. **Adım 4:** → PASS. **Adım 5:** Tüm testler yeşil; rapor verilir.
 
 ### Görev 6: Config, veritabanı modelleri, migration ve DatabaseStep
 
@@ -284,16 +285,16 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
 
 - **Veri modeli:** Tablolar ve indeksler mimari §4'teki gibidir. Migration önce `CREATE SCHEMA IF NOT EXISTS` çalıştırır.
 
-- [ ] **Adım 1: Başarısız testleri yaz.** Her test kendi benzersiz takma adını üretir ve sonunda oluşturduğu satırları siler.
+- [x] **Adım 1: Başarısız testleri yaz.** Her test kendi benzersiz takma adını üretir ve sonunda oluşturduğu satırları siler.
   - `test_create_and_get_participant`
   - `test_duplicate_nickname_raises`
   - `test_attempt_roundtrip`: Puanlar ve cevaplar aynen geri gelir; `list_attempts` en yeniyi başta verir.
   - `test_ai_comment_saved_once`: İkinci `save_ai_comment` ilk metni değiştirmez.
   - `test_summaries_count_attempts`
-- [ ] **Adım 2:** `RUN_DB_TESTS=1 python3 -m pytest tests/test_step_database.py -v` → FAIL.
-- [ ] **Adım 3:** Kod ve migration yazılır. `PYTHONPATH=src alembic upgrade head` Neon'da çalıştırılır. Bu, veritabanına yazan bir işlemdir; hedef Neon olduğu ve kullanıcının onayladığı plan kapsamında yapıldığı raporda belirtilir.
-- [ ] **Adım 4:** → PASS. `RUN_DB_TESTS` olmadan `python3 -m pytest` bu dosyayı atlar ve diğer testler yeşil kalır.
-- [ ] **Adım 5:** Rapor verilir.
+- [x] **Adım 2:** `RUN_DB_TESTS=1 python3 -m pytest tests/test_step_database.py -v` → FAIL.
+- [x] **Adım 3:** Kod ve migration yazılır. `PYTHONPATH=src alembic upgrade head` Neon'da çalıştırılır. Bu, veritabanına yazan bir işlemdir; hedef Neon olduğu ve kullanıcının onayladığı plan kapsamında yapıldığı raporda belirtilir.
+- [x] **Adım 4:** → PASS. `RUN_DB_TESTS` olmadan `python3 -m pytest` bu dosyayı atlar ve diğer testler yeşil kalır.
+- [x] **Adım 5:** Rapor verilir.
 
 ### Görev 7: Gemini canlı yorumu
 
@@ -314,12 +315,12 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
     - `generate(prompt: str) -> str`. `google.genai` istemcisi kullanılır, zaman aşımı 30 saniyedir. Herhangi bir API, ağ ya da kota hatası ve boş cevap `LiveCommentUnavailable`'a çevrilir. Gerçek istisna loglanır.
   - Model adı: Uygulama sırasında Google'ın güncel dokümanından, ücretsiz katmanda kullanılabilen bir "Flash" modeli seçilir ve `GEMINI_MODEL` alanına yazılır. Seçilen model raporda belirtilir.
 
-- [ ] **Adım 1: Başarısız testleri yaz**
+- [x] **Adım 1: Başarısız testleri yaz**
   - `test_build_prompt_contains_scores_and_sources`: Tasarım örneğinin puanları `"Rekabetçi: 9 (yüksek)"` biçiminde geçer. Her `Source.id` prompt'ta yer alır. Takma ad hiçbir yerde geçmez.
   - `test_generate_returns_text`: `client` mock'u metin döndürür.
   - `test_generate_maps_errors` (gözden geçirme odağı 4): Mock istisna fırlatınca ya da boş metin döndürünce `LiveCommentUnavailable` fırlatılır.
-- [ ] **Adım 2:** → FAIL. **Adım 3:** Kod yazılır. **Adım 4:** → PASS.
-- [ ] **Adım 5: Gerçek deneme** (yalnızca anahtar varsa). Tek bir gerçek istek gönderilir ve çıktı kullanıcıya gösterilir. Ücretsiz katman kullanıldığı için maliyet yoktur; yine de tek istekle sınırlı kalınır. Rapor verilir.
+- [x] **Adım 2:** → FAIL. **Adım 3:** Kod yazılır. **Adım 4:** → PASS.
+- [x] **Adım 5: Gerçek deneme** (yalnızca anahtar varsa). Tek bir gerçek istek gönderilir ve çıktı kullanıcıya gösterilir. Ücretsiz katman kullanıldığı için maliyet yoktur; yine de tek istekle sınırlı kalınır. Rapor verilir.
 
 ### Görev 8: TestService (orkestratör)
 
@@ -354,13 +355,13 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
     - `admin_participants() -> list[ParticipantSummary]`
   - Her akış adımı `logger.info` ile loglanır; PIN loglanmaz.
 
-- [ ] **Adım 1: Başarısız testleri yaz**
+- [x] **Adım 1: Başarısız testleri yaz**
   - `test_register_pin_mismatch`, `test_register_nickname_taken` (`NicknameTaken` → `RegistrationError`)
   - `test_login_wrong_pin_increments_and_locks` (5. hatada `AccountLocked`), `test_login_success_resets_counter`, `test_login_unknown_nickname_same_message`
   - `test_result_view_other_participant_none`, `test_result_view_admin_sees` (gözden geçirme odağı 3)
   - `test_live_comment_cached_no_second_call`, `test_live_comment_disabled_when_no_gemini` (gözden geçirme odağı 4)
   - `test_result_view_uses_profile_of_dominant_least`: Tasarım örneğinde `profiles[("rekabet", "kacinma")]` seçilir.
-- [ ] **Adım 2:** → FAIL. **Adım 3:** Kod yazılır. **Adım 4:** → PASS. **Adım 5:** Tüm testler yeşil; rapor verilir.
+- [x] **Adım 2:** → FAIL. **Adım 3:** Kod yazılır. **Adım 4:** → PASS. **Adım 5:** Tüm testler yeşil; rapor verilir.
 
 ### Görev 9: Aday sayfaları
 
@@ -402,7 +403,7 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
   - **Geçmiş sayfası:** `gecmis.html` en son sonuca bir bağlantı, önceki denemelerin tarih listesi ve "Testi tekrar çöz" düğmesi (`/test`) içerir. Her sayfanın üst kısmında, oturum açıksa "Çıkış" düğmesi (`POST /cikis`) bulunur.
   - **Diğer:** `GET /robots.txt` ve `GET /saglik` route'ları vardır. Tüm şablonlar `base.html`'den türer ve `noindex` etiketini oradan alır.
 
-- [ ] **Adım 1: Başarısız testleri yaz.** `TestClient` kullanılır ve servis `MagicMock` ile taklit edilir.
+- [x] **Adım 1: Başarısız testleri yaz.** `TestClient` kullanılır ve servis `MagicMock` ile taklit edilir.
   - `test_robots_and_noindex`: `/robots.txt` → `Disallow: /`. `/` sayfasının HTML'inde `noindex` geçer.
   - `test_register_then_redirect_test`
   - `test_test_requires_session`: Oturumsuz `GET /test` → `/`'a yönlendirme.
@@ -412,8 +413,8 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
   - `test_live_unavailable_message`
   - `test_db_unavailable_503`
   - `test_chart_svg_contains_all_styles`: SVG'de beş tarz adı ve `"Rekabetçi · 9"` geçer.
-- [ ] **Adım 2:** → FAIL. **Adım 3:** Kod, şablonlar ve statik dosyalar yazılır. **Adım 4:** → PASS.
-- [ ] **Adım 5: Yerelde uçtan uca deneme.** `PYTHONPATH=src uvicorn main:app --reload` ile Neon'a bağlı olarak başlatılır.
+- [x] **Adım 2:** → FAIL. **Adım 3:** Kod, şablonlar ve statik dosyalar yazılır. **Adım 4:** → PASS.
+- [x] **Adım 5: Yerelde uçtan uca deneme.** `PYTHONPATH=src uvicorn main:app --reload` ile Neon'a bağlı olarak başlatılır.
   - Akış elle denenir: kayıt → 30 soru (tasarım örneği cevaplarıyla) → sonuç 9-7-6-3-5 → çıkış → giriş → geçmiş.
   - Telefon genişliğinde (375 px) görünüm kontrol edilir.
   - Ekran görüntüleri kullanıcıya gösterilir; rapor verilir.
@@ -436,12 +437,12 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
   - Yanlış şifrede formda "Şifre hatalı" mesajı gösterilir.
   - Yönetici girişi de `LockoutPolicy` kuralına tabidir: 5 yanlış denemede 15 dakika kilit. Sayaç bellekte tutulur.
 
-- [ ] **Adım 1: Başarısız testleri yaz**
+- [x] **Adım 1: Başarısız testleri yaz**
   - `test_admin_pages_require_login`: Oturumsuz `/yonetici/adaylar` → `/yonetici`'ye yönlendirme. (Gözden geçirme odağı 3.)
   - `test_admin_login_wrong_password`
   - `test_admin_sees_candidate_result`
   - `test_admin_no_live_button`
-- [ ] **Adım 2:** → FAIL. **Adım 3:** Kod yazılır. **Adım 4:** → PASS. **Adım 5:** Tüm testler yeşil; rapor verilir.
+- [x] **Adım 2:** → FAIL. **Adım 3:** Kod yazılır. **Adım 4:** → PASS. **Adım 5:** Tüm testler yeşil; rapor verilir.
 
 ### Görev 11: Docker, dokümanlar ve yerel paket doğrulaması
 
@@ -457,18 +458,18 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
 - **README.md:** Kısa özet, yerelde çalıştırma ve test komutları.
 - **PROJE.md:** Amaç, komutlar, klasör haritası, `ikna_muzakere_secrets` alan adları (değerler değil), alınmış kararlar ve plan dokümanlarına bağlantılar.
 
-- [ ] **Adım 1:** Docker kullanılabiliyorsa `docker build -t ikna-muzakere .` → başarılı. Ardından `docker run --env-file .env -p 8000:8000 ikna-muzakere` çalıştırılır ve `/saglik` adresinden `ok` alınır.
+- [ ] **Adım 1:** _(2026-11-22: yapılıp yapılmadığı doğrulanmadı; yayın Vercel'e geçtiği için Docker yalnızca alternatif.)_ Docker kullanılabiliyorsa `docker build -t ikna-muzakere .` → başarılı. Ardından `docker run --env-file .env -p 8000:8000 ikna-muzakere` çalıştırılır ve `/saglik` adresinden `ok` alınır.
   - Docker komut satırı kapalıysa kullanıcıdan Docker.app'i açması istenir. Açılamıyorsa bu adım "doğrulanmadı" olarak raporlanır ve yayında Render derlemesi doğrulama yerine geçer.
-- [ ] **Adım 2:** `python3 -m pytest` tamamı yeşil; rapor verilir.
+- [x] **Adım 2:** `python3 -m pytest` tamamı yeşil; rapor verilir.
 
 ### Görev 12: Yayına alma (kullanıcıyla birlikte)
 
-- [ ] **Adım 1:** Kullanıcı GitHub'da gizli bir depo açar. Push'u kullanıcı yapar ya da açıkça ister.
+- [x] **Adım 1:** Kullanıcı GitHub'da gizli bir depo açar. Push'u kullanıcı yapar ya da açıkça ister.
   - Push öncesinde `git status` ile `.env`, `data/` ve `logs/` klasörlerinin depoya girmediği gösterilir.
-- [ ] **Adım 2:** Render'da ücretsiz bir web servisi kurulur: Docker ortamı, Frankfurt bölgesi, sağlık kontrolü `/saglik`.
+- [x] **Adım 2:** _(Render'a giriş yapılamadığı için yerine Vercel Hobby kuruldu: `api/index.py`, `vercel.json`; mimari §9.)_ Render'da ücretsiz bir web servisi kurulur: Docker ortamı, Frankfurt bölgesi, sağlık kontrolü `/saglik`.
   - Ortam değişkeni olarak `ikna_muzakere_secrets` tek satırlık JSON olarak girilir. Yayında `COOKIE_SECURE` açık olur.
   - Adımları kullanıcı uygular; asistan her ekranda ne seçileceğini söyler.
-- [ ] **Adım 3: Yayın doğrulaması.**
+- [x] **Adım 3: Yayın doğrulaması.**
   - Canlı adreste Görev 9 Adım 5'teki akış tekrarlanır.
   - `/robots.txt` kontrol edilir; yönetici girişi denenir.
   - İsteğe bağlı olarak tek bir canlı Gemini yorumu denenir.

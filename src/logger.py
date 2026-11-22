@@ -3,23 +3,21 @@ Logging configuration and setup utilities
 """
 
 import logging
-import os
 from logging.handlers import TimedRotatingFileHandler
-from config import config
+from typing import Final
+
+from config import PROJECT_ROOT, config
+
+LOG_DIR: Final = PROJECT_ROOT / "logs"
 
 
-def setup_logging():
+def setup_logging() -> None:
     """
-    Set up comprehensive logging with both time and size rotation
+    Set up console logging and, if enabled, a daily rotating log file
     """
-    # Create logs directory if it doesn't exist
-    log_dir = "logs"
-    os.makedirs(log_dir, exist_ok=True)
-
     # Configure root logger
     root_logger = logging.getLogger()
-    log_level = config.LOG_LEVEL
-    root_logger.setLevel(getattr(logging, log_level))
+    root_logger.setLevel(config.LOG_LEVEL)
 
     # Clear any existing handlers
     root_logger.handlers.clear()
@@ -30,7 +28,7 @@ def setup_logging():
 
     # Console handler
     console_handler = logging.StreamHandler()
-    console_handler.setLevel(getattr(logging, log_level))
+    console_handler.setLevel(config.LOG_LEVEL)
     console_handler.setFormatter(log_formatter)
     root_logger.addHandler(console_handler)
 
@@ -46,11 +44,14 @@ def setup_logging():
     ]:
         logging.getLogger(azure_logger_name).setLevel(logging.WARNING)
 
-    # Single unified log file with both time and size rotation
+    # Single log file, rotated daily at midnight
     if config.LOG_TO_FILE:
+        # Path is anchored to the project root so the working directory does not matter
+        LOG_DIR.mkdir(exist_ok=True)
+
         # File handler
         unified_handler = TimedRotatingFileHandler(
-            filename=os.path.join(log_dir, "log.log"),
+            filename=LOG_DIR / "log.log",
             when="midnight",
             interval=1,
             backupCount=30,  # Keep 30 days of logs
@@ -60,4 +61,3 @@ def setup_logging():
         unified_handler.setFormatter(log_formatter)
         unified_handler.suffix = "%Y-%m-%d"
         root_logger.addHandler(unified_handler)
-

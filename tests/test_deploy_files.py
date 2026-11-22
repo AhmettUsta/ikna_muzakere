@@ -8,7 +8,7 @@ def test_dockerfile_creates_logs_dir_owned_by_app() -> None:
     user_line = next(i for i, line in enumerate(lines) if line.startswith("USER app"))
     setup = "\n".join(lines[:user_line])
 
-    # logger.setup_logging() açılışta logs/ oluşturur; non-root kullanıcı yazabilmeli.
+    # LOG_TO_FILE açıkken logger /app/logs'a yazar; non-root kullanıcı yazabilmeli.
     assert "mkdir -p /app/logs" in setup
     assert "chown app:app /app/logs" in setup
 
@@ -31,17 +31,20 @@ def test_vercel_entry_builds_app_without_writing_to_project(tmp_path) -> None:
         "ADMIN_USERNAME": "ustaoglu", "ADMIN_PASSWORD": "x",
     }
     env = {**os.environ, "ikna_muzakere_secrets": json.dumps(secrets)}
+    # Log klasörü geçici klasöre yönlendirilir; LOG_TO_FILE kapalıyken hiç oluşturulmamalı.
     code = (
-        "import sys, os; sys.path.insert(0, 'api'); import index; "
-        "print(type(index.app).__name__, os.getcwd() != sys.argv[1], os.path.isdir('logs'))"
+        "import sys, os, pathlib; sys.path[:0] = ['api', 'src']; import logger; "
+        "logger.LOG_DIR = pathlib.Path(sys.argv[1]) / 'logs'; import index; "
+        "print(type(index.app).__name__, os.getcwd() == sys.argv[2], logger.LOG_DIR.exists())"
     )
     result = subprocess.run(
-        [sys.executable, "-c", code, str(ROOT)], cwd=ROOT, env=env, capture_output=True, text=True, timeout=60
+        [sys.executable, "-c", code, str(tmp_path), str(ROOT)],
+        cwd=ROOT, env=env, capture_output=True, text=True, timeout=60,
     )
 
     assert result.returncode == 0, result.stderr
-    # Vercel'de proje klasörü salt okunur: log klasörü proje dışında oluşturulmalı.
-    assert result.stdout.split() == ["FastAPI", "True", "True"]
+    # Vercel'de proje klasörü salt okunur: giriş çalışma klasörünü değiştirmez, log klasörü oluşturulmaz.
+    assert result.stdout.split() == ["FastAPI", "True", "False"]
 
 
 def test_vercel_routes_everything_to_entry_before_filesystem() -> None:

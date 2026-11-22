@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Müzakere Tarzı Testi — Teknik Mimari</title>
+<!-- Kaynak dosya: PDF bu dosyadan üretilir (agents-md/araclar/pdf_yap.py). Sürüm: v2 — 2026-11-22 · Kod commit'i 4d6ee0a
+     Kutular mutlak konumludur (x, y, genişlik, yükseklik px); oklar alttaki SVG'de aynı koordinatlarla çizilir. -->
+<style>
+  @page { size: 1600px 900px; margin: 0; }
+  :root {
+    --lacivert: #16213E; --murekkep: #1F2937; --gri: #6B7280; --cizgi: #E5E1D8; --zemin: #F7F5F0;
+    --kullanici: #E76F51; --vercel: #E9C46A; --uygulama: #3A86FF; --adim: #2A9D8F; --veri: #7C6CF2; --yayin: #9CA3AF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--zemin); }
+  body { font-family: -apple-system, "Helvetica Neue", "Segoe UI", Arial, sans-serif; color: var(--murekkep);
+         -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sayfa { width: 1600px; height: 900px; position: relative; overflow: hidden; }
+  .baslik { position: absolute; left: 60px; top: 34px; }
+  .baslik h1 { font-size: 30px; font-weight: 800; color: var(--lacivert); }
+  .baslik h1 span { font-size: 22px; font-weight: 500; color: var(--gri); margin-left: 10px; }
+  .meta { position: absolute; right: 60px; top: 46px; font-size: 13px; color: var(--gri); }
+  code { font-family: "SF Mono", Menlo, Consolas, monospace; }
+
+  svg.oklar { position: absolute; inset: 0; }
+  .grup { position: absolute; border: 2px dashed var(--cizgi); border-radius: 18px; }
+  .grup > .ad { position: absolute; left: 16px; top: -12px; background: var(--zemin); padding: 0 8px;
+                font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--renk); }
+  .kutu { position: absolute; background: #fff; border: 1px solid var(--cizgi); border-top: 5px solid var(--renk);
+          border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; justify-content: center;
+          box-shadow: 0 2px 6px rgba(22,33,62,.06); }
+  .kutu b { font-size: 16px; color: var(--lacivert); }
+  .kutu span { font-size: 12.5px; color: var(--gri); margin-top: 4px; }
+  .kutu code { font-size: 12px; }
+  .serit { position: absolute; left: 40px; right: 40px; top: 742px; height: 120px; border-radius: 18px; background: #EFEBE3; }
+  .serit > .ad { position: absolute; left: 20px; top: 12px; font-size: 13px; font-weight: 700; letter-spacing: .06em;
+                 text-transform: uppercase; color: var(--gri); }
+</style>
+</head>
+<body>
+<section class="sayfa">
+  <div class="baslik"><h1>Müzakere Tarzı Testi<span>Teknik mimari</span></h1></div>
+  <div class="meta">Kod commit'i <code>4d6ee0a</code> · 2026-11-22 · ayrıntı: <code>plans/ikna-muzakere-mimari.md</code></div>
+
+  <!-- Gruplar -->
+  <div class="grup" style="left:290px;top:150px;width:250px;height:520px;--renk:#B8860B"><div class="ad">Vercel · Frankfurt</div></div>
+  <div class="grup" style="left:590px;top:150px;width:640px;height:520px;--renk:var(--uygulama)"><div class="ad">FastAPI uygulaması · <code style="text-transform:none">main.py</code></div></div>
+  <div class="grup" style="left:1270px;top:150px;width:290px;height:520px;--renk:var(--veri)"><div class="ad">Veri ve dış servis</div></div>
+  <div class="serit"><div class="ad">Yayın ve şema</div></div>
+
+  <!-- Oklar (kutulardan önce çizilir, kutular üstte kalır) -->
+  <svg class="oklar" width="1600" height="900" viewBox="0 0 1600 900">
+    <defs>
+      <marker id="uc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+      </marker>
+    </defs>
+    <g fill="none" stroke="#6B7280" stroke-width="2" marker-end="url(#uc)">
+      <!-- Kullanıcılar → fonksiyon -->
+      <path d="M230,290 C270,290 270,355 312,355"/>
+      <path d="M230,460 C270,460 270,395 312,395"/>
+      <!-- Fonksiyon → route'lar -->
+      <path d="M515,375 H560 V275 H612"/>
+      <!-- Route'lar → servis -->
+      <path d="M740,320 V417"/>
+      <!-- Servis → step'ler (dağıtım hattı) -->
+      <path d="M865,465 H912 V205 H957"/>
+      <path d="M912,305 H957"/>
+      <path d="M912,405 H957"/>
+      <path d="M912,465 V505 H957"/>
+      <path d="M912,505 V605 H957"/>
+      <!-- Step'ler → veri ve dış servis -->
+      <path d="M1190,205 H1287"/>
+      <path d="M1190,505 H1287" marker-start="url(#uc)"/>
+      <path d="M1190,605 H1287" marker-start="url(#uc)"/>
+      <!-- Yayın şeridi -->
+      <path d="M620,812 H533"/>
+      <path d="M430,775 V673"/>
+      <path d="M820,812 H917"/>
+      <path d="M1150,812 H1578 V505 H1543"/>
+    </g>
+    <g font-size="12.5" fill="#6B7280" text-anchor="middle" style="paint-order:stroke;stroke:#F7F5F0;stroke-width:6px">
+      <text x="262" y="372">HTTPS</text>
+      <text x="575" y="320">ASGI</text>
+      <text x="785" y="372">çağırır</text>
+      <text x="1238" y="196">açılışta okur</text>
+      <text x="1238" y="496">SQL · TLS</text>
+      <text x="1238" y="596">HTTPS</text>
+      <text x="577" y="803">git push</text>
+      <text x="460" y="725">otomatik yayın</text>
+      <text x="868" y="803">yerelden</text>
+      <text x="1282" y="803">migration</text>
+    </g>
+  </svg>
+
+  <!-- Kullanıcılar -->
+  <div class="kutu" style="left:60px;top:250px;width:170px;height:80px;--renk:var(--kullanici)"><b>Aday</b><span>tarayıcı</span></div>
+  <div class="kutu" style="left:60px;top:420px;width:170px;height:80px;--renk:var(--kullanici)"><b>Yönetici</b><span>tarayıcı</span></div>
+
+  <!-- Vercel -->
+  <div class="kutu" style="left:315px;top:330px;width:200px;height:90px;--renk:var(--vercel)"><b>Sunucusuz fonksiyon</b><span><code>api/index.py</code></span></div>
+
+  <!-- FastAPI -->
+  <div class="kutu" style="left:615px;top:230px;width:250px;height:90px;--renk:var(--uygulama)"><b>Route'lar</b><span><code>routes_aday.py</code><br><code>routes_yonetici.py</code></span></div>
+  <div class="kutu" style="left:615px;top:420px;width:250px;height:90px;--renk:var(--lacivert)"><b>TestService</b><span><code>service.py</code> · orkestratör</span></div>
+
+  <div class="kutu" style="left:960px;top:170px;width:230px;height:70px;--renk:var(--adim)"><b>ContentStep</b><span><code>step_content.py</code></span></div>
+  <div class="kutu" style="left:960px;top:270px;width:230px;height:70px;--renk:var(--adim)"><b>Puanlama</b><span><code>scoring.py</code> · <code>chart.py</code></span></div>
+  <div class="kutu" style="left:960px;top:370px;width:230px;height:70px;--renk:var(--adim)"><b>Güvenlik</b><span><code>security.py</code> · PIN, kilit</span></div>
+  <div class="kutu" style="left:960px;top:470px;width:230px;height:70px;--renk:var(--adim)"><b>DatabaseStep</b><span><code>step_database.py</code></span></div>
+  <div class="kutu" style="left:960px;top:570px;width:230px;height:70px;--renk:var(--adim)"><b>GeminiStep</b><span><code>step_gemini.py</code></span></div>
+
+  <!-- Veri ve dış servis -->
+  <div class="kutu" style="left:1290px;top:170px;width:250px;height:70px;--renk:var(--veri)"><b>İçerik dosyaları</b><span><code>src/content/*.json</code></span></div>
+  <div class="kutu" style="left:1290px;top:440px;width:250px;height:130px;--renk:var(--veri)"><b>Neon PostgreSQL</b><span>şema <code>ikna_muzakere</code><br><code>participants</code><br><code>attempts</code><br><code>ai_comments</code></span></div>
+  <div class="kutu" style="left:1290px;top:580px;width:250px;height:70px;--renk:var(--veri)"><b>Google Gemini API</b><span>yalnızca istek üzerine</span></div>
+
+  <!-- Yayın ve şema -->
+  <div class="kutu" style="left:620px;top:777px;width:200px;height:70px;--renk:var(--yayin)"><b>Geliştirici</b><span>yerel</span></div>
+  <div class="kutu" style="left:330px;top:777px;width:200px;height:70px;--renk:var(--yayin)"><b>GitHub</b><span>gizli repo · <code>main</code></span></div>
+  <div class="kutu" style="left:920px;top:777px;width:230px;height:70px;--renk:var(--yayin)"><b>Alembic</b><span><code>alembic upgrade head</code></span></div>
+</section>
+</body>
+</html>

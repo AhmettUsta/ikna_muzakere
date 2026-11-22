@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Müzakere Tarzı Testi — Ürün Tanıtımı</title>
+<!-- Kaynak dosya: PDF bu dosyadan üretilir (agents-md/araclar/pdf_yap.py). Sürüm: v1 — 2026-11-22 · Kod commit'i 4d6ee0a -->
+<style>
+  @page { size: 1600px 900px; margin: 0; }
+  :root {
+    --lacivert: #16213E; --murekkep: #1F2937; --gri: #6B7280; --acik-gri: #9CA3AF;
+    --zemin: #F7F5F0; --kart: #FFFFFF; --cizgi: #E7E2D8;
+    --mercan: #E76F51; --turkuaz: #2A9D8F; --sari: #E9C46A; --mor: #7C6CF2; --mavi: #3A86FF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--zemin); }
+  body {
+    font-family: -apple-system, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+    color: var(--murekkep); -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .sayfa {
+    width: 1600px; height: 900px; padding: 84px 110px 70px; position: relative; overflow: hidden;
+    display: flex; flex-direction: column; break-after: page; background: var(--zemin);
+  }
+  .sayfa:last-child { break-after: auto; }
+  .ust { font-size: 17px; letter-spacing: .16em; text-transform: uppercase; color: var(--mercan); font-weight: 700; }
+  h1 { font-size: 54px; line-height: 1.12; font-weight: 800; color: var(--lacivert); margin-top: 14px; letter-spacing: -.01em; }
+  .alt { font-size: 23px; line-height: 1.5; color: var(--gri); margin-top: 16px; max-width: 1100px; }
+  .alt-bilgi { position: absolute; left: 110px; right: 110px; bottom: 36px; display: flex; justify-content: space-between;
+               font-size: 15px; color: var(--acik-gri); }
+  .ikon { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .rozet { width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center; color: #fff; flex: none; }
+  .kart { background: var(--kart); border: 1px solid var(--cizgi); border-radius: 22px; padding: 34px; }
+  .kart h3 { font-size: 25px; color: var(--lacivert); margin: 22px 0 10px; }
+  .kart p { font-size: 19px; line-height: 1.5; color: var(--gri); }
+
+  /* 1 — Kapak */
+  .kapak { background: var(--lacivert); color: #fff; justify-content: center; }
+  .kapak .ust { color: var(--sari); }
+  .kapak h1 { color: #fff; font-size: 84px; margin-top: 22px; }
+  .kapak .alt { color: #C9CEDB; font-size: 28px; max-width: 900px; }
+  .tarzlar { position: absolute; right: 110px; top: 50%; transform: translateY(-50%); display: grid; gap: 18px; }
+  .tarz { display: flex; align-items: center; gap: 18px; font-size: 22px; color: #E5E7EB; }
+  .tarz i { width: 46px; height: 46px; border-radius: 50%; display: block; }
+  .kapak .alt-bilgi { color: #8F97AE; }
+
+  /* 2 — Problem */
+  .izgara-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; margin-top: 56px; }
+  .izgara-4 .kart { min-height: 300px; }
+
+  /* 3 — Yolculuk */
+  .yolculuk { display: grid; grid-template-columns: 1fr 34px 1fr 34px 1fr 34px 1fr; align-items: stretch; margin-top: 50px; }
+  .yolculuk .ok { display: grid; place-items: center; color: var(--acik-gri); font-size: 30px; }
+  .adim-no { font-size: 15px; font-weight: 700; letter-spacing: .12em; color: var(--acik-gri); margin-top: 20px; }
+  .yolculuk .kart h3 { margin-top: 8px; }
+  .serit { margin-top: 30px; display: flex; gap: 26px; }
+  .serit div { flex: 1; display: flex; align-items: center; gap: 16px; background: #EFEBE3; border-radius: 16px;
+               padding: 20px 26px; font-size: 19px; color: var(--murekkep); }
+  .not { margin-top: 22px; font-size: 16px; color: var(--acik-gri); }
+
+  /* 4 — Nasıl çalışır */
+  .sema { display: grid; grid-template-columns: 250px 70px 1fr 70px 380px; align-items: center; margin-top: 50px; }
+  .sema .ok { text-align: center; font-size: 48px; color: var(--gri); }
+  .kullanici { text-align: center; }
+  .kullanici .rozet { margin: 0 auto; width: 96px; height: 96px; border-radius: 28px; }
+  .kullanici .ikon { width: 44px; height: 44px; }
+  .kullanici h3 { font-size: 24px; color: var(--lacivert); margin-top: 18px; }
+  .kullanici p { font-size: 18px; color: var(--gri); margin-top: 6px; }
+  .uygulama { background: var(--lacivert); color: #fff; border-radius: 26px; padding: 36px 38px; }
+  .uygulama h3 { font-size: 28px; }
+  .uygulama p { color: #C9CEDB; font-size: 18px; margin-top: 6px; }
+  .moduller { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 26px; }
+  .moduller div { background: rgba(255,255,255,.08); border-radius: 14px; padding: 16px 18px; font-size: 18px; }
+  .moduller b { display: block; font-size: 19px; margin-bottom: 4px; color: #fff; }
+  .moduller span { color: #AEB5C8; font-size: 16px; }
+  .kaynaklar { display: grid; gap: 18px; }
+  .kaynak { display: flex; gap: 18px; align-items: center; background: var(--kart); border: 1px solid var(--cizgi);
+            border-radius: 18px; padding: 20px 22px; }
+  .kaynak .rozet { width: 54px; height: 54px; border-radius: 15px; }
+  .kaynak b { display: block; font-size: 20px; color: var(--lacivert); }
+  .kaynak span { font-size: 16px; color: var(--gri); }
+
+  /* 5 — Güven ve maliyet */
+  .iki-sutun { display: grid; grid-template-columns: 1.45fr 1fr; gap: 34px; margin-top: 46px; }
+  .liste { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .madde { display: flex; gap: 16px; align-items: flex-start; background: var(--kart); border: 1px solid var(--cizgi);
+           border-radius: 18px; padding: 22px; }
+  .madde .rozet { width: 50px; height: 50px; border-radius: 14px; }
+  .madde .ikon { width: 26px; height: 26px; }
+  .madde b { display: block; font-size: 20px; color: var(--lacivert); margin-bottom: 4px; }
+  .madde span { font-size: 16.5px; line-height: 1.45; color: var(--gri); }
+  .maliyet { background: var(--turkuaz); color: #fff; border-radius: 26px; padding: 40px; display: flex; flex-direction: column; }
+  .maliyet .buyuk { font-size: 110px; font-weight: 800; line-height: 1; margin-top: 18px; }
+  .maliyet .buyuk small { font-size: 34px; font-weight: 600; opacity: .85; }
+  .maliyet ul { list-style: none; margin-top: 28px; display: grid; gap: 14px; }
+  .maliyet li { font-size: 19px; padding-left: 26px; position: relative; color: #E6F4F2; }
+  .maliyet li::before { content: ""; position: absolute; left: 0; top: 9px; width: 10px; height: 10px; border-radius: 50%; background: var(--sari); }
+
+  /* 6 — Rakamlar */
+  .rakamlar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 46px; }
+  .rakam { background: var(--kart); border: 1px solid var(--cizgi); border-radius: 22px; padding: 30px 32px; }
+  .rakam .sayi { font-size: 72px; font-weight: 800; line-height: 1; }
+  .rakam .ad { font-size: 21px; color: var(--lacivert); font-weight: 700; margin-top: 12px; }
+  .rakam .aciklama { font-size: 16.5px; color: var(--gri); margin-top: 6px; }
+  .sonraki { margin-top: 30px; display: flex; align-items: center; gap: 22px; background: #EFEBE3; border-radius: 18px; padding: 24px 30px; }
+  .sonraki b { font-size: 19px; color: var(--lacivert); white-space: nowrap; }
+  .sonraki span { font-size: 18px; color: var(--gri); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-kagit" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h7M9 17h5"/></symbol>
+    <symbol id="i-mesaj" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+    <symbol id="i-saat" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-goz" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M3 3l18 18"/></symbol>
+    <symbol id="i-kisi" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></symbol>
+    <symbol id="i-liste" viewBox="0 0 24 24"><path d="M10 6h10M10 12h10M10 18h10"/><path d="M4 6l1.2 1.2L7.5 5M4 12l1.2 1.2L7.5 11M4 18l1.2 1.2L7.5 17"/></symbol>
+    <symbol id="i-grafik" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 17v-5M11 17V6M16 17v-8M21 17v-3"/></symbol>
+    <symbol id="i-isilti" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></symbol>
+    <symbol id="i-telefon" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></symbol>
+    <symbol id="i-kilit" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-kalkan" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-arama" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5M8 8l6 6"/></symbol>
+    <symbol id="i-veri" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+    <symbol id="i-kitap" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+    <symbol id="i-bulut" viewBox="0 0 24 24"><path d="M7 18a5 5 0 1 1 .9-9.9A6 6 0 0 1 19.5 9 4.5 4.5 0 0 1 18 18z"/></symbol>
+    <symbol id="i-yonetici" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16.5 14c2.8 0 5 1.9 5 5"/></symbol>
+    <symbol id="i-geri" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
+  </defs>
+</svg>
+
+<!-- 1. Kapak -->
+<section class="sayfa kapak">
+  <div class="ust">Ürün tanıtımı</div>
+  <h1>Müzakere Tarzı Testi</h1>
+  <p class="alt">Çatışma anında nasıl davrandığınızı 30 soruda keşfedin; sonucunuzu anında, size özel yorumlarla görün.</p>
+  <div class="tarzlar">
+    <div class="tarz"><i style="background:#E76F51"></i>Rekabetçi</div>
+    <div class="tarz"><i style="background:#2A9D8F"></i>İşbirlikçi</div>
+    <div class="tarz"><i style="background:#E9C46A"></i>Uzlaşmacı</div>
+    <div class="tarz"><i style="background:#7C6CF2"></i>Kaçınmacı</div>
+    <div class="tarz"><i style="background:#3A86FF"></i>İltifatkar</div>
+  </div>
+  <div class="alt-bilgi"><span>ikna-muzakere.vercel.app</span><span>Kasım 2026</span></div>
+</section>
+
+<!-- 2. Problem -->
+<section class="sayfa">
+  <div class="ust">Problem</div>
+  <h1>Eğitimdeki test kâğıtta kalıyordu</h1>
+  <p class="alt">Müzakere eğitiminde 30 soruluk çatışma tarzı testi çözülüyor. Test değerli, ama deneyim eğitim salonunun dışına çıkamıyordu.</p>
+  <div class="izgara-4">
+    <div class="kart"><div class="rozet" style="background:var(--mercan)"><svg class="ikon"><use href="#i-kagit"/></svg></div>
+      <h3>Kâğıt ve kalem</h3><p>30 cevap kâğıtta işaretleniyor, beş tarzın puanı cevap anahtarıyla elle sayılıyor.</p></div>
+    <div class="kart"><div class="rozet" style="background:var(--sari)"><svg class="ikon"><use href="#i-mesaj"/></svg></div>
+      <h3>Herkese aynı yorum</h3><p>Sunumdaki yorumlar tarz bazında; kişinin beş puanının birlikte ne anlattığı yorumlanmıyor.</p></div>
+    <div class="kart"><div class="rozet" style="background:var(--mor)"><svg class="ikon"><use href="#i-saat"/></svg></div>
+      <h3>Kaybolan sonuç</h3><p>Eğitimden sonra sonuca geri dönmek ya da testi tekrar çözüp karşılaştırmak mümkün değil.</p></div>
+    <div class="kart"><div class="rozet" style="background:var(--turkuaz)"><svg class="ikon"><use href="#i-goz"/></svg></div>
+      <h3>Görünmeyen tablo</h3><p>Eğitmen katılımcıların sonuçlarını tek bir yerde göremiyor.</p></div>
+  </div>
+  <div class="alt-bilgi"><span>Müzakere Tarzı Testi</span><span>2</span></div>
+</section>
+
+<!-- 3. Çözüm: kullanıcı yolculuğu -->
+<section class="sayfa">
+  <div class="ust">Çözüm</div>
+  <h1>Telefondan dört adımda kendi profiline</h1>
+  <div class="yolculuk">
+    <div class="kart"><div class="rozet" style="background:var(--lacivert)"><svg class="ikon"><use href="#i-kisi"/></svg></div>
+      <div class="adim-no">ADIM 1</div><h3>Anonim giriş</h3><p>Takma ad ve 4 karakterlik PIN. Ad, e-posta ya da telefon istenmez.</p></div>
+    <div class="ok">→</div>
+    <div class="kart"><div class="rozet" style="background:var(--mercan)"><svg class="ikon"><use href="#i-liste"/></svg></div>
+      <div class="adim-no">ADIM 2</div><h3>30 soru</h3><p>Her ekranda tek soru: A mı, B mi? Telefonda da rahatça çözülür.</p></div>
+    <div class="ok">→</div>
+    <div class="kart"><div class="rozet" style="background:var(--turkuaz)"><svg class="ikon"><use href="#i-grafik"/></svg></div>
+      <div class="adim-no">ADIM 3</div><h3>Anında profil</h3><p>Beş tarzın puanı, yüksek / orta / düşük seviyesi ve iki eksenli grafik.</p></div>
+    <div class="ok">→</div>
+    <div class="kart"><div class="rozet" style="background:var(--mor)"><svg class="ikon"><use href="#i-isilti"/></svg></div>
+      <div class="adim-no">ADIM 4</div><h3>Size özel yorum</h3><p>Eğitim sunumundan tavsiyeler ve kaynaklara dayanan profil yorumu; isteyene canlı yapay zekâ yorumu.</p></div>
+  </div>
+  <div class="serit">
+    <div><svg class="ikon"><use href="#i-geri"/></svg>Takma ad ve PIN'le geri dönüp geçmiş sonuçlarınızı görürsünüz.</div>
+    <div><svg class="ikon"><use href="#i-yonetici"/></svg>Eğitmen tüm katılımcıları tek ekranda görür.</div>
+  </div>
+  <p class="not">Test bir kişilik analizi ya da psikolojik tanı değildir; çatışma anındaki davranış tercihini gösterir.</p>
+  <div class="alt-bilgi"><span>Müzakere Tarzı Testi</span><span>3</span></div>
+</section>
+
+<!-- 4. Nasıl çalışır -->
+<section class="sayfa">
+  <div class="ust">Nasıl çalışır</div>
+  <h1>Arka planda sade bir yapı</h1>
+  <div class="sema">
+    <div class="kullanici">
+      <div class="rozet" style="background:var(--mercan)"><svg class="ikon"><use href="#i-telefon"/></svg></div>
+      <h3>Katılımcı</h3><p>telefon ya da bilgisayar</p>
+    </div>
+    <div class="ok">⟶</div>
+    <div class="uygulama">
+      <div style="display:flex;gap:14px;align-items:center"><svg class="ikon" style="width:34px;height:34px"><use href="#i-bulut"/></svg><h3>Web uygulaması</h3></div>
+      <p>Bulutta, Frankfurt'ta çalışır; kurulum gerektirmez, link yeterli.</p>
+      <div class="moduller">
+        <div><b>Puanlama</b><span>30 cevaptan 5 tarz puanı ve seviye</span></div>
+        <div><b>Yorum motoru</b><span>Puan dağılımına göre kart ve profil</span></div>
+        <div><b>Güvenlik</b><span>PIN koruması, deneme kilidi, erişim kontrolü</span></div>
+        <div><b>Yönetici ekranı</b><span>Katılımcılar ve sonuçları</span></div>
+      </div>
+    </div>
+    <div class="ok">⟷</div>
+    <div class="kaynaklar">
+      <div class="kaynak"><div class="rozet" style="background:var(--turkuaz)"><svg class="ikon"><use href="#i-veri"/></svg></div>
+        <div><b>Güvenli veritabanı</b><span>Takma adlar, sonuçlar, şifrelenmiş PIN'ler</span></div></div>
+      <div class="kaynak"><div class="rozet" style="background:var(--sari)"><svg class="ikon"><use href="#i-kitap"/></svg></div>
+        <div><b>İçerik kütüphanesi</b><span>Sorular, eşikler, 20 profil, 10 kaynak</span></div></div>
+      <div class="kaynak"><div class="rozet" style="background:var(--mor)"><svg class="ikon"><use href="#i-isilti"/></svg></div>
+        <div><b>Yapay zekâ</b><span>Yalnızca kişi istediğinde canlı yorum</span></div></div>
+    </div>
+  </div>
+  <div class="serit" style="margin-top:46px">
+    <div>İçerik koddan ayrı tutulur: metin değiştiğinde yazılım değişmez.</div>
+    <div>Yeni sürüm kaydedildiğinde site kendiliğinden güncellenir.</div>
+  </div>
+  <div class="alt-bilgi"><span>Müzakere Tarzı Testi</span><span>4</span></div>
+</section>
+
+<!-- 5. Güven ve maliyet -->
+<section class="sayfa">
+  <div class="ust">Güven ve maliyet</div>
+  <h1>Anonim, korumalı ve ücretsiz</h1>
+  <div class="iki-sutun">
+    <div class="liste">
+      <div class="madde"><div class="rozet" style="background:var(--lacivert)"><svg class="ikon"><use href="#i-kisi"/></svg></div>
+        <div><b>Kimlik bilgisi yok</b><span>Yalnızca takma ad; ad, e-posta, telefon toplanmaz.</span></div></div>
+      <div class="madde"><div class="rozet" style="background:var(--mercan)"><svg class="ikon"><use href="#i-kilit"/></svg></div>
+        <div><b>PIN geri çözülemez</b><span>PIN açık metin değil, geri çözülemeyen bir özet olarak saklanır.</span></div></div>
+      <div class="madde"><div class="rozet" style="background:var(--sari)"><svg class="ikon"><use href="#i-kalkan"/></svg></div>
+        <div><b>Tahmine karşı kilit</b><span>5 hatalı denemede hesap 15 dakika kilitlenir.</span></div></div>
+      <div class="madde"><div class="rozet" style="background:var(--turkuaz)"><svg class="ikon"><use href="#i-goz"/></svg></div>
+        <div><b>Herkes kendi sonucunu görür</b><span>Başkasının sonucuna ulaşılamaz; varlığı bile belli olmaz.</span></div></div>
+      <div class="madde"><div class="rozet" style="background:var(--mor)"><svg class="ikon"><use href="#i-arama"/></svg></div>
+        <div><b>Arama motorlarına kapalı</b><span>Site yalnızca linki paylaşılan kişilerce bulunur.</span></div></div>
+      <div class="madde"><div class="rozet" style="background:var(--mavi)"><svg class="ikon"><use href="#i-isilti"/></svg></div>
+        <div><b>Yapay zekâ isteğe bağlı</b><span>Veri yalnızca kişi canlı yorum istediğinde gönderilir.</span></div></div>
+    </div>
+    <div class="maliyet">
+      <div class="ust" style="color:#FFE8A3">Aylık altyapı maliyeti</div>
+      <div class="buyuk">0 ₺<small> / ay</small></div>
+      <ul>
+        <li>Barındırma: ücretsiz bulut planı</li>
+        <li>Veritabanı: ücretsiz bulut planı</li>
+        <li>Yapay zekâ: ücretsiz kota, yalnızca istek üzerine</li>
+        <li>Kurulum ve bakım için sunucu gerekmez</li>
+      </ul>
+    </div>
+  </div>
+  <div class="alt-bilgi"><span>Müzakere Tarzı Testi</span><span>5</span></div>
+</section>
+
+<!-- 6. Rakamlarla -->
+<section class="sayfa">
+  <div class="ust">Rakamlarla</div>
+  <h1>Bugün çalışan ürün</h1>
+  <div class="rakamlar">
+    <div class="rakam"><div class="sayi" style="color:var(--mercan)">30</div><div class="ad">soru</div><div class="aciklama">Eğitimdeki orijinal A/B soruları</div></div>
+    <div class="rakam"><div class="sayi" style="color:var(--turkuaz)">5</div><div class="ad">müzakere tarzı</div><div class="aciklama">Her biri yüksek / orta / düşük seviyede</div></div>
+    <div class="rakam"><div class="sayi" style="color:var(--sari)">20</div><div class="ad">profil yorumu</div><div class="aciklama">Baskın ve en az kullanılan tarz eşleşmeleri</div></div>
+    <div class="rakam"><div class="sayi" style="color:var(--mor)">10</div><div class="ad">doğrulanmış kaynak</div><div class="aciklama">Yorumlar bu kaynaklara dayanır</div></div>
+    <div class="rakam"><div class="sayi" style="color:var(--mavi)">186</div><div class="ad">otomatik test</div><div class="aciklama">Her değişiklikte puanlama ve güvenlik denetlenir</div></div>
+    <div class="rakam"><div class="sayi" style="color:var(--lacivert)">0 ₺</div><div class="ad">aylık maliyet</div><div class="aciklama">Tamamı ücretsiz bulut planlarında</div></div>
+  </div>
+  <div class="sonraki"><b>Olası sonraki adımlar</b><span>Şimdilik bilinçli olarak dışarıda bırakıldı: ekip karşılaştırması ve istatistik paneli · sonuçları dışa aktarma · çoklu dil.</span></div>
+  <div class="alt-bilgi"><span>Müzakere Tarzı Testi</span><span>6</span></div>
+</section>
+</body>
+</html>

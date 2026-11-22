@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Tasarım
 
-**Sürüm: v13 — 2026-11-12 16:00**
+**Sürüm: v14 — 2026-11-22 16:20**
 
 **Sürüm notları**
 
+- v14 — İlgili dokümanlara veri sözlüğü eklendi (yeni `plans/` düzeni); içerik değişmedi.
 - v13 — AI destekli sekmede ilk bölümün başlığı "Nasıl davranırsınız" (kişinin seviyesine göre yazıldığı için).
 - v12 — Profil kutusunun her bölümüne (giriş, güçlü yanlar, zayıf yanlar, öneri) birer cümle eklendi (20 profil, kullanıcı onaylı).
 - v11 — Kart başlıkları tarzı adlandırır: sunumda "Rekabetçi nasıl davranır"; iki sekmede de "Yüksek rekabetçi davranışın uygun (olmadığı) koşullar" ve "Karşınızda yüksek rekabetçi biri varsa" (koşulların kişinin puanına değil, davranışa ait olduğu açık olsun diye).
@@ -18,7 +19,7 @@
 - v2 — Gözden geçirme sonrası: Kaçınmacı slaytlarının sunumdaki haliyle gösterilmesi (7.1), kaynak doğrulama ölçütü ve kullanıcı onay adımı (7.2), Neon'un ilk adım olması (10).
 - v1 — İlk tasarım: kapsam, kararlar, yaklaşımlar, içerik ve kullanıcı akışları.
 
-İlgili dokümanlar: [Mimari](ikna-muzakere-mimari.md) · [Uygulama planı](ikna-muzakere-plan.md)
+**İlgili dokümanlar:** [Mimari](ikna-muzakere-mimari.md) · [Veri sözlüğü](ikna-muzakere-veri-sozlugu.md) · [Plan](ikna-muzakere-plan.md)
 
 ---
 
