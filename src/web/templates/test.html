@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Test · Müzakere Tarzı Testi{% endblock %}
 {% block content %}
-<h1>Test</h1>
+<h1>Müzakerede hangi tarzı kullanıyorsunuz?</h1>
+<section class="tanitim">
+  <p>30 kısa soruda, çatışma ve müzakere anlarında hangi davranışları tercih ettiğinizi görün:
+     rekabet, işbirliği, uzlaşma, kaçınma ve iltifatkarlık. Sonunda puanlarınızı, bir grafik ve tarzınıza uygun öneriler alacaksınız.</p>
+  <p class="not">Bu bir kişilik testi değildir; doğru ya da yanlış cevap yoktur.</p>
+</section>
 <p class="aciklama">Her soruda size <strong>daha yakın</strong> olan ifadeyi seçin. İkisi de tam uymuyorsa, daha yakın olanı seçmeniz yeterli.</p>
 {% if hata %}<p class="hata">{{ hata }}</p>{% endif %}
 

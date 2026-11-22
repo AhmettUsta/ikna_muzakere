@@ -1,11 +1,12 @@
 # Müzakere Tarzı Testi — Mimari
 
-**Sürüm: v10 — 2026-11-22 18:05**
+**Sürüm: v11 — 2026-11-22 19:40**
 
 **Kod commit'i: `4d6ee0a` — 2026-11-22** _(dokümanların en son eşitlendiği commit; AGENTS.md §6)_
 
 **Sürüm notları**
 
+- v11 — Ayrı giriş ekranı (tasarım v15): `/` giriş yapmış kişiyi yönlendirir, `/yonetici` yalnızca yönlendirme yapar (`POST /yonetici` ve `yonetici_giris.html` kaldırıldı); yönetici sayfaları oturumsuz istekte `/`'a yönlenir.
 - v10 — Teknik mimari PDF'i sade, kutulu akış diyagramı olarak yeniden çizildi.
 - v9 — Topoloji ikiye ayrıldı: teknik mimari PDF'i (geliştirici) ve ürün tanıtımı PDF'i (sunum); Mermaid, draw.io ve PNG kaldırıldı.
 - v8 — Yeni şablon düzeni: topoloji (Mermaid + draw.io / PNG / PDF) ve numaralı akış adımları; kod içi akış; tablo sütunları ve config alanları veri sözlüğüne taşındı; riskler bölümü. Koda göre düzeltmeler: `PinHasher` / `LockoutPolicy` adları, `kaynaklar.md` ve `static/robots.txt` yok, Render atıfları kaldırıldı, `api/index.py` artık çalışma klasörünü değiştirmiyor (logger log yolunu proje köküne sabitliyor).
@@ -78,7 +79,7 @@ src/
     deps.py            # servis erişimi, oturum / yetki yardımcıları, render, Markdown, tarih biçimi
     routes_aday.py
     routes_yonetici.py
-    templates/         # Jinja2: base, giris, test, sonuc, gecmis, hata, _kart, yonetici_*
+    templates/         # Jinja2: base, giris, test, sonuc, gecmis, hata, _kart, yonetici_adaylar
     static/            # style.css, test.js (soru geçişi)
   content/
     questions.json     # 30 soru
@@ -129,7 +130,7 @@ Dockerfile, .dockerignore, alembic.ini, vercel.json, .vercelignore
 
 | Yöntem | Yol | Ne yapar | Erişim |
 |---|---|---|---|
-| GET | `/` | Tanıtım; "Teste başla" ve "Sonucuma bak" | herkes |
+| GET | `/` | Giriş ekranı: giriş formu açık, "Kayıt ol" ile kayıt formu. Giriş yapmış aday `/gecmis`'e, yönetici `/yonetici/adaylar`'a yönlenir | herkes |
 | POST | `/kayit` | Takma ad + PIN (iki kez) → katılımcı oluşturur, oturum açar, `/test`'e yönlendirir | herkes |
 | POST | `/giris` | Takma ad + PIN → doğrular (kilit kuralıyla), `/gecmis`'e yönlendirir; yönetici adıyla girilirse `/yonetici/adaylar` | herkes |
 | GET | `/test` | 30 soruluk form; JavaScript her ekranda bir soru gösterir. JavaScript yoksa hepsi listelenir. | oturumlu aday |
@@ -138,7 +139,7 @@ Dockerfile, .dockerignore, alembic.ini, vercel.json, .vercelignore
 | POST | `/sonuc/{public_id}/canli-yorum` | Gemini'den yorum alır ve kaydeder; zaten varsa kayıtlıyı döndürür | yalnızca denemenin sahibi |
 | GET | `/gecmis` | En son sonuç bağlantısı, önceki denemeler, "Testi tekrar çöz" | oturumlu aday |
 | POST | `/cikis` | Oturumu kapatır | herkes |
-| GET/POST | `/yonetici` | Şifre ile giriş | herkes |
+| GET | `/yonetici` | Yalnızca yönlendirme: yöneticiyse `/yonetici/adaylar`, değilse `/` (tek giriş kapısı ana formdur). Diğer yönetici adresleri de oturumsuz istekte `/`'a yönlenir | herkes |
 | GET | `/yonetici/adaylar` | Takma ad, deneme sayısı, son tarih | yönetici |
 | GET | `/yonetici/aday/{participant_id}` | Adayın `/gecmis` görünümü | yönetici |
 | POST | `/yonetici/aday/{participant_id}/ad` | Takma adı değiştirir; hata 400, aday yoksa 404 | yönetici |

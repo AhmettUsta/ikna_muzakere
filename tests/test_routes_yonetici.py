@@ -14,7 +14,7 @@ def client_for(service) -> TestClient:
 
 def admin_client(service) -> TestClient:
     client = client_for(service)
-    response = client.post("/yonetici", data={"password": "gizli"}, follow_redirects=False)
+    response = client.post("/giris", data={"nickname": "ustaoglu", "pin": "gizli"}, follow_redirects=False)
     assert response.status_code == 303
     assert response.headers["location"] == "/yonetici/adaylar"
     return client
@@ -23,25 +23,18 @@ def admin_client(service) -> TestClient:
 def test_admin_pages_require_login(make_web_service) -> None:
     client = client_for(make_web_service())
 
-    for path in ["/yonetici/adaylar", f"/yonetici/aday/{OWNER_ID}"]:
+    for path in ["/yonetici", "/yonetici/adaylar", f"/yonetici/aday/{OWNER_ID}"]:
         response = client.get(path, follow_redirects=False)
         assert response.status_code == 303
-        assert response.headers["location"] == "/yonetici"
-
-
-def test_admin_login_wrong_password(make_web_service) -> None:
-    response = client_for(make_web_service()).post("/yonetici", data={"password": "yanlis"})
-
-    assert response.status_code == 400
-    assert "Şifre hatalı" in response.text
+        assert response.headers["location"] == "/"
 
 
 def test_admin_login_locks_after_five_failures(make_web_service) -> None:
     client = client_for(make_web_service())
     for _ in range(5):
-        client.post("/yonetici", data={"password": "yanlis"})
+        client.post("/giris", data={"nickname": "ustaoglu", "pin": "yanlis"})
 
-    response = client.post("/yonetici", data={"password": "gizli"}, follow_redirects=False)
+    response = client.post("/giris", data={"nickname": "ustaoglu", "pin": "gizli"}, follow_redirects=False)
 
     assert response.status_code == 429
     assert "15 dakika" in response.text
@@ -112,7 +105,7 @@ def test_admin_actions_require_login(make_web_service, fake_db) -> None:
     for path, data in [(f"/yonetici/aday/{OWNER_ID}/ad", {"nickname": "Yeni"}), (f"/yonetici/aday/{OWNER_ID}/sil", {})]:
         response = client.post(path, data=data, follow_redirects=False)
         assert response.status_code == 303
-        assert response.headers["location"] == "/yonetici"
+        assert response.headers["location"] == "/"
     fake_db.rename_participant.assert_not_called()
     fake_db.delete_participant.assert_not_called()
 
@@ -172,3 +165,19 @@ def test_admin_delete_unknown_candidate(make_web_service, fake_db) -> None:
     response = admin_client(make_web_service()).post(f"/yonetici/aday/{OWNER_ID}/sil")
 
     assert response.status_code == 404
+
+
+def test_admin_home_redirects_admin_to_candidates(make_web_service) -> None:
+    response = admin_client(make_web_service()).get("/yonetici", follow_redirects=False)
+
+    assert (response.status_code, response.headers["location"]) == (303, "/yonetici/adaylar")
+
+
+def test_old_admin_login_post_is_gone(make_web_service) -> None:
+    client = client_for(make_web_service())
+
+    response = client.post("/yonetici", data={"password": "gizli"})
+
+    assert response.status_code == 405
+    assert "set-cookie" not in response.headers
+    assert client.get("/yonetici/adaylar", follow_redirects=False).headers["location"] == "/"

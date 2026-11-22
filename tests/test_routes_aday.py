@@ -210,34 +210,68 @@ def test_logout_clears_session(make_web_service) -> None:
     assert client.get("/test", follow_redirects=False).status_code == 303
 
 
-def _checked_choice(html: str) -> list[str]:
-    import re
+def _open_form(html: str) -> str:
+    """Sunucunun açık getirdiği form: kayıt hatasında 'kayit', diğer durumlarda 'giris'."""
+    return "kayit" if 'class="secim kayit-acik"' in html else "giris"
 
-    return re.findall(r'<input type="radio" name="secim" id="(secim-\w+)"\s+checked', html)
 
-
-def test_home_shows_two_choices_none_open(make_web_service) -> None:
+def test_home_shows_login_form_by_default(make_web_service) -> None:
     page = client_for(make_web_service()).get("/").text
 
-    assert 'id="secim-basla"' in page and 'id="secim-sonuc"' in page
-    assert _checked_choice(page) == []
+    assert _open_form(page) == "giris"
+    # Geçişler klavyeyle odaklanabilen gerçek bağlantılardır.
+    assert 'href="#kayit"' in page and 'href="#giris"' in page
+    assert 'type="radio"' not in page
+    assert 'action="/giris"' in page and 'action="/kayit"' in page
+    assert "Hesabın yok mu?" in page and "Zaten hesabın var mı?" in page
+    assert "30 kısa soruda" not in page
 
 
-def test_register_error_opens_start_choice(make_web_service) -> None:
+def test_register_form_keeps_nickname_note(make_web_service) -> None:
+    assert "takma ad kullanın" in client_for(make_web_service()).get("/").text
+
+
+def test_register_error_opens_register_form(make_web_service) -> None:
     page = client_for(make_web_service()).post(
         "/kayit", data={"nickname": "Ali", "pin": "1234", "pin_again": "9999"}
     ).text
 
-    assert _checked_choice(page) == ["secim-basla"]
+    assert _open_form(page) == "kayit"
+    assert 'value="Ali"' in page
 
 
-def test_login_error_opens_result_choice(make_web_service, fake_db) -> None:
+def test_login_error_opens_login_form(make_web_service, fake_db) -> None:
     fake_db.reserve_login_attempt.return_value = None
     fake_db.get_participant_by_key.return_value = None
 
     page = client_for(make_web_service()).post("/giris", data={"nickname": "yok", "pin": "1234"}).text
 
-    assert _checked_choice(page) == ["secim-sonuc"]
+    assert _open_form(page) == "giris"
+
+
+def test_home_redirects_participant_to_history(make_web_service) -> None:
+    response = registered_client(make_web_service()).get("/", follow_redirects=False)
+
+    assert (response.status_code, response.headers["location"]) == (303, "/gecmis")
+
+
+def test_home_after_participant_deleted_shows_login(make_web_service, fake_db) -> None:
+    client = registered_client(make_web_service())
+    fake_db.get_participant.return_value = None
+
+    response = client.get("/")
+
+    assert [r.headers["location"] for r in response.history] == ["/gecmis", "/"]
+    assert 'action="/giris"' in response.text
+
+
+def test_home_redirects_admin_to_candidates(make_web_service) -> None:
+    client = client_for(make_web_service())
+    client.post("/giris", data={"nickname": "ustaoglu", "pin": "gizli"})
+
+    response = client.get("/", follow_redirects=False)
+
+    assert (response.status_code, response.headers["location"]) == (303, "/yonetici/adaylar")
 
 
 def test_result_cards_show_sections_in_order(make_web_service) -> None:
@@ -324,3 +358,10 @@ def test_submit_after_participant_deleted_logs_out(make_web_service, fake_db) ->
     assert response.headers["location"] == "/"
     # Oturum kapandı: test sayfası artık ana sayfaya yönlendirir.
     assert client.get("/test", follow_redirects=False).headers["location"] == "/"
+
+
+def test_test_page_shows_intro(make_web_service) -> None:
+    page = registered_client(make_web_service()).get("/test").text
+
+    assert "30 kısa soruda" in page
+    assert "kişilik testi değildir" in page

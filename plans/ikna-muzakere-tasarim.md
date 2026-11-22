@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Tasarım
 
-**Sürüm: v14 — 2026-11-22 16:20**
+**Sürüm: v15 — 2026-11-22 19:10**
 
 **Sürüm notları**
 
+- v15 — Ayrı giriş ekranı: site açılınca yalnızca giriş formu, "Kayıt ol" ile aynı sayfada kayıt formu; tanıtım metni test sayfasının başına; giriş yapmış kişi `/`'dan kendi sayfasına yönlenir; `/yonetici` giriş sayfası ana sayfaya yönlenir (tek giriş kapısı). Yaklaşım seçimi §4'te.
 - v14 — İlgili dokümanlara veri sözlüğü eklendi (yeni `plans/` düzeni); içerik değişmedi.
 - v13 — AI destekli sekmede ilk bölümün başlığı "Nasıl davranırsınız" (kişinin seviyesine göre yazıldığı için).
 - v12 — Profil kutusunun her bölümüne (giriş, güçlü yanlar, zayıf yanlar, öneri) birer cümle eklendi (20 profil, kullanıcı onaylı).
@@ -86,12 +87,19 @@ Bu proje, testi bir web sitesine taşır. Kişi soruları çözer, puanlarını 
 - Yalnızca canlı yapay zekâ: ücretli ya da ücretsiz katmanın sınırlarına takılır.
 - Yalnızca sunum metinleri: kişinin profiline özel hiçbir yorum sunmaz.
 
+**Giriş ekranı (v15):** Kullanıcı, siteye girince önce yalnızca giriş / kayıt ekranının görünmesini istedi. Adaylar listesi zaten yalnızca yönetici oturumuna açıktı; değişiklik görünüş ve akış içindir, güvenlik açığı kapatmaz.
+
+| Yaklaşım | Artı | Eksi | Karar |
+|---|---|---|---|
+| **Tek sayfa, iki form** (aynı adres `/`; açılışta giriş formu, "Kayıt ol" ile aynı yerde kayıt formu) | Bugünkü yapı ve route'lar korunur; az değişiklik | Kayıt için ayrı bir link verilemez | **Seçildi** (kullanıcı) |
+| Ayrı `/giris` ve `/kayit` sayfaları | Doğrudan kayıt linki verilebilir | Daha fazla route ve yönlendirme; link zaten yalnızca tanıdıklarla paylaşılıyor | Elendi |
+
 ## 5. Kullanıcının verdiği kararlar
 
 1. Orijinal sorular, cevap anahtarı, eşikler ve sunum metinleri kullanılır.
 2. Kişi gerçek adını değil, bir **takma ad** girer. Takma ad ve **4 karakterli PIN** ile kayıt olur ve tekrar giriş yapar. PIN yalnızca İngilizce harf ve rakam içerebilir (Türkçe karakter, sembol ve boşluk yok; büyük-küçük harf ayrımı var).
 3. Sonuçlar veritabanında saklanır. Herkes yalnızca kendi cevaplarını ve sonuçlarını görür.
-4. **Yönetici ekranı:** Site sahibi, ana sayfadaki giriş formuna takma ad olarak yönetici adını (`ustaoglu`) ve yönetici şifresini yazınca doğrudan yönetici ekranına girer; `/yonetici` adresi de çalışır. Yönetici adı aday olarak kaydedilemez. Site sahibi adayların takma ad listesinden birini seçer ve onun gördüğü sonuç ekranını aynen görür. Şimdilik ek bir özellik yoktur.
+4. **Yönetici ekranı:** Site sahibi, ana sayfadaki giriş formuna takma ad olarak yönetici adını (`ustaoglu`) ve yönetici şifresini yazınca doğrudan yönetici ekranına girer. (v15) Tek giriş kapısı bu formdur; `/yonetici` adresi giriş yapılmamışsa ana sayfaya yönlenir. Yönetici adı aday olarak kaydedilemez. Site sahibi adayların takma ad listesinden birini seçer ve onun gördüğü sonuç ekranını aynen görür. Şimdilik ek bir özellik yoktur.
 5. **Yorumlar** (sonuç sayfasında iki seçenek):
    1. **Sunum metinleri:** Varsayılan seçenek. Eğitimdeki hazır metinler gösterilir.
    2. **AI destekli yorum** (v8'e kadar adı "Kaynaklarla genişletilmiş yorum"): Önceden hazırlanmış, akademik kaynaklara dayalı ve kaynakçalı yorumlar. "Yapay zekâ yardımıyla hazırlanmıştır" uyarısı taşır.
@@ -210,9 +218,9 @@ Yüksek ve düşük seviyedeki kartlar açık, orta seviyedekiler kapalı başla
 
 **Aday**
 
-1. **Giriş sayfası:** Testin ne olduğu iki cümleyle anlatılır ve "kişilik testi değildir" notu yer alır. Kişi "Teste başla" ya da "Sonucuma bak" seçeneklerinden birini seçer.
-2. **Teste başla:** Kişi bir takma ad ve 4 haneli PIN girer (PIN iki kez yazılır). Takma ad alınmışsa başka bir ad istenir.
-3. **Test:** Her ekranda bir soru gösterilir. A ya da B'ye dokununca sonraki soruya geçilir. İlerleme çubuğu (ör. "12 / 30") ve "geri" düğmesi bulunur. Son soruda "Bitir" düğmesi çıkar.
+1. **Giriş ekranı (v15):** Site açılınca yalnızca başlık ("Müzakere Tarzı Testi"), tek satırlık bir alt başlık ve **giriş formu** görünür: takma ad, PIN ve "Giriş yap". Altında "Hesabın yok mu? **Kayıt ol**" bağlantısı vardır; tıklanınca aynı yerde **kayıt formu** açılır (sayfa yenilenmez), altında "Zaten hesabın var mı? **Giriş yap**" bağlantısıyla geri dönülür. Hatalı kayıtta kayıt formu, hatalı girişte giriş formu açık gelir. Giriş yapmış bir aday `/` adresine gelirse sonuçlar sayfasına, yönetici aday listesine yönlenir.
+2. **Kayıt ol:** Kişi bir takma ad ve 4 haneli PIN girer (PIN iki kez yazılır). "Gerçek adınızı değil, bir takma ad kullanın" notu ve PIN ipucu kayıt formundadır. Takma ad alınmışsa başka bir ad istenir. Kayıttan sonra test sayfası açılır.
+3. **Test:** Sayfanın başında eski giriş sayfasındaki tanıtım metni durur (30 soru, beş tarz, sonunda ne alınacağı, "kişilik testi değildir" notu), ardından nasıl cevaplanacağı açıklaması gelir. Her ekranda bir soru gösterilir. A ya da B'ye dokununca sonraki soruya geçilir. İlerleme çubuğu (ör. "12 / 30") ve "geri" düğmesi bulunur. Son soruda "Bitir" düğmesi çıkar.
 4. **Sonuç sayfası:**
    - Puan tablosu: tarz, puan, normal aralık (düşük eşik + 1 ile yüksek eşik − 1 arası, ör. Rekabetçi 4–7) ve seviye.
    - İki eksenli grafik.
@@ -220,11 +228,11 @@ Yüksek ve düşük seviyedeki kartlar açık, orta seviyedekiler kapalı başla
      - "Sunum yorumları" ve "AI destekli yorum" (AI destekli sekmenin altında canlı yapay zekâ düğmesi).
      - "Sorulara cevaplarım": her soruda A ve B şıkkı, seçilen işaretli.
      - "Cevap anahtarım": eğitimdeki kâğıt gibi 30 satır × 5 tarz sütunu; A ve B kendi tarzının sütununda, seçilen hücre taralı, altta sütun toplamları (puanlar).
-5. **Sonucuma bak:** Kişi takma adını ve PIN'ini girer. En son sonucu açılır; önceki denemeleri tarih listesi olarak görür ve "Testi tekrar çöz" diyebilir.
+5. **Giriş yap:** Kişi takma adını ve PIN'ini girer. En son sonucu açılır; önceki denemeleri tarih listesi olarak görür ve "Testi tekrar çöz" diyebilir.
 
 **Yönetici**
 
-1. `/yonetici` adresinden şifreyle girer.
+1. (v15) Ana sayfadaki giriş formuna yönetici adını ve şifresini yazarak girer; `/yonetici` adresi giriş yapılmamışsa ana sayfaya, giriş yapılmışsa aday listesine yönlenir. Hatalı deneme kilidi (15 dakikada 5) aynen kalır.
 2. Takma ad listesini görür: takma ad, deneme sayısı, son deneme tarihi.
 3. Bir takma adı seçince o kişinin "Sonucuma bak" ekranını aynen görür. Yönetici kendi oturumundan çıkmaz, yalnızca görüntüler; adayın verisi değişmez.
 4. (Kullanıcı kararı, v9) Listede her satırda iki işlem vardır:

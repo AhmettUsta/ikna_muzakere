@@ -1,9 +1,10 @@
 # Müzakere Tarzı Testi — Veri Sözlüğü
 
-**Sürüm: v1 — 2026-11-20 16:30**
+**Sürüm: v2 — 2026-11-22 19:40**
 
 **Sürüm notları**
 
+- v2 — `POST /yonetici` kaldırıldı; yönetici `POST /giris` ile girer.
 - v1 — İlk veri sözlüğü: veritabanı tabloları (mimari §4'ten taşındı), içerik dosyaları, form alanları, oturum, config alanları.
 
 **İlgili dokümanlar:** [Tasarım](ikna-muzakere-tasarim.md) · [Mimari](ikna-muzakere-mimari.md) · [Plan](ikna-muzakere-plan.md)
@@ -132,7 +133,6 @@ Aday silinince denemeleri ve yorumları tek işlemde silinir.
 | `POST /kayit` | `nickname`, `pin`, `pin_again` | Takma ad §1; PIN tam 4 karakter harf / rakam (`[A-Za-z0-9]{4}`), iki PIN aynı |
 | `POST /giris` | `nickname`, `pin` | Kilit kuralı: 5 hatada 15 dakika. `nickname` = `ADMIN_USERNAME` ise `pin` alanı yönetici şifresi olarak denetlenir (yönetici kilidiyle ortak) |
 | `POST /test` | `q1` … `q30` | Her biri `A` ya da `B`; eksikse form doldurulmuş cevaplarla geri gelir |
-| `POST /yonetici` | `password` | `ADMIN_PASSWORD` ile karşılaştırılır |
 | `POST /yonetici/aday/{id}/ad` | `nickname` | Takma ad kuralları; çakışmada 400 |
 
 Oturum (imzalı çerez, `SessionMiddleware`): `participant_id` (aday) ya da `is_admin` (yönetici).

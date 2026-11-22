@@ -10,7 +10,7 @@ from scoring import ANSWER_COUNT
 from service import LOGIN_FAILED_MESSAGE, LoginError, RegistrationError
 from step_database import ParticipantMissing
 from step_gemini import LiveCommentUnavailable
-from web.deps import current_participant, get_service, render, viewer_of
+from web.deps import current_participant, get_service, is_admin, render, viewer_of
 from web.routes_yonetici import LOCKED_MESSAGE, try_admin_login
 
 logger = logging.getLogger(__name__)
@@ -37,6 +37,11 @@ def _parse_uuid(value: str) -> uuid.UUID | None:
 
 @router.get("/")
 def home(request: Request) -> Response:
+    # Giriş yapmış kişi giriş ekranını görmez, kendi sayfasına gider.
+    if is_admin(request):
+        return _redirect("/yonetici/adaylar")
+    if current_participant(request) is not None:
+        return _redirect("/gecmis")
     return render(request, "giris.html")
 
 

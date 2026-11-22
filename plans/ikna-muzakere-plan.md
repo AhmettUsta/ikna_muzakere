@@ -1,9 +1,11 @@
 # Müzakere Tarzı Testi — Uygulama Planı
 
-**Sürüm: v2 — 2026-11-22 16:20**
+**Sürüm: v4 — 2026-11-22 20:05**
 
 **Sürüm notları**
 
+- v4 — Son inceleme: form geçişleri gizli radyo + `<label>` yerine `<a href="#kayit">` / `#giris` bağlantıları ve `:target` CSS (klavyeyle Tab + Enter çalışsın diye); kayıt hatasında sunucu `.kayit-acik` sınıfı ekler. Silinmiş adayın `/`'a dönüşü ve eski `POST /yonetici`'nin çerez açmaması testlendi.
+- v3 — Görev 13–16 eklendi: ayrı giriş ekranı (tasarım v15).
 - v2 — Commit takibi (kod commit'i `4d6ee0a`): tamamlanan görevler `[x]`; Docker adımı doğrulanmadı; Render yerine Vercel notu; veri sözlüğü bağlantısı. Plan metni tarihsel kayıt olarak korunur; güncel yapı mimaride.
 - v1 — İlk plan: 12 görev, ön koşullar, genel kısıtlar, gözden geçirme odakları.
 
@@ -474,3 +476,121 @@ Tasarımın açıkça yazmadığı ama gerçek kullanıcının karşılaşacağ�
   - `/robots.txt` kontrol edilir; yönetici girişi denenir.
   - İsteğe bağlı olarak tek bir canlı Gemini yorumu denenir.
   - Sonuç kullanıcıya bildirilir.
+
+---
+
+## Ek görevler (v3) — Ayrı giriş ekranı
+
+**Amaç:** Site açılınca yalnızca giriş formu görünsün; "Kayıt ol" ile aynı yerde kayıt formu açılsın; yönetici yalnızca bu formdan girsin.
+
+**Mimari:** Route'lar aynı kalır (`/`, `/kayit`, `/giris`). `giris.html` `#giris` / `#kayit` bağlantıları ve `:target` CSS'iyle JavaScript'siz form değiştirir; kayıt hatasında sunucu `.kayit-acik` ekler (v4; ilk uygulamadaki radyo yöntemi klavyeyle kullanılamadığı için değişti). Tanıtım metni `test.html`'e taşınır. `/yonetici` yalnızca yönlendirme yapar.
+
+**Dayandığı doküman:** [Tasarım v15](ikna-muzakere-tasarim.md) §4 "Giriş ekranı", §5.4, §8.
+
+**Genel kısıtlar (ek):**
+- Alan etiketleri "Takma ad" ve "PIN"; düğmeler "Giriş yap" / "Kayıt ol"; geçiş bağlantıları "Hesabın yok mu? Kayıt ol" ve "Zaten hesabın var mı? Giriş yap".
+- Yönetici giriş kilidi (15 dakikada 5 hatalı deneme) ve `try_admin_login` davranışı değişmez.
+- Commit yok; her görevin son adımı `python3 -m pytest` ve kısa rapordur.
+
+**Gözden geçirme odakları (ek):**
+1. **Giriş yapmış kişi `/`'a döner.** Aday `/gecmis`'e, yönetici `/yonetici/adaylar`'a gider; silinmiş adayın oturumu `/gecmis` tarafından temizlenip `/`'a döner, döngü olmaz → Görev 13.
+2. **Hata sonrası doğru form açık.** Hatalı kayıtta kayıt formu, hatalı girişte giriş formu açık gelir; girilen takma ad korunur → Görev 13.
+3. **Yetkisiz yönetici adresleri.** Oturumsuz biri `/yonetici`, `/yonetici/adaylar`, `/yonetici/aday/{id}` ve POST işlemlerinde doğrudan `/`'a yönlenir, veri değişmez → Görev 15.
+4. **Kilit tek kapıdan.** Ana formdan 5 hatalı yönetici denemesinden sonra doğru şifre de 429 alır → Görev 15.
+5. **Eski `POST /yonetici` adresi.** Artık form yok; istek 405 döner, oturum açılmaz → Görev 15.
+
+### Görev 13: Giriş ekranı
+
+**Dosyalar:** `src/web/templates/giris.html`, `src/web/static/style.css` (`.secim` bölümü), `src/web/routes_aday.py: home`, `tests/test_routes_aday.py`
+
+- [x] **Adım 1: Başarısız testleri yaz** (`test_home_shows_two_choices_none_open`, `test_register_error_opens_start_choice`, `test_login_error_opens_result_choice` bunlarla değiştirilir; `_checked_choice` yardımcısı kalır)
+
+```python
+def test_home_shows_login_form_by_default(make_web_service) -> None:
+    page = client_for(make_web_service()).get("/").text
+    assert _checked_choice(page) == ["secim-giris"]
+    assert 'action="/giris"' in page and 'action="/kayit"' in page
+    assert "Hesabın yok mu?" in page and "Zaten hesabın var mı?" in page
+    assert "30 kısa soruda" not in page
+
+def test_register_form_keeps_nickname_note(make_web_service) -> None:
+    assert "takma ad kullanın" in client_for(make_web_service()).get("/").text
+
+def test_register_error_opens_register_form(make_web_service) -> None:
+    page = client_for(make_web_service()).post("/kayit", data={"nickname": "Ali", "pin": "1234", "pin_again": "9999"}).text
+    assert _checked_choice(page) == ["secim-kayit"]
+    assert 'value="Ali"' in page
+
+def test_login_error_opens_login_form(make_web_service, fake_db) -> None:
+    fake_db.reserve_login_attempt.return_value = None
+    fake_db.get_participant_by_key.return_value = None
+    page = client_for(make_web_service()).post("/giris", data={"nickname": "yok", "pin": "1234"}).text
+    assert _checked_choice(page) == ["secim-giris"]
+
+def test_home_redirects_participant_to_history(make_web_service) -> None:
+    response = registered_client(make_web_service()).get("/", follow_redirects=False)
+    assert (response.status_code, response.headers["location"]) == (303, "/gecmis")
+
+def test_home_redirects_admin_to_candidates(make_web_service) -> None:
+    client = client_for(make_web_service())
+    client.post("/giris", data={"nickname": "ustaoglu", "pin": "gizli"})
+    response = client.get("/", follow_redirects=False)
+    assert (response.status_code, response.headers["location"]) == (303, "/yonetici/adaylar")
+```
+
+- [x] **Adım 2:** `python3 -m pytest tests/test_routes_aday.py -k "home or opens or nickname_note"` → yeni testler FAIL.
+- [x] **Adım 3: `giris.html`:** başlık "Müzakere Tarzı Testi", tek satır alt başlık "Çatışma tarzınızı 30 soruda görün"; `secim-giris` radyosu `kayit_hata` yoksa `checked`, `secim-kayit` radyosu `kayit_hata` varsa `checked`. Giriş formu (`/giris`, Takma ad, PIN, "Giriş yap") altında `<label for="secim-kayit">` ile "Hesabın yok mu? Kayıt ol"; kayıt formu (`/kayit`, mevcut alanlar ve PIN ipucu, "Gerçek adınızı değil, bir takma ad kullanın." notu, "Kayıt ol" düğmesi) altında `<label for="secim-giris">` ile "Zaten hesabın var mı? Giriş yap". Eski iki büyük seçim düğmesi ve tanıtım bölümü kalkar.
+- [x] **Adım 4: CSS:** `#secim-giris:checked ~ #form-giris`, `#secim-kayit:checked ~ #form-kayit` görünür; geçiş etiketleri bağlantı gibi görünür ve klavye odağında çerçeve alır (mevcut `:focus-visible` kuralı yeni id'lere taşınır). Kullanılmayan `.secim-dugme*` kuralları silinir.
+- [x] **Adım 5: `home`:** `is_admin` ise `/yonetici/adaylar`'a, `current_participant` doluysa `/gecmis`'e 303; değilse `giris.html`.
+- [x] **Adım 6:** `python3 -m pytest` → hepsi PASS. Rapor.
+
+### Görev 14: Tanıtım metni test sayfasında
+
+**Dosyalar:** `src/web/templates/test.html`, `tests/test_routes_aday.py`
+
+- [x] **Adım 1: Başarısız test**
+
+```python
+def test_test_page_shows_intro(make_web_service) -> None:
+    page = registered_client(make_web_service()).get("/test").text
+    assert "30 kısa soruda" in page
+    assert "kişilik testi değildir" in page
+```
+
+- [x] **Adım 2:** Testi çalıştır → FAIL.
+- [x] **Adım 3:** Eski `giris.html`'deki `<section class="tanitim">` içindeki iki paragraf, "Gerçek adınızı değil…" cümlesi çıkarılarak `test.html`'de `<h1>`'in altına, mevcut "Her soruda size daha yakın…" açıklamasının üstüne konur. `<h1>` "Müzakerede hangi tarzı kullanıyorsunuz?" olur.
+- [x] **Adım 4:** `python3 -m pytest` → PASS. Rapor.
+
+### Görev 15: `/yonetici` tek giriş kapısına yönlenir
+
+**Dosyalar:** `src/web/routes_yonetici.py`, `src/web/templates/yonetici_giris.html` (silinir), `tests/test_routes_yonetici.py`
+
+- [x] **Adım 1: Testleri güncelle**
+  - `admin_client` girişi `client.post("/giris", data={"nickname": "ustaoglu", "pin": "gizli"}, follow_redirects=False)` ile yapar.
+  - `test_admin_pages_require_login` ve `test_admin_actions_require_login`: beklenen `location` `"/"`; listeye `/yonetici` eklenir.
+  - `test_admin_login_wrong_password` silinir (aynı durum `test_admin_login_via_main_form_wrong_password`'da).
+  - `test_admin_login_locks_after_five_failures`: 5 kez `/giris` + `ustaoglu`/`yanlis`, sonra doğru şifre → 429 ve "15 dakika".
+  - Yeni:
+
+```python
+def test_admin_home_redirects_admin_to_candidates(make_web_service) -> None:
+    response = admin_client(make_web_service()).get("/yonetici", follow_redirects=False)
+    assert (response.status_code, response.headers["location"]) == (303, "/yonetici/adaylar")
+
+def test_old_admin_login_post_is_gone(make_web_service) -> None:
+    client = client_for(make_web_service())
+    assert client.post("/yonetici", data={"password": "gizli"}).status_code == 405
+    assert client.get("/yonetici/adaylar", follow_redirects=False).headers["location"] == "/"
+```
+
+- [x] **Adım 2:** `python3 -m pytest tests/test_routes_yonetici.py` → yeni/değişen testler FAIL.
+- [x] **Adım 3:** `admin_home` oturum yoksa `/`'a yönlendirir; `admin_login` (POST) route'u ve `yonetici_giris.html` kaldırılır; bütün yönetici guard'ları `_redirect("/")` kullanır. `try_admin_login`, `AdminLoginGuard`, `LOCKED_MESSAGE` kalır (`routes_aday` kullanıyor).
+- [x] **Adım 4:** `python3 -m pytest` → PASS. Rapor.
+
+### Görev 16: Dokümanlar ve görsel kontrol
+
+**Dosyalar:** `plans/ikna-muzakere-mimari.md`, `plans/ikna-muzakere-teknik-mimari.html` + `.pdf` (route / şablon adı geçiyorsa), `plans/ikna-muzakere-plan.md`
+
+- [x] **Adım 1:** Mimaride route tablosu, şablon listesi ve akış adımları güncellenir (`yonetici_giris.html` ve `POST /yonetici` çıkar, `/` yönlendirmesi eklenir); sürüm artırılır. Teknik mimaride değişen dosya adı varsa HTML güncellenir ve `pdf_yap.py` ile PDF üretilip açılarak kontrol edilir.
+- [x] **Adım 2:** Yerelde `PYTHONPATH=src python3 -m uvicorn main:app` ile açılıp `/` sayfası tarayıcıda görülür: giriş formu açık, "Kayıt ol" kayıt formunu açıyor, "Giriş yap" geri dönüyor, dar ekranda taşma yok. Ekran görüntüsü kullanıcıya gösterilir.
+- [x] **Adım 3:** Görev 13–16 `[x]`; `python3 -m pytest` son kez. Rapor.
